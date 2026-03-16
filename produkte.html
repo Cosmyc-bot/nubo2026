@@ -42,11 +42,34 @@
     }
     .m-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green); display: flex; align-items: center; gap: 4px; text-decoration: none; }
     .m-logo-dot { width: 7px; height: 7px; background: var(--green-light); border-radius: 50%; margin-bottom: 2px; }
-    .m-back {
-      display: flex; align-items: center; gap: 6px; font-size: 0.8rem;
-      color: var(--green); background: var(--green-pale); border: none;
-      padding: 0.4rem 0.9rem; border-radius: 100px; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; font-weight: 500; text-decoration: none;
+    .m-hamburger {
+      width: 36px; height: 36px; background: var(--sand); border-radius: 10px;
+      border: none; display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 4px; cursor: pointer;
+    }
+    .m-hamburger span { width: 16px; height: 2px; background: var(--dark); border-radius: 2px; }
+    .m-menu {
+      position: absolute; inset: 0; z-index: 500; background: var(--cream);
+      display: flex; flex-direction: column; padding: 2rem 1.5rem;
+      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .m-menu.open { transform: translateX(0); }
+    .m-menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-top: 1.5rem; }
+    .m-menu-close {
+      width: 36px; height: 36px; background: var(--sand); border-radius: 10px;
+      border: none; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .m-menu-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
+    .m-menu-links li a {
+      display: block; text-decoration: none; font-size: 1.6rem;
+      font-family: 'Playfair Display', serif; color: var(--dark);
+      padding: 0.9rem 0; border-bottom: 1px solid rgba(160,140,120,0.15);
+    }
+    .m-menu-cta {
+      background: var(--green); color: #fff; padding: 1.1rem 1.5rem;
+      border-radius: 16px; text-align: center; font-size: 1rem;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; margin-top: 2rem;
+      display: block; border: none; cursor: pointer; width: 100%;
     }
 
     /* Hero */
@@ -170,12 +193,30 @@
   <div class="phone-frame">
     <div class="phone-notch"></div>
 
+    <!-- Menu -->
+    <div class="m-menu" id="mobileMenu">
+      <div class="m-menu-header">
+        <div class="m-logo">nubo<div class="m-logo-dot"></div></div>
+        <button class="m-menu-close" onclick="closeMenu()">✕</button>
+      </div>
+      <ul class="m-menu-links">
+        <li><a href="index.html">Start</a></li>
+        <li><a href="produkte.html">Programme</a></li>
+        <li><a href="index.html#m-about">Über uns</a></li>
+        <li><a href="index.html#m-faq">FAQ</a></li>
+        <li><a href="index.html#m-contact">Kontakt</a></li>
+      </ul>
+      <button class="m-menu-cta" onclick="closeMenu(); setTimeout(openModal,380);">Eignung prüfen & buchen →</button>
+    </div>
+
     <div class="phone-screen" id="pscreen">
 
       <!-- Nav -->
       <nav class="m-nav">
         <a class="m-logo" href="index.html">nubo<div class="m-logo-dot"></div></a>
-        <a class="m-back" href="index.html">← Zurück</a>
+        <button class="m-hamburger" onclick="openMenu()">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
 
       <!-- Hero with tabs -->
@@ -521,6 +562,8 @@
 </div>
 
 <script>
+  function openMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
   function switchProgram(prog) {
     document.querySelectorAll('.p-hero-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.p-content').forEach(c => c.classList.remove('active'));

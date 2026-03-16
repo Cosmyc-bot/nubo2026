@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Nubo Therapy — Programme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #3D6B55;
+      --green-light: #7A9E87;
+      --green-pale: #C4D4C9;
+      --sand: #E8DDD0;
+      --cream: #FAF7F4;
+      --brown: #B08B6E;
+      --dark: #2A2825;
+      --muted: #6B6560;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #1a1a1a; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem 1rem; }
+
+    .phone-wrap { display: flex; align-items: center; justify-content: center; }
+    .phone-frame {
+      width: 390px; height: 844px; background: var(--cream);
+      border-radius: 48px; overflow: hidden; position: relative;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1), 0 0 0 8px #2a2a2a, 0 0 0 10px #111;
+      display: flex; flex-direction: column;
+    }
+    .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 34px; background: #1a1a1a; border-radius: 0 0 20px 20px; z-index: 999; }
+    .phone-screen { flex: 1; overflow-y: auto; overflow-x: hidden; }
+    .phone-screen::-webkit-scrollbar { display: none; }
+
+    /* Nav */
+    .m-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,244,0.95); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.25rem; padding-top: 2.5rem;
+      border-bottom: 1px solid rgba(160,140,120,0.15);
+    }
+    .m-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green); display: flex; align-items: center; gap: 4px; text-decoration: none; }
+    .m-logo-dot { width: 7px; height: 7px; background: var(--green-light); border-radius: 50%; margin-bottom: 2px; }
+    .m-back {
+      display: flex; align-items: center; gap: 6px; font-size: 0.8rem;
+      color: var(--green); background: var(--green-pale); border: none;
+      padding: 0.4rem 0.9rem; border-radius: 100px; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; text-decoration: none;
+    }
+
+    /* Hero */
+    .p-hero { background: var(--green); padding: 2.5rem 1.25rem 2rem; }
+    .p-hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.25rem; }
+    .p-hero h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; line-height: 1.15; color: #fff; margin-bottom: 0.75rem; }
+    .p-hero h1 em { font-style: italic; color: var(--green-pale); }
+    .p-hero p { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.7); font-weight: 300; margin-bottom: 1.5rem; }
+    .p-hero-tabs { display: flex; gap: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 100px; padding: 5px; }
+    .p-hero-tab { flex: 1; padding: 0.6rem; border-radius: 100px; border: none; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; background: transparent; color: rgba(255,255,255,0.6); transition: all 0.25s; font-weight: 400; }
+    .p-hero-tab.active { background: #fff; color: var(--green); font-weight: 500; }
+
+    /* Program content */
+    .p-content { display: none; }
+    .p-content.active { display: block; }
+
+    /* Overview card */
+    .p-overview { margin: 1.5rem 1.25rem; background: var(--sand); border-radius: 20px; padding: 1.5rem; }
+    .p-overview-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .p-overview h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .p-overview p { font-size: 0.85rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+
+    /* For whom */
+    .p-section { padding: 0 1.25rem 1.5rem; }
+    .p-section-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; display: block; }
+    .p-sh2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); line-height: 1.2; margin-bottom: 1rem; }
+    .p-whom-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .p-whom-item { display: flex; align-items: flex-start; gap: 0.75rem; background: var(--cream); border-radius: 12px; padding: 0.85rem 1rem; }
+    .p-whom-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .p-whom-text { font-size: 0.83rem; line-height: 1.6; color: var(--dark); font-weight: 400; }
+    .p-whom-sub { font-size: 0.75rem; color: var(--muted); font-weight: 300; margin-top: 2px; }
+
+    /* What's included */
+    .p-included { background: var(--sand); padding: 1.5rem 1.25rem; }
+    .p-include-grid { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .p-include-item { background: var(--cream); border-radius: 14px; padding: 1rem 1.1rem; display: flex; align-items: center; gap: 0.85rem; }
+    .p-include-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    .p-include-text { font-size: 0.83rem; color: var(--dark); font-weight: 400; flex: 1; }
+    .p-include-badge { font-size: 0.65rem; background: var(--green-pale); color: var(--green); padding: 0.15rem 0.5rem; border-radius: 100px; flex-shrink: 0; }
+
+    /* Pricing packages */
+    .p-packages { padding: 1.5rem 1.25rem; }
+    .p-package { border-radius: 20px; padding: 1.5rem; margin-bottom: 1rem; position: relative; }
+    .p-package-cream { background: var(--cream); border: 1.5px solid rgba(160,140,120,0.2); }
+    .p-package-green { background: var(--green); }
+    .p-package-sand { background: var(--sand); }
+    .p-popular { position: absolute; top: -10px; left: 1.25rem; background: var(--brown); color: #fff; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 100px; }
+    .p-pkg-tier { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.4rem; }
+    .p-package-green .p-pkg-tier { color: rgba(255,255,255,0.6); }
+    .p-package-sand .p-pkg-tier { color: var(--green); }
+    .p-pkg-price { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--dark); font-weight: 600; }
+    .p-package-green .p-pkg-price { color: #fff; }
+    .p-pkg-period { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
+    .p-package-green .p-pkg-period { color: rgba(255,255,255,0.6); }
+    .p-pkg-features { list-style: none; margin-bottom: 1.25rem; }
+    .p-pkg-features li { font-size: 0.8rem; padding: 0.4rem 0; display: flex; align-items: center; gap: 8px; color: var(--muted); border-bottom: 1px solid rgba(160,140,120,0.1); }
+        .p-pkg-features li:last-child { border: none; }
+    .p-package-green .p-pkg-features li { color: rgba(255,255,255,0.8); border-bottom-color: rgba(255,255,255,0.1); }
+    .p-package-sand .p-pkg-features li { color: var(--muted); }
+    .p-pkg-features li::before { content: '→'; color: var(--green-light); font-size: 0.75rem; flex-shrink: 0; }
+    .p-package-green .p-pkg-features li::before { color: rgba(255,255,255,0.5); }
+    .p-pkg-btn { width: 100%; padding: 0.85rem; border-radius: 100px; font-size: 0.88rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+    .p-package-cream .p-pkg-btn { background: transparent; border: 1.5px solid var(--green); color: var(--green); }
+    .p-package-green .p-pkg-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+    .p-package-sand .p-pkg-btn { background: var(--green); border: none; color: #fff; }
+
+    /* Process */
+    .p-process { background: var(--sand); padding: 1.5rem 1.25rem; }
+    .p-steps { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; position: relative; }
+    .p-steps::before { content: ''; position: absolute; left: 18px; top: 24px; bottom: 24px; width: 1px; background: var(--green-pale); }
+    .p-step { display: flex; gap: 1rem; align-items: flex-start; padding-bottom: 1.25rem; position: relative; }
+    .p-step:last-child { padding-bottom: 0; }
+    .p-step-num { width: 36px; height: 36px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #fff; flex-shrink: 0; position: relative; z-index: 1; }
+    .p-step-title { font-size: 0.88rem; font-weight: 500; color: var(--dark); margin-bottom: 0.25rem; }
+    .p-step-desc { font-size: 0.78rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    /* Comparison */
+    .p-compare { padding: 1.5rem 1.25rem; }
+    .p-compare-table { background: var(--cream); border-radius: 16px; overflow: hidden; border: 1px solid rgba(160,140,120,0.15); margin-top: 1rem; }
+    .p-compare-header { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--dark); }
+    .p-compare-header div { padding: 0.75rem 0.5rem; text-align: center; font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.9); letter-spacing: 0.05em; }
+    .p-compare-header div:first-child { text-align: left; padding-left: 1rem; color: rgba(255,255,255,0.5); }
+    .p-compare-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid rgba(160,140,120,0.1); }
+    .p-compare-row:last-child { border: none; }
+    .p-compare-row div { padding: 0.7rem 0.5rem; text-align: center; font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; justify-content: center; }
+    .p-compare-row div:first-child { text-align: left; justify-content: flex-start; padding-left: 1rem; font-weight: 500; color: var(--dark); font-size: 0.78rem; }
+    .p-check { color: var(--green); font-size: 1rem; }
+    .p-cross { color: rgba(160,140,120,0.4); font-size: 0.9rem; }
+
+    /* CTA */
+    .p-cta { background: var(--green); padding: 2rem 1.25rem; text-align: center; }
+    .p-cta h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem; }
+    .p-cta p { font-size: 0.82rem; color: rgba(255,255,255,0.7); font-weight: 300; margin-bottom: 1.5rem; line-height: 1.7; }
+    .p-cta-btn { width: 100%; padding: 1rem; background: #fff; color: var(--green); border: none; border-radius: 100px; font-size: 0.95rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; margin-bottom: 0.75rem; }
+    .p-cta-link { font-size: 0.82rem; color: rgba(255,255,255,0.6); text-decoration: none; display: block; }
+
+    /* Footer */
+    .m-footer { background: var(--dark); padding: 2rem 1.25rem 3rem; }
+    .m-footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.75rem; }
+    .m-footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; margin-bottom: 1.5rem; }
+    .m-footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+    .m-gdpr-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(122,158,135,0.15); color: var(--green-pale); padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.68rem; margin-top: 0.75rem; }
+
+    /* Modal */
+    .m-modal-overlay { position: absolute; inset: 0; z-index: 900; background: rgba(42,40,37,0.7); backdrop-filter: blur(6px); display: none; align-items: flex-end; }
+    .m-modal-overlay.open { display: flex; }
+    .m-modal { background: var(--cream); border-radius: 24px 24px 0 0; padding: 1.5rem 1.5rem 2.5rem; width: 100%; animation: slideUp 0.3s ease; }
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+    .m-modal-handle { width: 40px; height: 4px; background: rgba(160,140,120,0.3); border-radius: 100px; margin: 0 auto 1.5rem; }
+    .m-modal-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); display: block; margin-bottom: 0.4rem; }
+    .m-modal h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.4rem; }
+    .m-modal p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 1.25rem; }
+    .m-tally-placeholder { background: var(--sand); border-radius: 14px; padding: 2rem 1.25rem; text-align: center; border: 2px dashed rgba(160,140,120,0.3); margin-bottom: 1rem; }
+    .m-tally-placeholder p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .m-tally-placeholder code { font-size: 0.72rem; color: var(--green); background: rgba(61,107,85,0.1); padding: 0.35rem 0.75rem; border-radius: 8px; display: block; font-family: monospace; }
+    .m-gdpr-note { font-size: 0.72rem; color: var(--muted); line-height: 1.5; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+<div class="phone-wrap">
+  <div class="phone-frame">
+    <div class="phone-notch"></div>
+
+    <div class="phone-screen" id="pscreen">
+
+      <!-- Nav -->
+      <nav class="m-nav">
+        <a class="m-logo" href="index.html">nubo<div class="m-logo-dot"></div></a>
+        <a class="m-back" href="index.html">← Zurück</a>
+      </nav>
+
+      <!-- Hero with tabs -->
+      <div class="p-hero">
+        <div class="p-hero-tag">Unsere Programme</div>
+        <h1>Zwei Wege zur <em>besseren Gesundheit</em></h1>
+        <p>Wähle das Programm, das zu deinem Leben passt — beide medizinisch geleitet, GDPR-konform.</p>
+        <div class="p-hero-tabs">
+          <button class="p-hero-tab active" onclick="switchProgram('intensive')">🌿 Intensive Care</button>
+          <button class="p-hero-tab" onclick="switchProgram('blended')">⚡ Blended Care</button>
+        </div>
+      </div>
+
+      <!-- INTENSIVE CARE -->
+      <div class="p-content active" id="prog-intensive">
+
+        <div class="p-overview">
+          <div class="p-overview-icon">🌿</div>
+          <h2>Intensive Care</h2>
+          <p>Wöchentliche Einzelsitzungen mit einem lizenzierten Therapeuten, kombiniert mit digitaler Begleitung und direktem Zugang zum medizinischen Team. Für Menschen, die intensive, strukturierte Unterstützung suchen.</p>
+        </div>
+
+        <div class="p-section">
+          <span class="p-section-tag">Für wen ist es</span>
+          <h2 class="p-sh2">Intensive Care ist richtig für dich, wenn…</h2>
+          <div class="p-whom-list">
+            <div class="p-whom-item">
+              <div class="p-whom-icon">🎯</div>
+              <div>
+                <div class="p-whom-text">Du klare Struktur und feste Termine brauchst</div>
+                <div class="p-whom-sub">Wöchentliche Sitzungen geben Halt und Orientierung</div>
+              </div>
+            </div>
+            <div class="p-whom-item">
+              <div class="p-whom-icon">🔥</div>
+              <div>
+                <div class="p-whom-text">Du akute Belastungen oder Krisen bewältigen möchtest</div>
+                <div class="p-whom-sub">Direkter Zugang zum medizinischen Team im Notfall</div>
+              </div>
+            </div>
+            <div class="p-whom-item">
+              <div class="p-whom-icon">💬</div>
+              <div>
+                <div class="p-whom-text">Persönliches Gespräch dir mehr gibt als digitale Tools</div>
+                <div class="p-whom-sub">Echter menschlicher Kontakt, nicht nur eine App</div>
+              </div>
+            </div>
+            <div class="p-whom-item">
+              <div class="p-whom-icon">📈</div>
+              <div>
+                <div class="p-whom-text">Du schnelle, messbare Fortschritte machen möchtest</div>
+                <div class="p-whom-sub">Intensive Begleitung beschleunigt den Therapieerfolg</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-included">
+          <span class="p-section-tag">Im Programm enthalten</span>
+          <h2 class="p-sh2">Was du bekommst</h2>
+          <div class="p-include-grid">
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Wöchentliche Einzelsitzung (50 Min.)</div><div class="p-include-badge">Kern</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Ärztliche Supervision aller Sitzungen</div><div class="p-include-badge">Medizin</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Digitale Ressourcen & Übungen</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">E-Mail & Messaging Support</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Persönlicher Therapieplan</div><div class="p-include-badge">Pro</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Krisenplan & Notfallkontakt</div><div class="p-include-badge">Pro</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Abschlussbericht für Hausarzt</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">GDPR-konforme Dokumentation</div></div>
+          </div>
+        </div>
+
+        <div class="p-packages">
+          <span class="p-section-tag">Pakete & Preise</span>
+          <h2 class="p-sh2">Wähle dein Paket</h2>
+
+          <div class="p-package p-package-cream">
+            <div class="p-pkg-tier">Starter</div>
+            <div class="p-pkg-price">€ 349</div>
+            <div class="p-pkg-period">/ 4 Wochen · 4 Sitzungen</div>
+            <ul class="p-pkg-features">
+              <li>4 × Einzelsitzung (50 Min.)</li>
+              <li>Digitale Ressourcen</li>
+              <li>E-Mail Support</li>
+              <li>Persönlicher Therapieplan</li>
+            </ul>
+            <button class="p-pkg-btn" onclick="openModal()">Paket wählen →</button>
+          </div>
+
+          <div class="p-package p-package-green">
+            <div class="p-popular">Beliebt</div>
+            <div class="p-pkg-tier">Standard</div>
+            <div class="p-pkg-price">€ 599</div>
+            <div class="p-pkg-period">/ 8 Wochen · 8 Sitzungen</div>
+            <ul class="p-pkg-features">
+              <li>8 × Einzelsitzung (50 Min.)</li>
+              <li>Vollständiges Begleitprogramm</li>
+              <li>Ärztliche Supervision</li>
+              <li>Priorität-Support</li>
+              <li>Persönlicher Krisenplan</li>
+            </ul>
+            <button class="p-pkg-btn" onclick="openModal()">Paket wählen →</button>
+          </div>
+
+          <div class="p-package p-package-sand">
+            <div class="p-pkg-tier">Premium</div>
+            <div class="p-pkg-price">€ 990</div>
+            <div class="p-pkg-period">/ 12 Wochen · 12 Sitzungen</div>
+            <ul class="p-pkg-features">
+              <li>12 × Einzelsitzung (50 Min.)</li>
+              <li>Vollständiges Begleitprogramm</li>
+              <li>Direkter Arzt-Kontakt</li>
+              <li>Wöchentl. Check-in Nachrichten</li>
+              <li>Krisenplan + Notfallkontakt</li>
+              <li>Abschlussbericht</li>
+            </ul>
+            <button class="p-pkg-btn" onclick="openModal()">Paket wählen →</button>
+          </div>
+        </div>
+
+        <div class="p-process">
+          <span class="p-section-tag">Ablauf</span>
+          <h2 class="p-sh2">So läuft Intensive Care ab</h2>
+          <div class="p-steps">
+            <div class="p-step">
+              <div class="p-step-num">1</div>
+              <div><div class="p-step-title">Pre-Check (5 Min.)</div><div class="p-step-desc">Anonymer medizinischer Fragebogen — kein Login nötig.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">2</div>
+              <div><div class="p-step-title">Paket buchen & zahlen</div><div class="p-step-desc">Sichere Zahlung über Stripe zu Festpreisen.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">3</div>
+              <div><div class="p-step-title">Erstgespräch & Therapieplan</div><div class="p-step-desc">Dein Therapeut erstellt einen individuellen Plan.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">4</div>
+              <div><div class="p-step-title">Wöchentliche Sitzungen</div><div class="p-step-desc">Regelmäßige Termine, digital oder vor Ort in Berlin.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">5</div>
+              <div><div class="p-step-title">Abschluss & Nachsorge</div><div class="p-step-desc">Abschlussbericht + optionale Verlängerung.</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /intensive -->
+
+      <!-- BLENDED CARE -->
+      <div class="p-content" id="prog-blended">
+
+        <div class="p-overview">
+          <div class="p-overview-icon">⚡</div>
+          <h2>Blended Care</h2>
+          <p>Die flexible Kombination aus persönlichen Sitzungen und digitaler Eigenarbeit. Ideal für volle Terminkalender — du bestimmst das Tempo, wir geben den Rahmen.</p>
+        </div>
+
+        <div class="p-section">
+          <span class="p-section-tag">Für wen ist es</span>
+          <h2 class="p-sh2">Blended Care ist richtig für dich, wenn…</h2>
+          <div class="p-whom-list">
+            <div class="p-whom-item">
+              <div class="p-whom-icon">📱</div>
+              <div>
+                <div class="p-whom-text">Du flexibel und ortsunabhängig arbeiten möchtest</div>
+                <div class="p-whom-sub">Digitale Module jederzeit und überall nutzbar</div>
+              </div>
+            </div>
+            <div class="p-whom-item">
+              <div class="p-whom-icon">📅</div>
+              <div>
+                <div class="p-whom-text">Dein Kalender wenig feste Termine erlaubt</div>
+                <div class="p-whom-sub">Weniger Sitzungen, mehr Eigenverantwortung</div>
+              </div>
+            </div>
+            <div class="p-whom-item">
+              <div class="p-whom-icon">🌱</div>
+              <div>
+                <div class="p-whom-text">Du eher präventiv oder zur Persönlichkeitsentwicklung</div>
+                <div class="p-whom-sub">Kein akuter Leidensdruck, aber Wunsch nach Wachstum</div>
+              </div>
+            </div>
+            <div class="p-whom-item">
+              <div class="p-whom-icon">💡</div>
+              <div>
+                <div class="p-whom-text">Du gerne eigenständig mit Tools und Übungen arbeitest</div>
+                <div class="p-whom-sub">Strukturierte digitale Module mit Therapeuten-Feedback</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-included">
+          <span class="p-section-tag">Im Programm enthalten</span>
+          <h2 class="p-sh2">Was du bekommst</h2>
+          <div class="p-include-grid">
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Persönliche Sitzungen (50 Min.)</div><div class="p-include-badge">Kern</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Digitale Therapie-Module (async)</div><div class="p-include-badge">Digital</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Therapeuten-Feedback auf Module</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Flexible Terminbuchung</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Community-Zugang (geschützt)</div><div class="p-include-badge">Pro</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Wöchentl. Check-in (schriftlich)</div><div class="p-include-badge">Pro</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">Persönlicher Fortschrittsbericht</div></div>
+            <div class="p-include-item"><div class="p-include-dot"></div><div class="p-include-text">GDPR-konforme Dokumentation</div></div>
+          </div>
+        </div>
+
+        <div class="p-packages">
+          <span class="p-section-tag">Pakete & Preise</span>
+          <h2 class="p-sh2">Wähle dein Paket</h2>
+
+          <div class="p-package p-package-cream">
+            <div class="p-pkg-tier">Essentials</div>
+            <div class="p-pkg-price">€ 249</div>
+            <div class="p-pkg-period">/ 4 Wochen · 2 Sitzungen</div>
+            <ul class="p-pkg-features">
+              <li>2 × Sitzung (50 Min.)</li>
+              <li>Asynchrone Module</li>
+              <li>Community-Zugang</li>
+              <li>Flexible Termine</li>
+            </ul>
+            <button class="p-pkg-btn" onclick="openModal()">Paket wählen →</button>
+          </div>
+
+          <div class="p-package p-package-green">
+            <div class="p-popular">Beliebt</div>
+            <div class="p-pkg-tier">Balance</div>
+            <div class="p-pkg-price">€ 449</div>
+            <div class="p-pkg-period">/ 8 Wochen · 4 Sitzungen</div>
+            <ul class="p-pkg-features">
+              <li>4 × Sitzung (50 Min.)</li>
+              <li>Vollständige Module</li>
+              <li>Therapeuten-Feedback</li>
+              <li>Flexible Termine</li>
+              <li>Community-Zugang</li>
+            </ul>
+            <button class="p-pkg-btn" onclick="openModal()">Paket wählen →</button>
+          </div>
+
+          <div class="p-package p-package-sand">
+            <div class="p-pkg-tier">Transform</div>
+            <div class="p-pkg-price">€ 749</div>
+            <div class="p-pkg-period">/ 12 Wochen · 6 Sitzungen</div>
+            <ul class="p-pkg-features">
+              <li>6 × Sitzung (50 Min.)</li>
+              <li>Premium-Module</li>
+              <li>Wöchentl. Check-in</li>
+              <li>Therapeuten-Feedback</li>
+              <li>Community-Zugang</li>
+              <li>Abschluss-Bericht</li>
+            </ul>
+            <button class="p-pkg-btn" onclick="openModal()">Paket wählen →</button>
+          </div>
+        </div>
+
+        <div class="p-process">
+          <span class="p-section-tag">Ablauf</span>
+          <h2 class="p-sh2">So läuft Blended Care ab</h2>
+          <div class="p-steps">
+            <div class="p-step">
+              <div class="p-step-num">1</div>
+              <div><div class="p-step-title">Pre-Check (5 Min.)</div><div class="p-step-desc">Anonymer Fragebogen — kein Login, sofort starten.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">2</div>
+              <div><div class="p-step-title">Paket buchen</div><div class="p-step-desc">Sichere Zahlung über Stripe, sofortiger Zugang zu den Modulen.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">3</div>
+              <div><div class="p-step-title">Digitale Module starten</div><div class="p-step-desc">Selbstständig mit Übungen beginnen, Therapeut gibt Feedback.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">4</div>
+              <div><div class="p-step-title">Sitzungen flexibel buchen</div><div class="p-step-desc">Termine nach eigenem Rhythmus — online oder vor Ort.</div></div>
+            </div>
+            <div class="p-step">
+              <div class="p-step-num">5</div>
+              <div><div class="p-step-title">Fortschrittsbericht</div><div class="p-step-desc">Zusammenfassung deiner Entwicklung + Empfehlungen.</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /blended -->
+
+      <!-- Vergleich (immer sichtbar) -->
+      <div class="p-compare">
+        <span class="p-section-tag">Vergleich</span>
+        <h2 class="p-sh2">Intensive vs. Blended</h2>
+        <div class="p-compare-table">
+          <div class="p-compare-header">
+            <div>Feature</div>
+            <div>Intensive</div>
+            <div>Blended</div>
+          </div>
+          <div class="p-compare-row"><div>Wöchentl. Sitzungen</div><div><span class="p-check">✓</span></div><div><span class="p-cross">–</span></div></div>
+          <div class="p-compare-row"><div>Flexible Termine</div><div><span class="p-cross">–</span></div><div><span class="p-check">✓</span></div></div>
+          <div class="p-compare-row"><div>Digitale Module</div><div><span class="p-check">✓</span></div><div><span class="p-check">✓</span></div></div>
+          <div class="p-compare-row"><div>Ärztl. Supervision</div><div><span class="p-check">✓</span></div><div><span class="p-cross">–</span></div></div>
+          <div class="p-compare-row"><div>Community-Zugang</div><div><span class="p-cross">–</span></div><div><span class="p-check">✓</span></div></div>
+          <div class="p-compare-row"><div>Krisenplan</div><div><span class="p-check">✓</span></div><div><span class="p-cross">–</span></div></div>
+          <div class="p-compare-row"><div>Ab Preis</div><div>€ 349</div><div>€ 249</div></div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="p-cta">
+        <h3>Bereit anzufangen?</h3>
+        <p>Beantworte den anonymen Pre-Check und finde heraus, welches Programm zu dir passt.</p>
+        <button class="p-cta-btn" onclick="openModal()">Eignung prüfen — kostenlos →</button>
+        <a class="p-cta-link" href="index.html">← Zurück zur Startseite</a>
+      </div>
+
+      <!-- Footer -->
+      <div class="m-footer">
+        <div class="m-footer-logo">nubo</div>
+        <div class="m-footer-tagline">Hybride Privatpraxis für Psychotherapie.<br/>Medizinisch geleitet. Modern erlebt.</div>
+        <div class="m-footer-bottom">
+          © 2026 Nubo Therapy GmbH
+          <div class="m-gdpr-badge">🔒 DSGVO Art. 9</div>
+        </div>
+      </div>
+
+    </div><!-- /phone-screen -->
+
+    <!-- Modal -->
+    <div class="m-modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+      <div class="m-modal">
+        <div class="m-modal-handle"></div>
+        <span class="m-modal-tag">Schritt 1 von 3</span>
+        <h3>Eignung prüfen</h3>
+        <p>Beantworte ein paar kurze Fragen — anonym, sicher, ohne Login. Dauert ca. 5 Minuten.</p>
+        <div class="m-tally-placeholder">
+          <div style="font-size:1.5rem;margin-bottom:0.6rem">📋</div>
+          <p>Tally.so / Nelly Pre-Check Formular</p>
+          <code>&lt;!-- Tally Embed Code hier --&gt;</code>
+        </div>
+        <div class="m-gdpr-note">🔒 Deine Daten werden nach DSGVO Art. 9 verarbeitet — keine Speicherung auf dieser Website.</div>
+      </div>
+    </div>
+
+  </div><!-- /phone-frame -->
+</div>
+
+<script>
+  function switchProgram(prog) {
+    document.querySelectorAll('.p-hero-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.p-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('prog-' + prog).classList.add('active');
+    event.currentTarget.classList.add('active');
+    document.getElementById('pscreen').scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function openModal() { document.getElementById('modal').classList.add('open'); }
+  function closeModal() { document.getElementById('modal').classList.remove('open'); }
+</script>
+</body>
+</html>

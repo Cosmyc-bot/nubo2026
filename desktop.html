@@ -36,7 +36,7 @@
     .nav-logo-dot { width: 8px; height: 8px; background: var(--green-light); border-radius: 50%; margin-bottom: 3px; }
     .nav-links { display: flex; align-items: center; gap: 2.5rem; }
     .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 400; color: var(--muted); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--green); }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); font-weight: 500; }
     .nav-cta {
       background: var(--green); color: #fff; padding: 0.65rem 1.5rem;
       border-radius: 100px; font-size: 0.88rem; font-weight: 500;
@@ -295,13 +295,12 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">nubo<div class="nav-logo-dot"></div></a>
+  <a class="nav-logo" href="desktop.html">nubo<div class="nav-logo-dot"></div></a>
   <div class="nav-links">
-    <a href="#how">So funktioniert es</a>
-    <a href="#approach">Unser Ansatz</a>
+    <a href="desktop.html" class="active">Start</a>
     <a href="desktop-produkte.html">Programme</a>
-    <a href="#pricing">Preise</a>
     <a href="#about">Über uns</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Kontakt</a>
   </div>
   <button class="nav-cta" onclick="openModal()">Eignung prüfen →</button>

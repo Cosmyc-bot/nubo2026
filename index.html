@@ -2,691 +2,781 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Nubo Therapy — Hybride Privatpraxis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nubo Therapy — Hybride Privatpraxis für Psychotherapie</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --green: #3D6B55;
+      --green-dark: #2d5040;
       --green-light: #7A9E87;
       --green-pale: #C4D4C9;
       --sand: #E8DDD0;
+      --sand-dark: #D9CCBC;
       --cream: #FAF7F4;
       --brown: #B08B6E;
       --dark: #2A2825;
       --muted: #6B6560;
+      --nav-h: 80px;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: #1a1a1a; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem 1rem; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
-    /* Phone frame */
-    .phone-wrap { display: flex; align-items: center; justify-content: center; }
-    .phone-frame {
-      width: 390px;
-      height: 844px;
-      background: var(--cream);
-      border-radius: 48px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1), 0 0 0 8px #2a2a2a, 0 0 0 10px #111;
-      display: flex;
-      flex-direction: column;
-    }
-    .phone-notch {
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 120px; height: 34px; background: #1a1a1a;
-      border-radius: 0 0 20px 20px; z-index: 999;
-    }
-    .phone-screen { flex: 1; overflow-y: auto; overflow-x: hidden; scroll-behavior: smooth; }
-    .phone-screen::-webkit-scrollbar { display: none; }
-
-    /* Nav */
-    .m-nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(250,247,244,0.95); backdrop-filter: blur(12px);
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h); background: rgba(250,247,244,0.95);
+      backdrop-filter: blur(16px); border-bottom: 1px solid rgba(160,140,120,0.12);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 1.25rem; padding-top: 2.5rem;
-      border-bottom: 1px solid rgba(160,140,120,0.15);
+      padding: 0 5vw;
     }
-    .m-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--green); display: flex; align-items: center; gap: 4px; }
-    .m-logo-dot { width: 7px; height: 7px; background: var(--green-light); border-radius: 50%; margin-bottom: 2px; }
-    .m-hamburger {
-      width: 36px; height: 36px; background: var(--sand); border-radius: 10px;
-      border: none; display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 4px; cursor: pointer;
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green); display: flex; align-items: center; gap: 5px; text-decoration: none; }
+    .nav-logo-dot { width: 8px; height: 8px; background: var(--green-light); border-radius: 50%; margin-bottom: 3px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 400; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); font-weight: 500; }
+    .nav-cta {
+      background: var(--green); color: #fff; padding: 0.65rem 1.5rem;
+      border-radius: 100px; font-size: 0.88rem; font-weight: 500;
+      border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s; white-space: nowrap;
     }
-    .m-hamburger span { width: 16px; height: 2px; background: var(--dark); border-radius: 2px; }
+    .nav-cta:hover { background: var(--green-dark); }
 
-    /* Menu */
-    .m-menu {
-      position: absolute; inset: 0; z-index: 500; background: var(--cream);
-      display: flex; flex-direction: column; padding: 2rem 1.5rem;
-      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; padding-top: var(--nav-h);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 4rem; padding-left: 5vw; padding-right: 5vw;
+      position: relative; overflow: hidden;
     }
-    .m-menu.open { transform: translateX(0); }
-    .m-menu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; padding-top: 1.5rem; }
-    .m-menu-close {
-      width: 36px; height: 36px; background: var(--sand); border-radius: 10px;
-      border: none; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    .hero::before {
+      content: ''; position: absolute; top: -10%; right: -5%;
+      width: 55%; height: 120%; background: var(--sand);
+      border-radius: 40% 0 0 40%; z-index: 0;
     }
-    .m-menu-links { list-style: none; display: flex; flex-direction: column; flex: 1; }
-    .m-menu-links li a {
-      display: block; text-decoration: none; font-size: 1.6rem;
-      font-family: 'Playfair Display', serif; color: var(--dark);
-      padding: 0.9rem 0; border-bottom: 1px solid rgba(160,140,120,0.15);
-    }
-    .m-menu-cta {
-      background: var(--green); color: #fff; padding: 1.1rem 1.5rem;
-      border-radius: 16px; text-align: center; font-size: 1rem;
-      font-family: 'DM Sans', sans-serif; font-weight: 500; margin-top: 2rem;
-      display: block; border: none; cursor: pointer; width: 100%;
-    }
-
-    /* Hero */
-    .m-hero { padding: 2rem 1.25rem 2.5rem; }
-    .m-tag {
-      display: inline-flex; align-items: center; gap: 6px;
+    .hero-left { position: relative; z-index: 1; }
+    .hero-right { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 7px;
       background: var(--green-pale); color: var(--green);
-      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.25rem;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 1.75rem;
     }
-    .m-tag::before { content: ''; width: 5px; height: 5px; background: var(--green-light); border-radius: 50%; }
-    .m-h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; line-height: 1.15; color: var(--dark); margin-bottom: 1rem; }
-    .m-h1 em { font-style: italic; color: var(--green); }
-    .m-hero-p { font-size: 0.92rem; line-height: 1.75; color: var(--muted); font-weight: 300; margin-bottom: 1.75rem; }
-    .m-hero-card {
-      background: linear-gradient(145deg, var(--green-pale), var(--green-light));
-      border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem;
-      position: relative; overflow: hidden; min-height: 140px; display: flex; align-items: flex-end;
+    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--green-light); border-radius: 50%; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 4vw, 4rem);
+      line-height: 1.1; color: var(--dark); margin-bottom: 1.25rem; font-weight: 600;
     }
-    .m-hero-card::before { content: '🌿'; position: absolute; top: 1.25rem; right: 1.25rem; font-size: 2rem; opacity: 0.5; }
-    .m-hero-pill {
-      background: rgba(255,255,255,0.9); border-radius: 12px; padding: 0.75rem 1rem;
-      display: flex; align-items: center; gap: 0.75rem; width: 100%;
+    .hero h1 em { font-style: italic; color: var(--green); }
+    .hero-p { font-size: 1.05rem; line-height: 1.8; color: var(--muted); font-weight: 300; margin-bottom: 2.5rem; max-width: 480px; }
+    .hero-btns { display: flex; gap: 1rem; margin-bottom: 3rem; }
+    .btn-primary {
+      padding: 1rem 2rem; background: var(--green); color: #fff; border: none;
+      border-radius: 100px; font-size: 0.95rem; font-weight: 500;
+      font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.15s;
     }
-    .m-hero-pill-icon {
-      width: 36px; height: 36px; background: var(--green); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-outline {
+      padding: 1rem 2rem; background: transparent; color: var(--green);
+      border: 1.5px solid var(--green); border-radius: 100px; font-size: 0.95rem;
+      font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s;
     }
-    .m-hero-pill-text { font-size: 0.8rem; font-weight: 500; color: var(--dark); }
-    .m-hero-pill-sub { font-size: 0.72rem; color: var(--muted); font-weight: 300; }
-    .m-btn-primary {
-      width: 100%; padding: 1rem; background: var(--green); color: #fff; border: none;
-      border-radius: 100px; font-size: 0.95rem; font-weight: 500; font-family: 'DM Sans', sans-serif;
-      cursor: pointer; margin-bottom: 0.75rem;
-    }
-    .m-btn-outline {
-      width: 100%; padding: 0.9rem; background: transparent; color: var(--green);
-      border: 1.5px solid var(--green); border-radius: 100px; font-size: 0.9rem;
-      font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer;
-    }
-    .m-trust {
-      display: flex; align-items: center; gap: 0.75rem;
-      padding-top: 1.25rem; margin-top: 1.25rem;
-      border-top: 1px solid rgba(160,140,120,0.2);
-    }
-    .m-avatars { display: flex; }
-    .m-avatars span {
-      width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--cream);
+    .btn-outline:hover { background: var(--green); color: #fff; }
+    .hero-trust { display: flex; align-items: center; gap: 1rem; }
+    .hero-avatars { display: flex; }
+    .hero-avatars span {
+      width: 34px; height: 34px; border-radius: 50%; border: 2.5px solid var(--cream);
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.6rem; font-weight: 500; color: #fff; margin-left: -6px; background: var(--green-light);
+      font-size: 0.65rem; font-weight: 600; color: #fff; margin-left: -8px; background: var(--green-light);
     }
-    .m-avatars span:nth-child(2) { background: var(--brown); }
-    .m-avatars span:nth-child(3) { background: var(--green); }
-    .m-avatars span:first-child { margin-left: 0; }
-    .m-trust-text { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
-    .m-trust-text strong { color: var(--dark); display: block; }
+    .hero-avatars span:nth-child(2) { background: var(--brown); }
+    .hero-avatars span:nth-child(3) { background: var(--green); }
+    .hero-avatars span:first-child { margin-left: 0; }
+    .hero-trust-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .hero-trust-text strong { color: var(--dark); display: block; font-weight: 500; }
 
-    /* Sections */
-    .m-section { padding: 2.5rem 1.25rem; }
-    .m-section-sand { background: var(--sand); padding: 2.5rem 1.25rem; }
-    .m-section-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; display: block; }
-    .m-sh2 { font-family: 'Playfair Display', serif; font-size: 1.65rem; color: var(--dark); line-height: 1.2; margin-bottom: 0.6rem; }
-    .m-sp { font-size: 0.85rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+    /* Hero right — card */
+    .hero-card {
+      background: var(--green); border-radius: 28px; padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before { content: '🌿'; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2.5rem; opacity: 0.3; }
+    .hero-card-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+    .hero-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 1rem; }
+    .hero-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem; }
+    .hero-step { display: flex; align-items: center; gap: 0.85rem; }
+    .hero-step-num { width: 28px; height: 28px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: #fff; flex-shrink: 0; }
+    .hero-step-text { font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 300; }
+    .hero-card-pill {
+      background: rgba(255,255,255,0.1); border-radius: 14px; padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-card-pill-icon { width: 42px; height: 42px; background: rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .hero-card-pill-text { font-size: 0.85rem; font-weight: 500; color: #fff; }
+    .hero-card-pill-sub { font-size: 0.75rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    .hero-stat { background: rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem; text-align: center; }
+    .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; font-weight: 600; }
+    .hero-stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); font-weight: 300; margin-top: 2px; }
 
-    /* Steps */
-    .m-steps { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-    .m-step { background: var(--cream); border-radius: 16px; padding: 1.25rem; display: flex; gap: 1rem; align-items: flex-start; }
-    .m-step-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--green-pale); line-height: 1; flex-shrink: 0; width: 36px; }
-    .m-step-title { font-size: 0.9rem; font-weight: 500; color: var(--dark); margin-bottom: 0.3rem; }
-    .m-step-desc { font-size: 0.8rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+    /* ── SECTION BASE ── */
+    section { padding: 7rem 5vw; }
+    .section-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.6rem; display: block; }
+    .section-h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.6rem); color: var(--dark); line-height: 1.15; margin-bottom: 0.75rem; }
+    .section-p { font-size: 1rem; line-height: 1.8; color: var(--muted); font-weight: 300; max-width: 560px; }
 
-    /* Programs */
-    .m-program-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-    .m-program { border-radius: 20px; padding: 1.5rem; }
-    .m-program-green { background: var(--green); }
-    .m-program-sand { background: var(--sand); }
-    .m-program-badge {
-      display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 100px; margin-bottom: 1rem;
-    }
-    .m-program-green .m-program-badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
-    .m-program-sand .m-program-badge { background: var(--green-pale); color: var(--green); }
-    .m-program-green h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 0.75rem; }
-    .m-program-sand h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.75rem; }
-    .m-program-green p { font-size: 0.82rem; line-height: 1.7; color: rgba(255,255,255,0.75); margin-bottom: 1.25rem; font-weight: 300; }
-    .m-program-sand p { font-size: 0.82rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.25rem; font-weight: 300; }
-    .m-program-btn { width: 100%; padding: 0.85rem; border-radius: 100px; border: none; font-size: 0.88rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; }
-    .m-program-green .m-program-btn { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    .m-program-sand .m-program-btn { background: var(--green); color: #fff; }
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--sand); }
+    .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .how-steps { display: flex; flex-direction: column; gap: 0; position: relative; margin-top: 2rem; }
+    .how-steps::before { content: ''; position: absolute; left: 20px; top: 28px; bottom: 28px; width: 1px; background: var(--green-pale); }
+    .how-step { display: flex; gap: 1.25rem; align-items: flex-start; padding-bottom: 2rem; position: relative; }
+    .how-step:last-child { padding-bottom: 0; }
+    .how-step-circle { width: 40px; height: 40px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; flex-shrink: 0; position: relative; z-index: 1; }
+    .how-step-title { font-size: 1rem; font-weight: 500; color: var(--dark); margin-bottom: 0.4rem; }
+    .how-step-desc { font-size: 0.88rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
+    .how-right { background: var(--cream); border-radius: 24px; padding: 2.5rem; }
+    .how-right h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .how-right-p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 1.75rem; }
+    .how-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .how-badge { background: var(--green-pale); color: var(--green); font-size: 0.75rem; font-weight: 500; padding: 0.35rem 0.9rem; border-radius: 100px; }
 
-    /* Pricing */
-    .m-pricing-tabs {
-      display: flex; gap: 0.5rem; background: var(--cream);
-      border-radius: 100px; padding: 5px; margin: 1.25rem 0;
-    }
-    .m-pricing-tab {
-      flex: 1; padding: 0.5rem; border-radius: 100px; border: none;
-      font-size: 0.8rem; font-family: 'DM Sans', sans-serif; cursor: pointer;
-      background: transparent; color: var(--muted); transition: all 0.2s;
-    }
-    .m-pricing-tab.active { background: var(--green); color: #fff; font-weight: 500; }
-    .m-price-cards { display: flex; flex-direction: column; gap: 1rem; }
-    .m-price-card {
-      background: var(--cream); border: 1px solid rgba(160,140,120,0.2);
-      border-radius: 16px; padding: 1.5rem; position: relative;
-      display: none;
-    }
-    .m-price-card.visible { display: block; }
-    .m-price-card.featured { background: var(--green); border-color: var(--green); }
-    .m-popular {
-      position: absolute; top: -10px; left: 1.25rem; background: var(--brown);
-      color: #fff; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 100px;
-    }
-    .m-price-tier { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; }
-    .m-price-card.featured .m-price-tier { color: rgba(255,255,255,0.6); }
-    .m-price-amount { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--dark); font-weight: 600; }
-    .m-price-card.featured .m-price-amount { color: #fff; }
-    .m-price-period { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
-    .m-price-card.featured .m-price-period { color: rgba(255,255,255,0.6); }
-    .m-price-features { list-style: none; margin-bottom: 1.25rem; }
-    .m-price-features li {
-      font-size: 0.8rem; padding: 0.35rem 0; display: flex; align-items: center;
-      gap: 8px; color: var(--muted); border-bottom: 1px solid rgba(160,140,120,0.1);
-    }
-    .m-price-features li:last-child { border: none; }
-    .m-price-card.featured .m-price-features li { color: rgba(255,255,255,0.8); border-bottom-color: rgba(255,255,255,0.1); }
-    .m-price-features li::before { content: '→'; color: var(--green-light); font-size: 0.75rem; }
-    .m-price-card.featured .m-price-features li::before { color: rgba(255,255,255,0.5); }
-    .m-price-btn {
-      width: 100%; padding: 0.75rem; border-radius: 100px;
-      border: 1.5px solid var(--green); background: transparent; color: var(--green);
-      font-size: 0.85rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer;
-    }
-    .m-price-card.featured .m-price-btn { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.4); color: #fff; }
+    /* ── PROGRAMS ── */
+    .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+    .program-card { border-radius: 24px; padding: 2.5rem; transition: transform 0.2s; }
+    .program-card:hover { transform: translateY(-4px); }
+    .program-green { background: var(--green); }
+    .program-sand { background: var(--sand); }
+    .program-badge { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; margin-bottom: 1.25rem; }
+    .program-green .program-badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+    .program-sand .program-badge { background: var(--green-pale); color: var(--green); }
+    .program-green h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #fff; margin-bottom: 0.75rem; }
+    .program-sand h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--dark); margin-bottom: 0.75rem; }
+    .program-green p { font-size: 0.9rem; line-height: 1.75; color: rgba(255,255,255,0.72); margin-bottom: 2rem; font-weight: 300; }
+    .program-sand p { font-size: 0.9rem; line-height: 1.75; color: var(--muted); margin-bottom: 2rem; font-weight: 300; }
+    .program-features { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .program-features li { font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
+    .program-green .program-features li { color: rgba(255,255,255,0.8); }
+    .program-sand .program-features li { color: var(--muted); }
+    .program-features li::before { content: '→'; font-size: 0.8rem; flex-shrink: 0; }
+    .program-green .program-features li::before { color: rgba(255,255,255,0.4); }
+    .program-sand .program-features li::before { color: var(--green-light); }
+    .program-btn { padding: 0.9rem 1.75rem; border-radius: 100px; border: none; font-size: 0.9rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
+    .program-green .program-btn { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .program-green .program-btn:hover { background: rgba(255,255,255,0.25); }
+    .program-sand .program-btn { background: var(--green); color: #fff; }
+    .program-sand .program-btn:hover { background: var(--green-dark); }
 
-    /* Stats */
-    .m-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1.5rem 0; }
-    .m-stat { background: var(--sand); border-radius: 14px; padding: 1rem; text-align: center; }
-    .m-stat-num { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--green); font-weight: 600; }
-    .m-stat-label { font-size: 0.72rem; color: var(--muted); font-weight: 300; }
+    /* ── PRICING ── */
+    .pricing { background: var(--sand); }
+    .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
+    .pricing-tabs { display: flex; gap: 0.5rem; background: var(--cream); border-radius: 100px; padding: 5px; }
+    .pricing-tab { padding: 0.55rem 1.25rem; border-radius: 100px; border: none; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; cursor: pointer; background: transparent; color: var(--muted); transition: all 0.2s; }
+    .pricing-tab.active { background: var(--green); color: #fff; font-weight: 500; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .price-card { background: var(--cream); border: 1px solid rgba(160,140,120,0.2); border-radius: 20px; padding: 2rem; position: relative; display: none; transition: transform 0.2s; }
+    .price-card:hover { transform: translateY(-3px); }
+    .price-card.visible { display: block; }
+    .price-card.featured { background: var(--green); border-color: var(--green); }
+    .price-popular { position: absolute; top: -12px; left: 1.5rem; background: var(--brown); color: #fff; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.85rem; border-radius: 100px; }
+    .price-tier { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; }
+    .price-card.featured .price-tier { color: rgba(255,255,255,0.6); }
+    .price-amount { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--dark); font-weight: 600; }
+    .price-card.featured .price-amount { color: #fff; }
+    .price-period { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .price-card.featured .price-period { color: rgba(255,255,255,0.6); }
+    .price-features { list-style: none; margin-bottom: 1.75rem; }
+    .price-features li { font-size: 0.83rem; padding: 0.45rem 0; display: flex; align-items: center; gap: 8px; color: var(--muted); border-bottom: 1px solid rgba(160,140,120,0.1); }
+    .price-features li:last-child { border: none; }
+    .price-card.featured .price-features li { color: rgba(255,255,255,0.8); border-bottom-color: rgba(255,255,255,0.1); }
+    .price-features li::before { content: '→'; color: var(--green-light); font-size: 0.75rem; }
+    .price-card.featured .price-features li::before { color: rgba(255,255,255,0.4); }
+    .price-btn { width: 100%; padding: 0.85rem; border-radius: 100px; border: 1.5px solid var(--green); background: transparent; color: var(--green); font-size: 0.88rem; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
+    .price-btn:hover { background: var(--green); color: #fff; }
+    .price-card.featured .price-btn { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); color: #fff; }
+    .price-card.featured .price-btn:hover { background: rgba(255,255,255,0.25); }
 
-    /* Team */
-    .m-team { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.25rem; }
-    .m-team-member { display: flex; align-items: center; gap: 0.75rem; background: var(--sand); border-radius: 14px; padding: 0.85rem 1rem; }
-    .m-avatar { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600; color: #fff; flex-shrink: 0; }
-    .m-team-name { font-size: 0.85rem; font-weight: 500; color: var(--dark); }
-    .m-team-role { font-size: 0.72rem; color: var(--muted); font-weight: 300; }
-    .m-cred { font-size: 0.65rem; background: var(--green); color: #fff; padding: 0.15rem 0.5rem; border-radius: 100px; margin-left: auto; flex-shrink: 0; }
+    /* ── ABOUT ── */
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2.5rem 0; }
+    .about-stat { background: var(--sand); border-radius: 16px; padding: 1.25rem; }
+    .about-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--green); font-weight: 600; }
+    .about-stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 300; margin-top: 2px; }
+    .team-list { display: flex; flex-direction: column; gap: 1rem; }
+    .team-member { display: flex; align-items: center; gap: 1rem; background: var(--sand); border-radius: 16px; padding: 1.1rem 1.25rem; transition: transform 0.2s; }
+    .team-member:hover { transform: translateX(4px); }
+    .team-avatar { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 600; color: #fff; flex-shrink: 0; }
+    .team-name { font-size: 0.92rem; font-weight: 500; color: var(--dark); }
+    .team-role { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+    .team-cred { font-size: 0.68rem; background: var(--green); color: #fff; padding: 0.2rem 0.6rem; border-radius: 100px; margin-left: auto; flex-shrink: 0; }
+    .about-right h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 1rem; }
+    .about-right p { font-size: 0.92rem; line-height: 1.8; color: var(--muted); font-weight: 300; margin-bottom: 1.25rem; }
 
-    /* FAQ */
-    .m-faq { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
-    .m-faq-item { background: var(--cream); border-radius: 14px; overflow: hidden; }
-    .m-faq-q {
-      width: 100%; text-align: left; padding: 1rem 1.1rem; background: transparent;
-      border: none; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
-      color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem;
-    }
-    .m-faq-icon {
-      width: 22px; height: 22px; border-radius: 50%; background: var(--sand);
-      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
-      flex-shrink: 0; transition: transform 0.3s, background 0.2s;
-    }
-    .m-faq-item.open .m-faq-icon { transform: rotate(45deg); background: var(--green); color: #fff; }
-    .m-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; font-size: 0.8rem; line-height: 1.75; color: var(--muted); font-weight: 300; padding: 0 1.1rem; }
-    .m-faq-item.open .m-faq-a { max-height: 200px; padding: 0 1.1rem 1rem; }
+    /* ── FAQ ── */
+    .faq { background: var(--sand); }
+    .faq-inner { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+    .faq-item { background: var(--cream); border-radius: 16px; overflow: hidden; }
+    .faq-q { width: 100%; text-align: left; padding: 1.25rem 1.5rem; background: transparent; border: none; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 500; color: var(--dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-icon { width: 26px; height: 26px; border-radius: 50%; background: var(--sand); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: transform 0.3s, background 0.2s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--green); color: #fff; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; font-size: 0.88rem; line-height: 1.75; color: var(--muted); font-weight: 300; padding: 0 1.5rem; }
+    .faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.25rem; }
 
-    /* Form */
-    .m-form { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.5rem; }
-    .m-form label { font-size: 0.78rem; font-weight: 500; color: var(--dark); display: block; margin-bottom: 0.3rem; }
-    .m-form input, .m-form textarea, .m-form select {
-      width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(160,140,120,0.25);
+    /* ── CONTACT ── */
+    .contact-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+    .contact-form { background: var(--sand); border-radius: 24px; padding: 2.5rem; }
+    .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 1.75rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.8rem; font-weight: 500; color: var(--dark); }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 0.9rem 1.1rem; border: 1.5px solid rgba(160,140,120,0.25);
       border-radius: 12px; background: var(--cream); font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem; color: var(--dark); outline: none;
+      font-size: 0.9rem; color: var(--dark); outline: none; transition: border-color 0.2s;
       -webkit-appearance: none;
     }
-    .m-form textarea { min-height: 100px; resize: vertical; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--green); }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .contact-info { padding-top: 1rem; }
+    .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 1rem; }
+    .contact-info p { font-size: 0.92rem; line-height: 1.8; color: var(--muted); font-weight: 300; margin-bottom: 2rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; background: var(--sand); border-radius: 14px; padding: 1.1rem 1.25rem; }
+    .contact-item-icon { width: 40px; height: 40px; background: var(--green-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .contact-item-label { font-size: 0.75rem; color: var(--muted); font-weight: 300; }
+    .contact-item-value { font-size: 0.88rem; font-weight: 500; color: var(--dark); }
 
-    /* Footer */
-    .m-footer { background: var(--dark); padding: 2rem 1.25rem 3rem; }
-    .m-footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #fff; margin-bottom: 0.75rem; }
-    .m-footer-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; margin-bottom: 1.5rem; }
-    .m-footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
-    .m-footer-col h4 { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 0.75rem; }
-    .m-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-    .m-footer-col ul li { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
-    .m-footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.25rem; font-size: 0.72rem; color: rgba(255,255,255,0.3); }
-    .m-gdpr-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(122,158,135,0.15); color: var(--green-pale); padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.68rem; margin-top: 0.75rem; }
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 4rem 5vw 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.75rem; }
+    .footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.75; font-weight: 300; max-width: 260px; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li { font-size: 0.83rem; color: rgba(255,255,255,0.4); cursor: pointer; transition: color 0.2s; }
+    .footer-col ul li:hover { color: rgba(255,255,255,0.75); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.75rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom-left { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+    .footer-gdpr { display: inline-flex; align-items: center; gap: 6px; background: rgba(122,158,135,0.15); color: var(--green-pale); padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.72rem; }
 
-    /* Modal */
-    .m-modal-overlay {
-      position: absolute; inset: 0; z-index: 900;
-      background: rgba(42,40,37,0.7); backdrop-filter: blur(6px);
-      display: none; align-items: flex-end;
-    }
-    .m-modal-overlay.open { display: flex; }
-    .m-modal { background: var(--cream); border-radius: 24px 24px 0 0; padding: 1.5rem 1.5rem 2.5rem; width: 100%; animation: slideUp 0.3s ease; }
-    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-    .m-modal-handle { width: 40px; height: 4px; background: rgba(160,140,120,0.3); border-radius: 100px; margin: 0 auto 1.5rem; }
-    .m-modal-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); display: block; margin-bottom: 0.4rem; }
-    .m-modal h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.4rem; }
-    .m-modal p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 1.25rem; }
-    .m-tally-placeholder { background: var(--sand); border-radius: 14px; padding: 2rem 1.25rem; text-align: center; border: 2px dashed rgba(160,140,120,0.3); margin-bottom: 1rem; }
-    .m-tally-placeholder p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.5rem; }
-    .m-tally-placeholder code { font-size: 0.72rem; color: var(--green); background: rgba(61,107,85,0.1); padding: 0.35rem 0.75rem; border-radius: 8px; display: block; font-family: monospace; }
-    .m-gdpr-note { font-size: 0.72rem; color: var(--muted); line-height: 1.5; margin-top: 0.5rem; }
+    /* ── MODAL ── */
+    .modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(42,40,37,0.65); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 2rem; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--cream); border-radius: 28px; padding: 2.5rem; width: 100%; max-width: 520px; animation: fadeUp 0.3s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-handle { width: 48px; height: 4px; background: rgba(160,140,120,0.3); border-radius: 100px; margin: 0 auto 2rem; }
+    .modal-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); display: block; margin-bottom: 0.4rem; }
+    .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .modal p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem; }
+    .modal-tally { background: var(--sand); border-radius: 16px; padding: 2.5rem; text-align: center; border: 2px dashed rgba(160,140,120,0.3); margin-bottom: 1.25rem; }
+    .modal-tally p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .modal-tally code { font-size: 0.78rem; color: var(--green); background: rgba(61,107,85,0.1); padding: 0.4rem 0.85rem; border-radius: 8px; display: inline-block; font-family: monospace; }
+    .modal-gdpr { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
+    .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 36px; height: 36px; background: var(--sand); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+    .modal { position: relative; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-left > * { animation: fadeInUp 0.6s ease both; }
+    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+    .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+    .hero-right { animation: fadeInUp 0.6s ease 0.35s both; }
   </style>
 </head>
 <body>
-<div class="phone-wrap">
-  <div class="phone-frame">
-    <div class="phone-notch"></div>
 
-    <!-- Menu -->
-    <div class="m-menu" id="mobileMenu">
-      <div class="m-menu-header">
-        <div class="m-logo">nubo<div class="m-logo-dot"></div></div>
-        <button class="m-menu-close" onclick="closeMenu()">✕</button>
-      </div>
-      <ul class="m-menu-links">
-        <li><a href="#" onclick="scrollToSection('home'); return false;">Start</a></li>
-        <li><a href="#" onclick="scrollToSection('approach'); return false;">Unser Ansatz</a></li>
-        <li><a href="produkte.html">Programme</a></li>
-        <li><a href="#" onclick="scrollToSection('about'); return false;">Über uns</a></li>
-        <li><a href="#" onclick="scrollToSection('faq'); return false;">FAQ</a></li>
-        <li><a href="#" onclick="scrollToSection('contact'); return false;">Kontakt</a></li>
-      </ul>
-      <button class="m-menu-cta" onclick="closeMenu(); setTimeout(openModal,380);">Eignung prüfen & buchen →</button>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">nubo<div class="nav-logo-dot"></div></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Start</a>
+    <a href="#approach">Unser Ansatz</a>
+    <a href="produkte.html">Programme</a>
+    <a href="#about">Über uns</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Kontakt</a>
+  </div>
+  <button class="nav-cta" onclick="openModal()">Eignung prüfen →</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Hybride Privatpraxis · Berlin</div>
+    <h1>Psychotherapie,<br><em>die zu dir passt</em></h1>
+    <p class="hero-p">Wir schließen die Lücke zwischen schlechten Apps und überfüllten Kliniken — medizinisch supervised, zu transparenten Preisen.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="openModal()">Eignung prüfen & buchen →</button>
+      <button class="btn-outline" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">Programme ansehen</button>
     </div>
-
-    <div class="phone-screen" id="pscreen">
-      <!-- Nav -->
-      <nav class="m-nav">
-        <div class="m-logo">nubo<div class="m-logo-dot"></div></div>
-        <button class="m-hamburger" onclick="openMenu()">
-          <span></span><span></span><span></span>
-        </button>
-      </nav>
-
-      <!-- Hero -->
-      <div class="m-hero" id="m-home">
-        <div class="m-tag">Hybride Privatpraxis · Berlin</div>
-        <h1 class="m-h1">Psychotherapie, <em>die zu dir passt</em></h1>
-        <p class="m-hero-p">Wir schließen die Lücke zwischen schlechten Apps und überfüllten Kliniken — medizinisch supervised, zu transparenten Preisen.</p>
-        <div class="m-hero-card">
-          <div class="m-hero-pill">
-            <div class="m-hero-pill-icon">🌿</div>
-            <div>
-              <div class="m-hero-pill-text">Erstgespräch in wenigen Schritten</div>
-              <div class="m-hero-pill-sub">Ohne Login · Ohne Warteliste</div>
-            </div>
-          </div>
-        </div>
-        <button class="m-btn-primary" onclick="openModal()">Eignung prüfen & buchen →</button>
-        <button class="m-btn-outline" onclick="window.location.href='produkte.html'">Programme ansehen</button>
-        <div class="m-trust">
-          <div class="m-avatars">
-            <span>SK</span><span>MR</span><span>JP</span>
-          </div>
-          <div class="m-trust-text">
-            <strong>Ärztlich geleitet</strong>Lizenzierte Therapeuten · GDPR-konform
-          </div>
+    <div class="hero-trust">
+      <div class="hero-avatars"><span>SK</span><span>MR</span><span>JP</span></div>
+      <div class="hero-trust-text">
+        <strong>Ärztlich geleitet</strong>
+        Lizenzierte Therapeuten · GDPR-konform
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-tag">Dein Weg zur Therapie</div>
+      <h3>In 3 Schritten zum Erstgespräch</h3>
+      <div class="hero-steps">
+        <div class="hero-step"><div class="hero-step-num">1</div><div class="hero-step-text">Anonymen Pre-Check ausfüllen (5 Min.)</div></div>
+        <div class="hero-step"><div class="hero-step-num">2</div><div class="hero-step-text">Therapiepaket wählen & sicher bezahlen</div></div>
+        <div class="hero-step"><div class="hero-step-num">3</div><div class="hero-step-text">Ersttermin direkt im Kalender buchen</div></div>
+      </div>
+      <div class="hero-card-pill">
+        <div class="hero-card-pill-icon">🌿</div>
+        <div>
+          <div class="hero-card-pill-text">Ohne Login · Ohne Warteliste</div>
+          <div class="hero-card-pill-sub">GDPR-konform · Stripe-Zahlung · Sofort starten</div>
         </div>
       </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-label">Patient:innen</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">92%</div><div class="hero-stat-label">Zufriedenheit</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">8+</div><div class="hero-stat-label">Therapeuten</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- How it works -->
-      <!-- Approach -->
-      <div class="m-section" id="m-approach">
-        <span class="m-section-tag">Unser Ansatz</span>
-        <h2 class="m-sh2">Therapie, die zwischen den Terminen wirkt</h2>
-        <p class="m-sp">Wahre Entwicklung findet in deinem echten Leben statt — nicht nur im Gespräch. Deshalb verzichten wir auf das klassische 50-Minuten-Modell.</p>
-        <div class="m-steps" style="margin-top:1.5rem;">
-          <div class="m-step">
-            <div class="m-step-num">⏱️</div>
-            <div>
-              <div class="m-step-title">Fokussierte 30-Min-Gespräche</div>
-              <div class="m-step-desc">Bewusst komprimiert — wir werten Erkenntnisse aus, setzen klare Impulse und besprechen konkrete Lösungswege. Intensiv, hochwirksam, alltagstauglich.</div>
-            </div>
-          </div>
-          <div class="m-step">
-            <div class="m-step-num">📱</div>
-            <div>
-              <div class="m-step-title">Geführte Selbstarbeit</div>
-              <div class="m-step-desc">Nach dem Gespräch beginnt deine eigentliche Arbeit. Über App & Workbooks erhältst du gezielte Übungen und Strategien — exakt auf dich abgestimmt.</div>
-            </div>
-          </div>
-          <div class="m-step">
-            <div class="m-step-num">🌱</div>
-            <div>
-              <div class="m-step-title">Dein Alltag als Therapieraum</div>
-              <div class="m-step-desc">Du nimmst die Impulse mit in dein Leben, probierst Strategien aus und reflektierst. Im nächsten Termin knüpft deine Therapeutin genau dort an.</div>
-            </div>
-          </div>
-        </div>
-        <div style="background:var(--green-pale);border-radius:14px;padding:1.1rem 1.25rem;margin-top:1.25rem;display:flex;align-items:flex-start;gap:0.75rem;">
-          <span style="font-size:1.2rem;flex-shrink:0;">✨</span>
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div>
+      <span class="section-tag">So funktioniert es</span>
+      <h2 class="section-h2">In 3 Schritten zur Therapie</h2>
+      <p class="section-p">Kein Login, kein Papierkram — nur ein klarer, sicherer Weg zu professioneller Unterstützung.</p>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="how-step-circle">1</div>
           <div>
-            <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);margin-bottom:0.2rem;">Das Ergebnis</div>
-            <p style="font-size:0.82rem;line-height:1.65;color:var(--dark);font-weight:400;">Eine Therapie, die nicht Zeit absitzt, sondern dich aktiv einbindet — und spürbar schneller voranbringt.</p>
+            <div class="how-step-title">📋 Eignung prüfen</div>
+            <div class="how-step-desc">Beantworte unseren medizinischen Fragebogen in ca. 5 Minuten — anonym und GDPR-konform, ohne Login.</div>
           </div>
         </div>
-      </div>
-
-      <!-- How it works -->
-      <div class="m-section-sand" id="m-how">
-        <span class="m-section-tag">So funktioniert es</span>
-        <h2 class="m-sh2">In 3 Schritten starten</h2>
-        <p class="m-sp">Kein Login, kein Papierkram — nur ein klarer, sicherer Weg.</p>
-        <div class="m-steps">
-          <div class="m-step">
-            <div class="m-step-num">01</div>
-            <div>
-              <div style="font-size:1.1rem;margin-bottom:0.25rem">📋</div>
-              <div class="m-step-title">Eignung prüfen</div>
-              <div class="m-step-desc">Beantworte unseren anonymen Fragebogen in ca. 5 Minuten — GDPR-konform, ohne Login.</div>
-            </div>
-          </div>
-          <div class="m-step">
-            <div class="m-step-num">02</div>
-            <div>
-              <div style="font-size:1.1rem;margin-bottom:0.25rem">💳</div>
-              <div class="m-step-title">Paket wählen & bezahlen</div>
-              <div class="m-step-desc">Wähle dein Therapiepaket und bezahle sicher über Stripe — zu transparenten Festpreisen.</div>
-            </div>
-          </div>
-          <div class="m-step">
-            <div class="m-step-num">03</div>
-            <div>
-              <div style="font-size:1.1rem;margin-bottom:0.25rem">📅</div>
-              <div class="m-step-title">Termin buchen</div>
-              <div class="m-step-desc">Nach der Zahlung buchst du deinen ersten 30-Min-Termin direkt im Kalender.</div>
-            </div>
+        <div class="how-step">
+          <div class="how-step-circle">2</div>
+          <div>
+            <div class="how-step-title">💳 Paket wählen & bezahlen</div>
+            <div class="how-step-desc">Wähle dein Therapiepaket und bezahle sicher über Stripe — zu transparenten Festpreisen ohne versteckte Kosten.</div>
           </div>
         </div>
-      </div>
-
-      <!-- Programs -->
-      <div class="m-section" id="m-programs">
-        <span class="m-section-tag">Unsere Programme</span>
-        <h2 class="m-sh2">Wähle deine Intensität</h2>
-        <p class="m-sp">Beide Programme basieren auf 30-Min-Gesprächen und geführter Selbstarbeit.</p>
-        <div class="m-program-cards">
-          <div class="m-program m-program-green">
-            <div class="m-program-badge">Mehr Begleitung</div>
-            <h3>Intensive Care</h3>
-            <p>Häufigere 30-Min-Gespräche, intensive digitale Begleitung und direkter Zugang zum medizinischen Team. Für akute Phasen.</p>
-            <button class="m-program-btn" onclick="openModal()">Jetzt prüfen →</button>
-          </div>
-          <div class="m-program m-program-sand">
-            <div class="m-program-badge">Mehr Flexibilität</div>
-            <h3>Blended Care</h3>
-            <p>Gezielte 30-Min-Gespräche kombiniert mit strukturierter Eigenarbeit — für volle Terminkalender.</p>
-            <button class="m-program-btn" onclick="openModal()">Jetzt prüfen →</button>
+        <div class="how-step">
+          <div class="how-step-circle">3</div>
+          <div>
+            <div class="how-step-title">📅 Termin buchen</div>
+            <div class="how-step-desc">Nach der Zahlung buchst du deinen Ersttermin direkt im Kalender — digital oder vor Ort in Berlin.</div>
           </div>
         </div>
-      </div>
-
-      <!-- Pricing -->
-      <div class="m-section-sand" id="m-pricing">
-        <span class="m-section-tag">Preise & Pakete</span>
-        <h2 class="m-sh2">Transparent. Fair. Klar.</h2>
-        <div class="m-pricing-tabs">
-          <button class="m-pricing-tab active" id="tab-intensive" onclick="switchTab('intensive')">Intensive Care</button>
-          <button class="m-pricing-tab" id="tab-blended" onclick="switchTab('blended')">Blended Care</button>
-        </div>
-        <div class="m-price-cards">
-          <!-- Intensive -->
-          <div class="m-price-card visible" data-tab="intensive">
-            <div class="m-price-tier">Starter</div>
-            <div class="m-price-amount">€ 349</div>
-            <div class="m-price-period">/ 4 Wo. · 4 Sitzungen</div>
-            <ul class="m-price-features">
-              <li>4 × Einzelsitzung (30 min)</li>
-              <li>Digitale Ressourcen</li>
-              <li>E-Mail Support</li>
-            </ul>
-            <button class="m-price-btn" onclick="openModal()">Paket wählen</button>
-          </div>
-          <div class="m-price-card featured visible" data-tab="intensive">
-            <div class="m-popular">Beliebt</div>
-            <div class="m-price-tier">Standard</div>
-            <div class="m-price-amount">€ 599</div>
-            <div class="m-price-period">/ 8 Wo. · 8 Sitzungen</div>
-            <ul class="m-price-features">
-              <li>8 × Einzelsitzung (30 min)</li>
-              <li>Begleitprogramm</li>
-              <li>Ärztl. Supervision</li>
-              <li>Priorität-Support</li>
-            </ul>
-            <button class="m-price-btn" onclick="openModal()">Paket wählen</button>
-          </div>
-          <div class="m-price-card visible" data-tab="intensive">
-            <div class="m-price-tier">Premium</div>
-            <div class="m-price-amount">€ 990</div>
-            <div class="m-price-period">/ 12 Wo. · 12 Sitzungen</div>
-            <ul class="m-price-features">
-              <li>12 × Einzelsitzung (30 min)</li>
-              <li>Vollst. Begleitprogramm</li>
-              <li>Direkter Arzt-Kontakt</li>
-              <li>Krisenplan</li>
-            </ul>
-            <button class="m-price-btn" onclick="openModal()">Paket wählen</button>
-          </div>
-          <!-- Blended -->
-          <div class="m-price-card" data-tab="blended">
-            <div class="m-price-tier">Essentials</div>
-            <div class="m-price-amount">€ 249</div>
-            <div class="m-price-period">/ 4 Wo. · 2 Sitzungen</div>
-            <ul class="m-price-features">
-              <li>2 × Sitzung (30 min)</li>
-              <li>Asynchrone Module</li>
-              <li>Community-Zugang</li>
-            </ul>
-            <button class="m-price-btn" onclick="openModal()">Paket wählen</button>
-          </div>
-          <div class="m-price-card featured" data-tab="blended">
-            <div class="m-popular">Beliebt</div>
-            <div class="m-price-tier">Balance</div>
-            <div class="m-price-amount">€ 449</div>
-            <div class="m-price-period">/ 8 Wo. · 4 Sitzungen</div>
-            <ul class="m-price-features">
-              <li>4 × Sitzung (30 min)</li>
-              <li>Vollständige Module</li>
-              <li>Therapeuten-Feedback</li>
-              <li>Flexible Termine</li>
-            </ul>
-            <button class="m-price-btn" onclick="openModal()">Paket wählen</button>
-          </div>
-          <div class="m-price-card" data-tab="blended">
-            <div class="m-price-tier">Transform</div>
-            <div class="m-price-amount">€ 749</div>
-            <div class="m-price-period">/ 12 Wo. · 6 Sitzungen</div>
-            <ul class="m-price-features">
-              <li>6 × Sitzung (30 min)</li>
-              <li>Premium-Module</li>
-              <li>Wöchentl. Check-in</li>
-              <li>Abschluss-Bericht</li>
-            </ul>
-            <button class="m-price-btn" onclick="openModal()">Paket wählen</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- About -->
-      <div class="m-section" id="m-about">
-        <span class="m-section-tag">Über Nubo Therapy</span>
-        <h2 class="m-sh2">Medizinische Kompetenz trifft moderne UX</h2>
-        <p class="m-sp">Als hybride Privatpraxis verbinden wir Verlässlichkeit mit dem frictionless Erlebnis moderner Technologie.</p>
-        <div class="m-stats-grid">
-          <div class="m-stat"><div class="m-stat-num">500+</div><div class="m-stat-label">Patient:innen</div></div>
-          <div class="m-stat"><div class="m-stat-num">8+</div><div class="m-stat-label">Therapeuten</div></div>
-          <div class="m-stat"><div class="m-stat-num">92%</div><div class="m-stat-label">Zufriedenheit</div></div>
-          <div class="m-stat"><div class="m-stat-num">GDPR</div><div class="m-stat-label">Art. 9</div></div>
-        </div>
-        <div class="m-team">
-          <div class="m-team-member">
-            <div class="m-avatar" style="background:#3D6B55">DR</div>
-            <div><div class="m-team-name">Dr. med. Reiter</div><div class="m-team-role">Ärztl. Leiterin · Psychiatrie</div></div>
-            <span class="m-cred">Liz.</span>
-          </div>
-          <div class="m-team-member">
-            <div class="m-avatar" style="background:#B08B6E">MA</div>
-            <div><div class="m-team-name">Maren Albrecht, M.Sc.</div><div class="m-team-role">Psychol. Psychotherapeutin</div></div>
-            <span class="m-cred">Liz.</span>
-          </div>
-          <div class="m-team-member">
-            <div class="m-avatar" style="background:#7A9E87">TK</div>
-            <div><div class="m-team-name">Thomas Klein, Dipl.-Psych.</div><div class="m-team-role">Verhaltenstherapeut</div></div>
-            <span class="m-cred">Liz.</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ -->
-      <div class="m-section-sand" id="m-faq">
-        <span class="m-section-tag">FAQ</span>
-        <h2 class="m-sh2">Häufige Fragen</h2>
-        <div class="m-faq">
-          <div class="m-faq-item open">
-            <button class="m-faq-q" onclick="toggleFaq(this)">
-              Übernimmt meine Krankenkasse die Kosten?
-              <span class="m-faq-icon">+</span>
-            </button>
-            <div class="m-faq-a">Nubo Therapy ist eine Privatpraxis. Private Krankenversicherungen erstatten oft einen Teil — wir stellen dir gerne eine Rechnung aus.</div>
-          </div>
-          <div class="m-faq-item">
-            <button class="m-faq-q" onclick="toggleFaq(this)">
-              Warum muss ich mich nicht einloggen?
-              <span class="m-faq-icon">+</span>
-            </button>
-            <div class="m-faq-a">Aus GDPR-Gründen verarbeiten wir keine medizinischen Daten auf dieser Website. Alles läuft über zertifizierte Drittanbieter.</div>
-          </div>
-          <div class="m-faq-item">
-            <button class="m-faq-q" onclick="toggleFaq(this)">
-              Was passiert nach dem Pre-Check?
-              <span class="m-faq-icon">+</span>
-            </button>
-            <div class="m-faq-a">Du wirst zu Stripe weitergeleitet um dein Paket zu buchen. Danach wählst du deinen Ersttermin direkt im Kalender.</div>
-          </div>
-          <div class="m-faq-item">
-            <button class="m-faq-q" onclick="toggleFaq(this)">
-              Sind meine Daten sicher?
-              <span class="m-faq-icon">+</span>
-            </button>
-            <div class="m-faq-a">Ja. Wir arbeiten ausschließlich mit GDPR-konformen Partnern. Keine medizinischen Daten werden auf dieser Website gespeichert.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact -->
-      <div class="m-section" id="m-contact">
-        <span class="m-section-tag">Kontakt</span>
-        <h2 class="m-sh2">Wir sind für dich da</h2>
-        <p class="m-sp">Für allgemeine Anfragen — kein medizinisches Triage.</p>
-        <div class="m-form">
-          <div><label>Name</label><input type="text" placeholder="Max Mustermann" /></div>
-          <div><label>E-Mail</label><input type="email" placeholder="max@example.com" /></div>
-          <div><label>Betreff</label>
-            <select>
-              <option>Allgemeine Anfrage</option>
-              <option>Frage zu den Programmen</option>
-              <option>Rechnungsanfrage</option>
-            </select>
-          </div>
-          <div><label>Nachricht</label><textarea placeholder="Deine Nachricht..."></textarea></div>
-          <button class="m-btn-primary" style="margin-bottom:0" id="sendBtn" onclick="sendForm()">Nachricht senden →</button>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <div class="m-footer">
-        <div class="m-footer-logo">nubo</div>
-        <div class="m-footer-tagline">Hybride Privatpraxis für Psychotherapie.<br/>Medizinisch geleitet. Modern erlebt.</div>
-        <div class="m-footer-links">
-          <div class="m-footer-col">
-            <h4>Programme</h4>
-            <ul>
-              <li>Intensive Care</li><li>Blended Care</li><li>Pre-Check</li><li>Preisübersicht</li>
-            </ul>
-          </div>
-          <div class="m-footer-col">
-            <h4>Rechtliches</h4>
-            <ul>
-              <li>Impressum</li><li>Datenschutz</li><li>AGB</li><li>Cookies</li>
-            </ul>
-          </div>
-        </div>
-        <div class="m-footer-bottom">
-          © 2026 Nubo Therapy GmbH
-          <div class="m-gdpr-badge">🔒 DSGVO Art. 9</div>
-        </div>
-      </div>
-    </div><!-- /phone-screen -->
-
-    <!-- Modal -->
-    <div class="m-modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-      <div class="m-modal">
-        <div class="m-modal-handle"></div>
-        <span class="m-modal-tag">Schritt 1 von 3</span>
-        <h3>Eignung prüfen</h3>
-        <p>Beantworte ein paar kurze Fragen — anonym, sicher, ohne Login. Dauert ca. 5 Minuten.</p>
-        <div class="m-tally-placeholder">
-          <div style="font-size:1.5rem;margin-bottom:0.6rem">📋</div>
-          <p>Tally.so / Nelly Pre-Check Formular</p>
-          <code>&lt;!-- Tally Embed Code hier --&gt;</code>
-        </div>
-        <div class="m-gdpr-note">🔒 Deine Daten werden nach DSGVO Art. 9 verarbeitet — keine Speicherung auf dieser Website.</div>
       </div>
     </div>
+    <div class="how-right">
+      <h3>Warum Nubo Therapy?</h3>
+      <p class="how-right-p">Wir verbinden die Zuverlässigkeit einer klassischen Privatpraxis mit dem reibungslosen Erlebnis moderner Technologie. Kein Wartezimmer, kein Papierkram — nur echte Therapie.</p>
+      <div class="how-badges">
+        <span class="how-badge">🔒 DSGVO Art. 9</span>
+        <span class="how-badge">🏥 Ärztlich geleitet</span>
+        <span class="how-badge">💳 Stripe-Zahlung</span>
+        <span class="how-badge">📅 Soforttermin</span>
+        <span class="how-badge">🇩🇪 Made in Berlin</span>
+        <span class="how-badge">✓ Lizenzierte Therapeuten</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-  </div><!-- /phone-frame -->
+<!-- APPROACH -->
+<section id="approach">
+  <span class="section-tag">Unser Ansatz</span>
+  <h2 class="section-h2">Therapie, die wirklich wirkt —<br><em style="font-style:italic;color:var(--green)">zwischen den Terminen</em></h2>
+  <p class="section-p" style="margin-bottom:3.5rem;">Wir glauben nicht, dass Veränderung nur in den Momenten passiert, in denen du mit deiner Therapeutin sprichst. Wahre Entwicklung findet zwischen den Terminen statt — in deinem echten Leben. Deshalb verzichten wir auf das klassische 50-Minuten-Modell und setzen auf etwas Wirkungsvolleres.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem;">
+    <div style="background:var(--green);border-radius:24px;padding:2.25rem;">
+      <div style="font-size:2rem;margin-bottom:1rem;">⏱️</div>
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.5rem;">Schritt 1</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;margin-bottom:0.75rem;">Fokussierte 30-Min-Gespräche</h3>
+      <p style="font-size:0.85rem;line-height:1.75;color:rgba(255,255,255,0.72);font-weight:300;">Unsere Video-Termine sind bewusst auf 30 Minuten komprimiert. Wir fokussieren uns auf das Wesentliche: Erkenntnisse auswerten, klare Impulse setzen, konkrete Lösungswege besprechen — intensiv, hochwirksam und alltagstauglich.</p>
+    </div>
+    <div style="background:var(--sand);border-radius:24px;padding:2.25rem;">
+      <div style="font-size:2rem;margin-bottom:1rem;">📱</div>
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.5rem;">Schritt 2</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:0.75rem;">Geführte Selbstarbeit</h3>
+      <p style="font-size:0.85rem;line-height:1.75;color:var(--muted);font-weight:300;">Nach dem Gespräch fängt deine eigentliche Arbeit an. Über unsere digitalen Formate — App & Workbooks — erhältst du gezielte Übungen, Reflexionsfragen und Strategien, die exakt auf deine Situation abgestimmt sind.</p>
+    </div>
+    <div style="background:var(--cream);border:1.5px solid rgba(160,140,120,0.2);border-radius:24px;padding:2.25rem;">
+      <div style="font-size:2rem;margin-bottom:1rem;">🌱</div>
+      <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.5rem;">Schritt 3</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--dark);margin-bottom:0.75rem;">Dein Alltag als Therapieraum</h3>
+      <p style="font-size:0.85rem;line-height:1.75;color:var(--muted);font-weight:300;">Du nimmst die Impulse direkt mit in dein Leben, probierst neue Strategien aus und reflektierst diese. Im nächsten Termin knüpft deine Therapeutin exakt an diesen Erfahrungen an.</p>
+    </div>
+  </div>
+  <div style="background:var(--green-pale);border-radius:20px;padding:2rem 2.5rem;display:flex;align-items:center;gap:2rem;">
+    <div style="font-size:2.5rem;flex-shrink:0;">✨</div>
+    <div>
+      <div style="font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);margin-bottom:0.35rem;">Das Ergebnis</div>
+      <p style="font-size:1rem;font-weight:500;color:var(--dark);line-height:1.6;">Eine Therapie, die nicht einfach nur Zeit absitzt, sondern dich aktiv einbindet — und spürbar schneller voranbringt.</p>
+    </div>
+    <button class="btn-primary" style="flex-shrink:0;white-space:nowrap;" onclick="openModal()">Jetzt starten →</button>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" style="background:var(--sand);">
+  <span class="section-tag">Unsere Programme</span>
+  <h2 class="section-h2">Wähle deine Intensität</h2>
+  <p class="section-p">Beide Programme basieren auf unserem Blended-Care-Konzept mit 30-Min-Gesprächen und geführter Selbstarbeit.</p>
+  <div class="programs-grid">
+    <div class="program-card program-green">
+      <div class="program-badge">Mehr Begleitung</div>
+      <h3>Intensive Care</h3>
+      <p>Häufigere 30-Min-Gespräche, intensive digitale Begleitung und direkter Zugang zum medizinischen Team. Für akute Phasen oder hohen Unterstützungsbedarf.</p>
+      <ul class="program-features">
+        <li>Wöchentliche 30-Min-Videogespräche</li>
+        <li>Geführte digitale Selbstarbeit</li>
+        <li>Ärztliche Supervision</li>
+        <li>Persönlicher Krisenplan</li>
+      </ul>
+      <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
+    </div>
+    <div class="program-card program-sand">
+      <div class="program-badge">Mehr Flexibilität</div>
+      <h3>Blended Care</h3>
+      <p>Weniger, dafür gezielte 30-Min-Gespräche kombiniert mit strukturierter Eigenarbeit. Ideal für volle Terminkalender — du bestimmst das Tempo.</p>
+      <ul class="program-features">
+        <li>Flexible 30-Min-Videogespräche</li>
+        <li>Digitale Module & Workbooks</li>
+        <li>Therapeuten-Feedback auf Selbstarbeit</li>
+        <li>Community-Zugang</li>
+      </ul>
+      <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header">
+    <div>
+      <span class="section-tag">Preise & Pakete</span>
+      <h2 class="section-h2">Transparent. Fair. Klar.</h2>
+    </div>
+    <div class="pricing-tabs">
+      <button class="pricing-tab active" id="tab-intensive" onclick="switchTab('intensive')">Intensive Care</button>
+      <button class="pricing-tab" id="tab-blended" onclick="switchTab('blended')">Blended Care</button>
+    </div>
+  </div>
+  <div class="pricing-grid">
+    <!-- Intensive -->
+    <div class="price-card visible" data-tab="intensive">
+      <div class="price-tier">Starter</div>
+      <div class="price-amount">€ 349</div>
+      <div class="price-period">/ 4 Wochen · 4 Sitzungen</div>
+      <ul class="price-features">
+        <li>4 × Einzelsitzung (30 Min.)</li>
+        <li>Digitale Ressourcen</li>
+        <li>E-Mail Support</li>
+        <li>Persönlicher Therapieplan</li>
+      </ul>
+      <button class="price-btn" onclick="openModal()">Paket wählen</button>
+    </div>
+    <div class="price-card featured visible" data-tab="intensive">
+      <div class="price-popular">Beliebt</div>
+      <div class="price-tier">Standard</div>
+      <div class="price-amount">€ 599</div>
+      <div class="price-period">/ 8 Wochen · 8 Sitzungen</div>
+      <ul class="price-features">
+        <li>8 × Einzelsitzung (30 Min.)</li>
+        <li>Vollständiges Begleitprogramm</li>
+        <li>Ärztliche Supervision</li>
+        <li>Priorität-Support</li>
+        <li>Persönlicher Krisenplan</li>
+      </ul>
+      <button class="price-btn" onclick="openModal()">Paket wählen</button>
+    </div>
+    <div class="price-card visible" data-tab="intensive">
+      <div class="price-tier">Premium</div>
+      <div class="price-amount">€ 990</div>
+      <div class="price-period">/ 12 Wochen · 12 Sitzungen</div>
+      <ul class="price-features">
+        <li>12 × Einzelsitzung (30 Min.)</li>
+        <li>Vollst. Begleitprogramm</li>
+        <li>Direkter Arzt-Kontakt</li>
+        <li>Krisenplan + Notfallkontakt</li>
+        <li>Abschlussbericht</li>
+      </ul>
+      <button class="price-btn" onclick="openModal()">Paket wählen</button>
+    </div>
+    <!-- Blended -->
+    <div class="price-card" data-tab="blended">
+      <div class="price-tier">Essentials</div>
+      <div class="price-amount">€ 249</div>
+      <div class="price-period">/ 4 Wochen · 2 Sitzungen</div>
+      <ul class="price-features">
+        <li>2 × Sitzung (30 Min.)</li>
+        <li>Asynchrone Module</li>
+        <li>Community-Zugang</li>
+        <li>Flexible Termine</li>
+      </ul>
+      <button class="price-btn" onclick="openModal()">Paket wählen</button>
+    </div>
+    <div class="price-card featured" data-tab="blended">
+      <div class="price-popular">Beliebt</div>
+      <div class="price-tier">Balance</div>
+      <div class="price-amount">€ 449</div>
+      <div class="price-period">/ 8 Wochen · 4 Sitzungen</div>
+      <ul class="price-features">
+        <li>4 × Sitzung (30 Min.)</li>
+        <li>Vollständige Module</li>
+        <li>Therapeuten-Feedback</li>
+        <li>Flexible Termine</li>
+        <li>Community-Zugang</li>
+      </ul>
+      <button class="price-btn" onclick="openModal()">Paket wählen</button>
+    </div>
+    <div class="price-card" data-tab="blended">
+      <div class="price-tier">Transform</div>
+      <div class="price-amount">€ 749</div>
+      <div class="price-period">/ 12 Wochen · 6 Sitzungen</div>
+      <ul class="price-features">
+        <li>6 × Sitzung (30 Min.)</li>
+        <li>Premium-Module</li>
+        <li>Wöchentl. Check-in</li>
+        <li>Therapeuten-Feedback</li>
+        <li>Abschluss-Bericht</li>
+      </ul>
+      <button class="price-btn" onclick="openModal()">Paket wählen</button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div>
+      <span class="section-tag">Über Nubo Therapy</span>
+      <h2 class="section-h2">Medizinische Kompetenz trifft moderne UX</h2>
+      <p class="section-p">Als hybride Privatpraxis verbinden wir die Verlässlichkeit klassischer Medizin mit dem reibungslosen Erlebnis moderner Technologie.</p>
+      <div class="about-stats">
+        <div class="about-stat"><div class="about-stat-num">500+</div><div class="about-stat-label">Patient:innen</div></div>
+        <div class="about-stat"><div class="about-stat-num">8+</div><div class="about-stat-label">Therapeuten</div></div>
+        <div class="about-stat"><div class="about-stat-num">92%</div><div class="about-stat-label">Zufriedenheit</div></div>
+        <div class="about-stat"><div class="about-stat-num">GDPR</div><div class="about-stat-label">Art. 9 konform</div></div>
+      </div>
+    </div>
+    <div class="about-right">
+      <h3>Unser Team</h3>
+      <p>Alle Therapeuten sind staatlich lizenziert und arbeiten unter ärztlicher Supervision. Deine Sicherheit hat oberste Priorität.</p>
+      <div class="team-list">
+        <div class="team-member">
+          <div class="team-avatar" style="background:#3D6B55">DR</div>
+          <div><div class="team-name">Dr. med. Reiter</div><div class="team-role">Ärztliche Leiterin · Psychiatrie & Psychotherapie</div></div>
+          <span class="team-cred">Liz.</span>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar" style="background:#B08B6E">MA</div>
+          <div><div class="team-name">Maren Albrecht, M.Sc.</div><div class="team-role">Psychologische Psychotherapeutin</div></div>
+          <span class="team-cred">Liz.</span>
+        </div>
+        <div class="team-member">
+          <div class="team-avatar" style="background:#7A9E87">TK</div>
+          <div><div class="team-name">Thomas Klein, Dipl.-Psych.</div><div class="team-role">Verhaltenstherapeut</div></div>
+          <span class="team-cred">Liz.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div>
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-h2">Häufige Fragen</h2>
+      <p class="section-p">Alles was du wissen musst, bevor du anfängst.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Übernimmt meine Krankenkasse die Kosten?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Nubo Therapy ist eine Privatpraxis. Private Krankenversicherungen erstatten oft einen Teil der Kosten — wir stellen dir gerne eine Rechnung aus. Gesetzliche Kassen übernehmen die Kosten in der Regel nicht direkt.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Warum muss ich mich nicht einloggen?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Aus DSGVO-Gründen verarbeiten wir keine medizinischen Daten auf dieser Website. Alles läuft über zertifizierte Drittanbieter wie Tally und Stripe, die Art. 9 konform arbeiten.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Was passiert nach dem Pre-Check?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Du wirst zu Stripe weitergeleitet, um dein Paket sicher zu buchen. Danach wählst du deinen Ersttermin direkt im Kalender. Das gesamte Onboarding dauert ca. 10 Minuten.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Sind meine Daten sicher?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ja. Wir arbeiten ausschließlich mit DSGVO-konformen Partnern. Keine medizinischen Daten werden auf dieser Website gespeichert. Alle sensiblen Daten werden verschlüsselt übertragen.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Kann ich Sitzungen auch digital machen?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ja, alle Sitzungen können per Videocall stattfinden. Vor-Ort-Termine in Berlin sind optional und nach Absprache möglich.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <span class="section-tag">Kontakt</span>
+      <h2 class="section-h2">Wir sind für dich da</h2>
+      <p>Für allgemeine Anfragen — kein medizinisches Triage. Für therapeutische Anliegen nutze bitte den Pre-Check.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div><div class="contact-item-label">Standort</div><div class="contact-item-value">Berlin, Deutschland</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div><div class="contact-item-label">E-Mail</div><div class="contact-item-value">hello@nubotherapy.de</div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🔒</div>
+          <div><div class="contact-item-label">Datenschutz</div><div class="contact-item-value">DSGVO Art. 9 konform</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Nachricht schreiben</h3>
+      <div class="form-row">
+        <div class="form-group"><label>Name</label><input type="text" placeholder="Max Mustermann" /></div>
+        <div class="form-group"><label>E-Mail</label><input type="email" placeholder="max@example.com" /></div>
+      </div>
+      <div class="form-group">
+        <label>Betreff</label>
+        <select>
+          <option>Allgemeine Anfrage</option>
+          <option>Frage zu den Programmen</option>
+          <option>Rechnungsanfrage</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Nachricht</label><textarea placeholder="Deine Nachricht..."></textarea></div>
+      <button class="btn-primary" style="width:100%" id="sendBtn" onclick="sendForm()">Nachricht senden →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">nubo</div>
+      <div class="footer-tagline">Hybride Privatpraxis für Psychotherapie. Medizinisch geleitet. Modern erlebt.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Programme</h4>
+      <ul>
+        <li>Intensive Care</li>
+        <li>Blended Care</li>
+        <li>Pre-Check</li>
+        <li>Preisübersicht</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Unternehmen</h4>
+      <ul>
+        <li>Über uns</li>
+        <li>Team</li>
+        <li>Karriere</li>
+        <li>Presse</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <ul>
+        <li>Impressum</li>
+        <li>Datenschutz</li>
+        <li>AGB</li>
+        <li>Cookies</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">© 2026 Nubo Therapy GmbH · Berlin</div>
+    <div class="footer-gdpr">🔒 DSGVO Art. 9</div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-handle"></div>
+    <span class="modal-tag">Schritt 1 von 3</span>
+    <h3>Eignung prüfen</h3>
+    <p>Beantworte ein paar kurze Fragen — anonym, sicher, ohne Login. Dauert ca. 5 Minuten.</p>
+    <div class="modal-tally">
+      <div style="font-size:2rem;margin-bottom:0.75rem">📋</div>
+      <p>Tally.so / Nelly Pre-Check Formular</p>
+      <code>&lt;!-- Tally Embed Code hier --&gt;</code>
+    </div>
+    <div class="modal-gdpr">🔒 Deine Daten werden nach DSGVO Art. 9 verarbeitet — keine Speicherung auf dieser Website.</div>
+  </div>
 </div>
 
 <script>
-  function openMenu() { document.getElementById('mobileMenu').classList.add('open'); }
-  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
   function openModal() { document.getElementById('modal').classList.add('open'); }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
 
-  function scrollToSection(id) {
-    closeMenu();
-    setTimeout(() => {
-      const el = document.getElementById('m-' + id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 380);
-  }
-
   function switchTab(tab) {
-    document.querySelectorAll('.m-pricing-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
     document.getElementById('tab-' + tab).classList.add('active');
-    document.querySelectorAll('.m-price-card').forEach(card => {
+    document.querySelectorAll('.price-card').forEach(card => {
       card.classList.toggle('visible', card.dataset.tab === tab);
     });
   }
 
   function toggleFaq(btn) {
-    const item = btn.closest('.m-faq-item');
-    item.classList.toggle('open');
+    btn.closest('.faq-item').classList.toggle('open');
   }
 
   function sendForm() {
     const btn = document.getElementById('sendBtn');
     btn.textContent = 'Gesendet ✓';
-    setTimeout(() => { btn.textContent = 'Nachricht senden →'; }, 3000);
+    btn.style.background = '#7A9E87';
+    setTimeout(() => {
+      btn.textContent = 'Nachricht senden →';
+      btn.style.background = '';
+    }, 3000);
   }
+
+  // Sticky nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow = window.scrollY > 20
+      ? '0 4px 24px rgba(0,0,0,0.08)' : 'none';
+  });
 </script>
 </body>
 </html>

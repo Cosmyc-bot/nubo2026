@@ -61,15 +61,28 @@
     .hero-sub { font-size: 1.05rem; line-height: 1.8; color: rgba(255,255,255,0.65); font-weight: 300; margin-bottom: 3rem; max-width: 600px; }
 
     /* Programme Tabs */
-    .prog-tabs-wrap { display: flex; align-items: center; gap: 1rem; }
-    .prog-tabs-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); white-space: nowrap; }
-    .prog-tabs { display: flex; gap: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 100px; padding: 5px; }
-    .prog-tab { padding: 0.7rem 1.75rem; border-radius: 100px; border: none; font-size: 0.9rem; font-family: 'DM Sans', sans-serif; cursor: pointer; background: transparent; color: rgba(255,255,255,0.6); transition: all 0.25s; }
-    .prog-tab.active { background: #fff; color: var(--green); font-weight: 600; }
+    /* programme overview grid */
+    .prog-all-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 2.5rem; }
+    .prog-all-card { border-radius: 20px; padding: 1.5rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; gap: 0.4rem; }
+    .prog-all-card.active-prog { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22); }
+    .prog-all-card.active-prog:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+    .prog-all-card.coming-prog { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); opacity: 0.6; cursor: default; }
+    .prog-all-icon { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .prog-all-label { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .prog-all-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; line-height: 1.3; }
+    .prog-all-action { font-size: 0.75rem; margin-top: 0.5rem; color: rgba(255,255,255,0.45); }
+    .prog-all-card.active-prog .prog-all-action { color: rgba(255,255,255,0.8); }
 
     /* ── PROGRAMME CONTENT ── */
-    .prog-section { display: none; }
-    .prog-section.active { display: block; }
+    .prog-section { display: block; }
+    /* coming-soon program section */
+    .prog-coming-outer { background: var(--sand); }
+    .prog-coming-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .prog-coming-card { background: var(--cream); border-radius: 24px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .coming-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--green-pale); color: var(--green); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.85rem; border-radius: 100px; }
+    .prog-coming-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); }
+    .prog-coming-card p { font-size: 0.88rem; line-height: 1.75; color: var(--muted); font-weight: 300; }
+    .prog-sel-btn.disabled { opacity: 0.38; cursor: not-allowed; pointer-events: none; }
 
     /* Programme Overview */
     .prog-overview { background: var(--cream); }
@@ -260,9 +273,8 @@
       .hero { padding-top: calc(var(--nav-h) + 3rem); padding-bottom: 3rem; }
       .hero h1 { font-size: 2rem; }
       .hero-sub { font-size: 0.95rem; }
-      .prog-tabs-wrap { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-      .prog-tabs { flex-direction: column; width: 100%; border-radius: 16px; }
-      .prog-tab { width: 100%; text-align: left; border-radius: 12px; padding: 0.9rem 1.25rem; font-size: 0.85rem; }
+      .prog-all-grid { grid-template-columns: 1fr 1fr; }
+      .prog-coming-inner { grid-template-columns: 1fr; gap: 2.5rem; }
 
       /* PROG OVERVIEW */
       .prog-overview-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -329,13 +341,32 @@
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-eyebrow">Unsere Programme</div>
-    <h1>Wähle dein <em>Thema.</em><br>Wähle deine <em>Methode.</em></h1>
-    <p class="hero-sub">Jedes Programm adressiert einen spezifischen Lebensbereich — und kann sowohl als Intensive Care als auch als Blended Care umgesetzt werden. Du entscheidest, wie viel Begleitung du brauchst.</p>
-    <div class="prog-tabs-wrap">
-      <span class="prog-tabs-label">Programm wählen</span>
-      <div class="prog-tabs">
-        <button class="prog-tab active" onclick="switchProg('kinderwunsch', this)">🤍 Unerfüllter Kinderwunsch</button>
-        <button class="prog-tab" onclick="switchProg('arbeit', this)">💼 Angst vor Arbeitsplatzverlust</button>
+    <h1>Wähle dein <em>Thema.</em><br>Dann deine <em>Intensität.</em></h1>
+    <p class="hero-sub">Jedes Programm adressiert einen spezifischen Lebensbereich — in zwei Intensitäten buchbar. Du wählst das Thema, wir passen die Begleitung an deinen Bedarf an.</p>
+    <div class="prog-all-grid">
+      <a class="prog-all-card active-prog" href="#kinderwunsch">
+        <div class="prog-all-icon">🤱</div>
+        <div class="prog-all-label">Verfügbar</div>
+        <div class="prog-all-name">Unerfüllter Kinderwunsch</div>
+        <div class="prog-all-action">Details & Preise →</div>
+      </a>
+      <a class="prog-all-card active-prog" href="#arbeitsplatzverlust">
+        <div class="prog-all-icon">💼</div>
+        <div class="prog-all-label">Verfügbar</div>
+        <div class="prog-all-name">Angst vor Arbeitsplatzverlust</div>
+        <div class="prog-all-action">Details & Preise →</div>
+      </a>
+      <div class="prog-all-card coming-prog">
+        <div class="prog-all-icon">🔥</div>
+        <div class="prog-all-label">Demnächst</div>
+        <div class="prog-all-name">Burnout & Erschöpfung</div>
+        <div class="prog-all-action">In Entwicklung</div>
+      </div>
+      <div class="prog-all-card coming-prog">
+        <div class="prog-all-icon">🕊️</div>
+        <div class="prog-all-label">Demnächst</div>
+        <div class="prog-all-name">Trauer & Verlust</div>
+        <div class="prog-all-action">In Entwicklung</div>
       </div>
     </div>
   </div>
@@ -346,7 +377,7 @@
 <!-- ══════════════════════════════════════ -->
 
 <!-- ── KINDERWUNSCH ── -->
-<div class="prog-section active" id="prog-kinderwunsch">
+<div class="prog-section" id="kinderwunsch">
 
   <section class="prog-overview">
     <div class="prog-overview-inner">
@@ -413,7 +444,7 @@
 </div><!-- /kinderwunsch -->
 
 <!-- ── ARBEITSPLATZVERLUST ── -->
-<div class="prog-section" id="prog-arbeit">
+<div class="prog-section" id="arbeitsplatzverlust">
 
   <section class="prog-overview">
     <div class="prog-overview-inner">
@@ -480,17 +511,65 @@
 </div><!-- /arbeit -->
 
 <!-- ══════════════════════════════════════ -->
-<!-- METHODEN SECTION (immer sichtbar)      -->
+<!-- COMING SOON: BURNOUT                   -->
+<!-- ══════════════════════════════════════ -->
+<div id="burnout" class="prog-coming-outer">
+  <section style="background:var(--sand);">
+    <div class="prog-coming-inner">
+      <div>
+        <div class="prog-icon">🔥</div>
+        <span class="section-tag">Programm · Burnout & Erschöpfung</span>
+        <h2 class="section-h2">Wenn die Energie aufgebraucht ist</h2>
+        <p style="font-size:1rem;line-height:1.85;color:var(--muted);font-weight:300;margin-bottom:1.25rem;">Chronische Erschöpfung, emotionale Taubheit, das Gefühl nur noch zu funktionieren — Burnout wird häufig zu spät erkannt und zu selten richtig behandelt.</p>
+        <p style="font-size:1rem;line-height:1.85;color:var(--muted);font-weight:300;">Unser spezialisiertes Programm wird aktuell entwickelt und richtet sich an Menschen, die auf der Suche nach nachhaltiger Erholung und Prävention sind.</p>
+      </div>
+      <div class="prog-coming-card">
+        <div class="coming-badge">In Entwicklung</div>
+        <h3>Dieses Programm erscheint demnächst</h3>
+        <p>Trag dich in die Warteliste ein — du wirst als Erstes informiert und erhältst einen Frühbucher-Rabatt von 20 %.</p>
+        <button class="btn-primary" style="align-self:flex-start;" onclick="document.getElementById('contact') && document.getElementById('contact').scrollIntoView({behavior:'smooth'}) || (window.location='index.html#contact')">Warteliste beitreten →</button>
+        <p style="font-size:0.78rem;color:var(--muted);font-weight:300;">Kostenlos · Kein Login · Jederzeit abmeldbar</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- COMING SOON: TRAUER                    -->
+<!-- ══════════════════════════════════════ -->
+<div id="trauer">
+  <section>
+    <div class="prog-coming-inner">
+      <div>
+        <div class="prog-icon">🕊️</div>
+        <span class="section-tag">Programm · Trauer & Verlust</span>
+        <h2 class="section-h2">Verlust einen Raum geben</h2>
+        <p style="font-size:1rem;line-height:1.85;color:var(--muted);font-weight:300;margin-bottom:1.25rem;">Ob der Tod eines Menschen, das Ende einer Beziehung oder das Loslassen von Lebensplänen — Trauer braucht Zeit, Raum und professionelle Begleitung.</p>
+        <p style="font-size:1rem;line-height:1.85;color:var(--muted);font-weight:300;">Unser Programm zu Trauer & Verlust wird gerade entwickelt. Es basiert auf denselben Grundprinzipien wie unsere bestehenden Programme: fokussierte Gespräche, geführte Selbstarbeit und ein klarer Rahmen für echte Veränderung.</p>
+      </div>
+      <div class="prog-coming-card" style="background:var(--sand);">
+        <div class="coming-badge">In Entwicklung</div>
+        <h3>Dieses Programm erscheint demnächst</h3>
+        <p>Trag dich in die Warteliste ein — du wirst als Erstes informiert und erhältst einen Frühbucher-Rabatt von 20 %.</p>
+        <button class="btn-primary" style="align-self:flex-start;" onclick="window.location='index.html#contact'">Warteliste beitreten →</button>
+        <p style="font-size:0.78rem;color:var(--muted);font-weight:300;">Kostenlos · Kein Login · Jederzeit abmeldbar</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- INTENSITÄTEN (ehem. Methoden)          -->
 <!-- ══════════════════════════════════════ -->
 <section class="methoden">
   <div class="methoden-header">
-    <span class="section-tag">Die Methoden</span>
-    <h2 class="section-h2">Wie du dein Programm umsetzt</h2>
-    <p class="section-p">Beide Methoden liefern dasselbe spezialisierte Programm — du wählst das Format, das zu deinem Leben passt.</p>
+    <span class="section-tag">Die Intensitäten</span>
+    <h2 class="section-h2">Wie viel Begleitung brauchst du?</h2>
+    <p class="section-p">Beide Intensitäten liefern dasselbe spezialisierte Programm — du wählst, wie eng du begleitet werden möchtest.</p>
   </div>
   <div class="methoden-grid">
     <div class="methode-card methode-intensiv">
-      <span class="methode-tag">Methode 01</span>
+      <span class="methode-tag">Intensität 01</span>
       <h3>Intensive Care</h3>
       <p>Häufigere, fokussierte 30-Min-Videogespräche mit ärztlicher Supervision und direktem Zugang zum medizinischen Team. Für Menschen, die intensive persönliche Begleitung bevorzugen oder sich in einer akuten Phase befinden.</p>
       <ul class="methode-features">
@@ -503,7 +582,7 @@
       <div class="methode-pill">Ideal bei akuter Belastung oder hohem Begleitungsbedarf</div>
     </div>
     <div class="methode-card methode-blended">
-      <span class="methode-tag">Methode 02</span>
+      <span class="methode-tag">Intensität 02</span>
       <h3>Blended Care</h3>
       <p>Gezielte 30-Min-Impulsgespräche kombiniert mit strukturierten digitalen Modulen und Therapeuten-Feedback. Du bestimmst das Tempo — wir geben den Rahmen. Ideal für volle Kalender und Eigenverantwortung.</p>
       <ul class="methode-features">
@@ -525,19 +604,21 @@
   <div class="pricing-top">
     <div>
       <span class="section-tag">Preise & Pakete</span>
-      <h2 class="section-h2">Programm & Methode kombinieren</h2>
-      <p class="section-p">Wähle dein Programm und deine bevorzugte Methode — die Pakete passen sich an.</p>
+      <h2 class="section-h2">Thema & Intensität kombinieren</h2>
+      <p class="section-p">Wähle dein Programm und deine bevorzugte Intensität — die Pakete passen sich automatisch an.</p>
     </div>
     <div class="pricing-selectors">
       <div class="selector-row">
         <span class="selector-label">Programm</span>
         <div class="prog-selector">
-          <button class="prog-sel-btn active" onclick="switchPricing('kw', this)">🤍 Kinderwunsch</button>
+          <button class="prog-sel-btn active" onclick="switchPricing('kw', this)">🤱 Kinderwunsch</button>
           <button class="prog-sel-btn" onclick="switchPricing('ap', this)">💼 Arbeitsplatzverlust</button>
+          <button class="prog-sel-btn disabled" disabled title="In Entwicklung">🔥 Burnout (bald)</button>
+          <button class="prog-sel-btn disabled" disabled title="In Entwicklung">🕊️ Trauer (bald)</button>
         </div>
       </div>
       <div class="selector-row">
-        <span class="selector-label">Methode</span>
+        <span class="selector-label">Intensität</span>
         <div class="methode-toggle">
           <button class="methode-btn active" onclick="switchMethode('intensiv', this)">🌿 Intensive Care</button>
           <button class="methode-btn" onclick="switchMethode('blended', this)">⚡ Blended Care</button>
@@ -847,12 +928,14 @@
       <ul>
         <li>Unerfüllter Kinderwunsch</li>
         <li>Angst vor Arbeitsplatzverlust</li>
+        <li>Burnout & Erschöpfung (bald)</li>
+        <li>Trauer & Verlust (bald)</li>
         <li>Pre-Check</li>
         <li>Preisübersicht</li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Methoden</h4>
+      <h4>Intensitäten</h4>
       <ul>
         <li>Intensive Care</li>
         <li>Blended Care</li>
@@ -892,15 +975,6 @@
 </div>
 
 <script>
-  // Programme in hero
-  function switchProg(prog, btn) {
-    document.querySelectorAll('.prog-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.prog-section').forEach(s => s.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('prog-' + prog).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
   // Pricing state
   let currentProg = 'kw';
   let currentMethode = 'intensiv';

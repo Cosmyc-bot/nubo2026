@@ -197,7 +197,8 @@
     .pricing { background: var(--sand); }
     .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
     .pricing-tabs {
-      display: flex; background: var(--cream); border-radius: 100px;
+      display: flex; flex-direction: row; flex-wrap: nowrap;
+      background: var(--cream); border-radius: 100px;
       padding: 5px; position: relative;
     }
     .pricing-tabs::before {
@@ -407,8 +408,8 @@
 
       /* PRICING */
       .pricing-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-      .pricing-tabs { align-self: stretch; }
-      .pricing-tab { flex: 1; text-align: center; padding: 0.85rem 1.25rem; }
+      .pricing-tabs { align-self: stretch; flex-direction: row; }
+      .pricing-tab { flex: 1; text-align: center; padding: 0.85rem 1.25rem; white-space: nowrap; }
       .pricing-grid { grid-template-columns: 1fr; }
 
       /* ABOUT */

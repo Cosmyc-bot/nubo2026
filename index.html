@@ -355,7 +355,15 @@
         padding-right: 5vw; min-height: auto;
       }
       .hero::before { display: none; }
-      .hero-right { border-radius: 50%; padding: 2rem; align-self: center; width: min(85vw, 380px); }
+      .hero-right {
+        width: min(82vw, 360px); height: min(82vw, 360px);
+        padding: 3rem; border-radius: 50%; align-self: center;
+      }
+      .hero-stats { gap: 0.35rem; margin-top: 0.5rem; }
+      .hero-stat { padding: 0.4rem 0.1rem; border-radius: 10px; }
+      .hero-stat-num { font-size: 1.1rem; }
+      .hero-stat-label { font-size: 0.6rem; }
+      .hero-card-pill-sub { display: none; }
       .hero h1 { font-size: 2.4rem; }
       .hero-p { font-size: 0.95rem; }
       .hero-btns { flex-direction: column; }

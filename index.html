@@ -49,7 +49,7 @@
     .hero {
       min-height: 100vh; padding-top: var(--nav-h);
       display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; gap: 4rem; padding-left: 5vw; padding-right: 5vw;
+      align-items: center; gap: 4rem; padding-left: 5vw; padding-right: 0;
       position: relative; overflow: hidden;
       background: linear-gradient(120deg, var(--cream) 45%, #dce8e1 100%);
     }
@@ -68,7 +68,14 @@
       z-index: 0; pointer-events: none;
     }
     .hero-left { position: relative; z-index: 1; }
-    .hero-right { position: relative; z-index: 1; }
+    .hero-right {
+      position: relative; z-index: 1;
+      align-self: stretch; display: flex; align-items: center;
+      background: linear-gradient(145deg, #2d5040 0%, #3D6B55 55%, #4e8068 100%);
+      border-radius: 28px 0 0 28px;
+      padding: 2.5rem 5vw 2.5rem 2.5rem;
+      overflow: hidden;
+    }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 7px;
       background: var(--green-pale); color: var(--green);
@@ -111,10 +118,7 @@
 
     /* Hero right — card */
     .hero-card {
-      background: linear-gradient(145deg, #2d5040 0%, #3D6B55 55%, #4e8068 100%);
-      border-radius: 28px; padding: 2.5rem;
-      position: relative; overflow: hidden;
-      box-shadow: 0 32px 64px rgba(45,80,64,0.28), 0 8px 24px rgba(45,80,64,0.15);
+      position: relative; overflow: hidden; width: 100%;
     }
     .hero-card::before { content: '🌿'; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2.5rem; opacity: 0.3; }
     .hero-card-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
@@ -341,9 +345,10 @@
       .hero {
         grid-template-columns: 1fr; gap: 2.5rem;
         padding-top: calc(var(--nav-h) + 2.5rem); padding-bottom: 3rem;
-        min-height: auto;
+        padding-right: 5vw; min-height: auto;
       }
       .hero::before { display: none; }
+      .hero-right { border-radius: 16px; padding: 2rem; align-self: auto; }
       .hero h1 { font-size: 2.4rem; }
       .hero-p { font-size: 0.95rem; }
       .hero-btns { flex-direction: column; }

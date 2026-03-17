@@ -289,22 +289,117 @@
     .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
     .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
     .hero-right { animation: fadeInUp 0.6s ease 0.35s both; }
+
+    /* ── APPROACH HELPERS (for mobile overrides) ── */
+    .approach-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    .approach-result { background: var(--green-pale); border-radius: 20px; padding: 2rem 2.5rem; display: flex; align-items: center; gap: 2rem; }
+
+    /* ── NAV HAMBURGER ── */
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 101; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 768px) {
+      /* NAV */
+      .nav-links {
+        display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+        flex-direction: column; align-items: flex-start;
+        background: rgba(250,247,244,0.98); backdrop-filter: blur(16px);
+        padding: 1.5rem 5vw 2rem; gap: 1.25rem;
+        border-bottom: 1px solid rgba(160,140,120,0.15);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1rem; color: var(--dark); }
+      .nav-links .nav-cta-mobile {
+        background: var(--green); color: #fff; padding: 0.75rem 1.5rem;
+        border-radius: 100px; font-size: 0.9rem; font-weight: 500; border: none;
+        cursor: pointer; font-family: 'DM Sans', sans-serif; width: 100%; text-align: center;
+      }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* SECTIONS */
+      section { padding: 4rem 5vw; }
+
+      /* HERO */
+      .hero {
+        grid-template-columns: 1fr; gap: 2.5rem;
+        padding-top: calc(var(--nav-h) + 2.5rem); padding-bottom: 3rem;
+        min-height: auto;
+      }
+      .hero::before { display: none; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-p { font-size: 0.95rem; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns button { width: 100%; }
+
+      /* APPROACH */
+      .approach-grid { grid-template-columns: 1fr; }
+      .approach-result { flex-direction: column; text-align: center; gap: 1.25rem; }
+      .approach-result .btn-primary { width: 100%; }
+
+      /* HOW */
+      .how-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* PROGRAMS */
+      .programs-grid { grid-template-columns: 1fr; }
+
+      /* PRICING */
+      .pricing-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+      .pricing-tabs { align-self: stretch; }
+      .pricing-tab { flex: 1; text-align: center; }
+      .pricing-grid { grid-template-columns: 1fr; }
+
+      /* ABOUT */
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* FAQ */
+      .faq-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      /* CONTACT */
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      /* FOOTER */
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+
+      /* MODAL */
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal { border-radius: 28px 28px 0 0; max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { grid-template-columns: repeat(3,1fr); }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .pricing-tabs { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="index.html">nubo<div class="nav-logo-dot"></div></a>
-  <div class="nav-links">
-    <a href="index.html" class="active">Start</a>
+  <a class="nav-logo" href="desktop.html">nubo<div class="nav-logo-dot"></div></a>
+  <div class="nav-links" id="navLinks">
+    <a href="desktop.html" class="active">Start</a>
     <a href="#approach">Unser Ansatz</a>
-    <a href="produkte.html">Programme</a>
+    <a href="desktop-produkte.html">Programme</a>
     <a href="#about">Über uns</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Kontakt</a>
+    <button class="nav-cta-mobile" onclick="openModal();closeNav()">Eignung prüfen →</button>
   </div>
   <button class="nav-cta" onclick="openModal()">Eignung prüfen →</button>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -401,7 +496,7 @@
   <span class="section-tag">Unser Ansatz</span>
   <h2 class="section-h2">Therapie, die wirklich wirkt —<br><em style="font-style:italic;color:var(--green)">zwischen den Terminen</em></h2>
   <p class="section-p" style="margin-bottom:3.5rem;">Wir glauben nicht, dass Veränderung nur in den Momenten passiert, in denen du mit deiner Therapeutin sprichst. Wahre Entwicklung findet zwischen den Terminen statt — in deinem echten Leben. Deshalb verzichten wir auf das klassische 50-Minuten-Modell und setzen auf etwas Wirkungsvolleres.</p>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2rem;">
+  <div class="approach-grid">
     <div style="background:var(--green);border-radius:24px;padding:2.25rem;">
       <div style="font-size:2rem;margin-bottom:1rem;">⏱️</div>
       <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.5rem;">Schritt 1</div>
@@ -421,7 +516,7 @@
       <p style="font-size:0.85rem;line-height:1.75;color:var(--muted);font-weight:300;">Du nimmst die Impulse direkt mit in dein Leben, probierst neue Strategien aus und reflektierst diese. Im nächsten Termin knüpft deine Therapeutin exakt an diesen Erfahrungen an.</p>
     </div>
   </div>
-  <div style="background:var(--green-pale);border-radius:20px;padding:2rem 2.5rem;display:flex;align-items:center;gap:2rem;">
+  <div class="approach-result">
     <div style="font-size:2.5rem;flex-shrink:0;">✨</div>
     <div>
       <div style="font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);margin-bottom:0.35rem;">Das Ergebnis</div>
@@ -749,6 +844,19 @@
 <script>
   function openModal() { document.getElementById('modal').classList.add('open'); }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+  function toggleNav() {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+  // Close nav on link click
+  document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', closeNav));
 
   function switchTab(tab) {
     document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));

@@ -49,7 +49,7 @@
     .hero {
       min-height: 100vh; padding-top: var(--nav-h);
       display: grid; grid-template-columns: 1fr 1fr;
-      align-items: stretch; gap: 4rem; padding-left: 5vw; padding-right: 0;
+      align-items: center; gap: 4rem; padding-left: 5vw; padding-right: 0;
       position: relative; overflow: hidden;
       background: linear-gradient(120deg, var(--cream) 45%, #dce8e1 100%);
     }
@@ -67,8 +67,15 @@
       border: 1px solid rgba(61,107,85,0.07);
       z-index: 0; pointer-events: none;
     }
-    .hero-left { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: 4rem; }
-    .hero-right { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; }
+    .hero-left { position: relative; z-index: 1; }
+    .hero-right {
+      position: relative; z-index: 1;
+      align-self: stretch; display: flex; align-items: center;
+      background: linear-gradient(145deg, #2d5040 0%, #3D6B55 55%, #4e8068 100%);
+      border-radius: 28px 0 0 28px;
+      padding: 2.5rem 5vw 2.5rem 2.5rem;
+      overflow: hidden;
+    }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 7px;
       background: var(--green-pale); color: var(--green);
@@ -111,11 +118,7 @@
 
     /* Hero right — card */
     .hero-card {
-      background: linear-gradient(145deg, #2d5040 0%, #3D6B55 55%, #4e8068 100%);
-      border-radius: 28px 0 0 28px; padding: 2.5rem 2.5rem 2.5rem 2.5rem;
-      position: relative; overflow: hidden;
-      box-shadow: -8px 0 48px rgba(45,80,64,0.18), 0 32px 64px rgba(45,80,64,0.22);
-      flex: 1; display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden; width: 100%;
     }
     .hero-card::before { content: '🌿'; position: absolute; top: 1.5rem; right: 1.5rem; font-size: 2.5rem; opacity: 0.3; }
     .hero-card-tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
@@ -342,12 +345,10 @@
       .hero {
         grid-template-columns: 1fr; gap: 2.5rem;
         padding-top: calc(var(--nav-h) + 2.5rem); padding-bottom: 3rem;
-        padding-right: 5vw; min-height: auto; align-items: start;
+        padding-right: 5vw; min-height: auto;
       }
       .hero::before { display: none; }
-      .hero-left { padding-bottom: 0; }
-      .hero-right { flex: none; }
-      .hero-card { border-radius: 24px; flex: none; }
+      .hero-right { border-radius: 16px; padding: 2rem; align-self: auto; }
       .hero h1 { font-size: 2.4rem; }
       .hero-p { font-size: 0.95rem; }
       .hero-btns { flex-direction: column; }
@@ -409,6 +410,7 @@
     <a href="desktop-produkte.html">Programme</a>
     <a href="#about">Über uns</a>
     <a href="#faq">FAQ</a>
+    <a href="blog.html">Blog</a>
     <a href="#contact">Kontakt</a>
     <button class="nav-cta-mobile" onclick="openModal();closeNav()">Eignung prüfen →</button>
   </div>

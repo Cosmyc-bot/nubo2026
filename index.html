@@ -196,9 +196,26 @@
     /* ── PRICING ── */
     .pricing { background: var(--sand); }
     .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
-    .pricing-tabs { display: flex; gap: 0.5rem; background: var(--cream); border-radius: 100px; padding: 5px; }
-    .pricing-tab { padding: 0.55rem 1.25rem; border-radius: 100px; border: none; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; cursor: pointer; background: transparent; color: var(--muted); transition: all 0.2s; }
-    .pricing-tab.active { background: var(--green); color: #fff; font-weight: 500; }
+    .pricing-tabs {
+      display: flex; background: var(--cream); border-radius: 100px;
+      padding: 5px; position: relative;
+    }
+    .pricing-tabs::before {
+      content: ''; position: absolute;
+      top: 5px; left: 5px;
+      width: calc(50% - 5px); height: calc(100% - 10px);
+      background: var(--green); border-radius: 100px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    .pricing-tabs.tab-blended::before { transform: translateX(100%); }
+    .pricing-tab {
+      flex: 1; padding: 0.55rem 1.25rem; border-radius: 100px;
+      border: none; font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; background: transparent; color: var(--muted);
+      position: relative; z-index: 1; transition: color 0.25s;
+    }
+    .pricing-tab.active { color: #fff; font-weight: 500; }
     .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .price-card { background: var(--cream); border: 1px solid rgba(160,140,120,0.2); border-radius: 20px; padding: 2rem; position: relative; display: none; transition: transform 0.2s; }
     .price-card:hover { transform: translateY(-3px); }
@@ -905,6 +922,7 @@
     document.querySelectorAll('.price-card').forEach(card => {
       card.classList.toggle('visible', card.dataset.tab === tab);
     });
+    document.querySelector('.pricing-tabs').classList.toggle('tab-blended', tab === 'blended');
   }
 
   function toggleFaq(btn) {

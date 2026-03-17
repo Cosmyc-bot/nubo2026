@@ -153,7 +153,7 @@
 
     /* ── HOW IT WORKS ── */
     .how { background: var(--sand); }
-    .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: stretch; }
     .how-steps { display: flex; flex-direction: column; gap: 0; position: relative; margin-top: 2rem; }
     .how-steps::before { content: ''; position: absolute; left: 20px; top: 28px; bottom: 28px; width: 1px; background: var(--green-pale); }
     .how-step { display: flex; gap: 1.25rem; align-items: flex-start; padding-bottom: 2rem; position: relative; }
@@ -161,11 +161,13 @@
     .how-step-circle { width: 40px; height: 40px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; flex-shrink: 0; position: relative; z-index: 1; }
     .how-step-title { font-size: 1rem; font-weight: 500; color: var(--dark); margin-bottom: 0.4rem; }
     .how-step-desc { font-size: 0.88rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
-    .how-right { background: var(--cream); border-radius: 24px; padding: 2.5rem; }
+    .how-right { background: var(--cream); border-radius: 24px; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
     .how-right h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.5rem; }
     .how-right-p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 1.75rem; }
-    .how-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .how-badge { background: var(--green-pale); color: var(--green); font-size: 0.75rem; font-weight: 500; padding: 0.35rem 0.9rem; border-radius: 100px; }
+    .how-checklist { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; flex: 1; }
+    .how-check-item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--dark); font-weight: 400; line-height: 1.5; }
+    .how-check-icon { width: 20px; height: 20px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.05rem; }
+    .how-check-icon svg { width: 11px; height: 11px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ── PROGRAMS ── */
     .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
@@ -536,16 +538,37 @@
       </div>
     </div>
     <div class="how-right">
-      <h3>Warum Nubo Therapy?</h3>
-      <p class="how-right-p">Wir verbinden die Zuverlässigkeit einer klassischen Privatpraxis mit dem reibungslosen Erlebnis moderner Technologie. Kein Wartezimmer, kein Papierkram — nur echte Therapie.</p>
-      <div class="how-badges">
-        <span class="how-badge">🔒 DSGVO Art. 9</span>
-        <span class="how-badge">🏥 Ärztlich geleitet</span>
-        <span class="how-badge">💳 Stripe-Zahlung</span>
-        <span class="how-badge">📅 Soforttermin</span>
-        <span class="how-badge">🇩🇪 Made in Berlin</span>
-        <span class="how-badge">✓ Lizenzierte Therapeuten</span>
+      <div>
+        <h3>Warum Nubo Therapy?</h3>
+        <p class="how-right-p">Wir verbinden die Zuverlässigkeit einer klassischen Privatpraxis mit dem reibungslosen Erlebnis moderner Technologie. Kein Wartezimmer, kein Papierkram — nur echte Therapie.</p>
+        <div class="how-checklist">
+          <div class="how-check-item">
+            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            <span><strong>DSGVO Art. 9</strong> — Höchster Datenschutz für sensible Gesundheitsdaten</span>
+          </div>
+          <div class="how-check-item">
+            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            <span><strong>Ärztlich geleitet</strong> — Jede Therapie unter medizinischer Supervision</span>
+          </div>
+          <div class="how-check-item">
+            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            <span><strong>Lizenzierte Therapeuten</strong> — Ausschließlich staatlich anerkannte Fachkräfte</span>
+          </div>
+          <div class="how-check-item">
+            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            <span><strong>Soforttermin</strong> — Erstgespräch oft noch innerhalb von 48 Stunden</span>
+          </div>
+          <div class="how-check-item">
+            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            <span><strong>Transparente Preise</strong> — Festpreise via Stripe, keine versteckten Kosten</span>
+          </div>
+          <div class="how-check-item">
+            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+            <span><strong>Made in Berlin</strong> — Digital & vor Ort, nach deutschem Qualitätsstandard</span>
+          </div>
+        </div>
       </div>
+      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="openModal()">Jetzt Eignung prüfen →</button>
     </div>
   </div>
 </section>

@@ -151,30 +151,46 @@
     .section-h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.6rem); color: var(--dark); line-height: 1.15; margin-bottom: 0.75rem; }
     .section-p { font-size: 1rem; line-height: 1.8; color: var(--muted); font-weight: 300; max-width: 560px; }
 
-    /* ── HOW IT WORKS ── */
+    /* ── BOOKING STEPS ── */
     .how { background: var(--sand); }
-    .how-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: stretch; }
-    .how-steps { display: flex; flex-direction: column; gap: 0; position: relative; margin-top: 2rem; }
-    .how-steps::before { content: ''; position: absolute; left: 20px; top: 28px; bottom: 28px; width: 1px; background: var(--green-pale); }
-    .how-step { display: flex; gap: 1.25rem; align-items: flex-start; padding-bottom: 2rem; position: relative; }
-    .how-step:last-child { padding-bottom: 0; }
-    .how-step-circle { width: 40px; height: 40px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; flex-shrink: 0; position: relative; z-index: 1; }
-    .how-step-title { font-size: 1rem; font-weight: 500; color: var(--dark); margin-bottom: 0.4rem; }
-    .how-step-desc { font-size: 0.88rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
-    .how-right { background: var(--cream); border-radius: 24px; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
-    .how-right h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.5rem; }
-    .how-right-p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin-bottom: 1.75rem; }
-    .how-checklist { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; flex: 1; }
-    .how-check-item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.88rem; color: var(--dark); font-weight: 400; line-height: 1.5; }
-    .how-check-icon { width: 20px; height: 20px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.05rem; }
-    .how-check-icon svg { width: 11px; height: 11px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .booking-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+    .booking-step { background: var(--cream); border-radius: 20px; padding: 2rem; }
+    .booking-step-num { width: 44px; height: 44px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; margin-bottom: 1.25rem; }
+    .booking-step h3 { font-size: 1rem; font-weight: 500; color: var(--dark); margin-bottom: 0.5rem; }
+    .booking-step p { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; }
 
-    /* ── PROGRAMS ── */
-    .how-programs { margin-top: 4rem; padding-top: 3.5rem; border-top: 1px solid rgba(160,140,120,0.18); }
-    .how-programs-header { text-align: center; margin-bottom: 2.5rem; }
-    .how-programs-header h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--dark); margin-bottom: 0.5rem; }
-    .how-programs-header p { font-size: 0.88rem; color: var(--muted); font-weight: 300; }
+    /* ── INTENSITIES ── */
     .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+
+    /* ── CAROUSEL ── */
+    .carousel-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .carousel-all-link { font-size: 0.88rem; font-weight: 500; color: var(--green); text-decoration: none; white-space: nowrap; transition: color 0.2s; }
+    .carousel-all-link:hover { color: var(--green-dark); }
+    .carousel-outer { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; }
+    .carousel-outer::-webkit-scrollbar { display: none; }
+    .carousel-track { display: flex; gap: 1.5rem; padding: 0.5rem 0 1rem; }
+    .carousel-card { flex: 0 0 280px; background: var(--sand); border-radius: 24px; padding: 2rem; scroll-snap-align: start; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .carousel-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(61,107,85,0.08); }
+    .carousel-card-coming { opacity: 0.55; }
+    .carousel-icon { font-size: 2.25rem; margin-bottom: 1rem; }
+    .carousel-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.4rem; display: block; }
+    .carousel-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark); margin-bottom: 0.6rem; }
+    .carousel-card p { font-size: 0.85rem; line-height: 1.7; color: var(--muted); font-weight: 300; margin-bottom: 1.5rem; flex: 1; }
+    .carousel-link { font-size: 0.85rem; font-weight: 500; color: var(--green); text-decoration: none; }
+    .carousel-link:hover { color: var(--green-dark); }
+    .carousel-controls { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+    .carousel-btn { width: 40px; height: 40px; border-radius: 50%; background: transparent; border: 1.5px solid rgba(160,140,120,0.3); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; font-family: inherit; }
+    .carousel-btn:hover { background: var(--green); color: #fff; border-color: var(--green); }
+    .carousel-dots { display: flex; gap: 0.5rem; }
+    .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-pale); transition: all 0.25s; cursor: pointer; }
+    .carousel-dot.active { width: 20px; border-radius: 3px; background: var(--green); }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip { background: var(--green); padding: 1.25rem 5vw; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: rgba(255,255,255,0.8); padding: 0.4rem 1.5rem; font-weight: 300; }
+    .trust-item strong { font-weight: 500; color: #fff; }
+    .trust-check { width: 18px; height: 18px; background: rgba(255,255,255,0.18); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; flex-shrink: 0; }
+    .trust-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.18); flex-shrink: 0; }
     .program-card { border-radius: 24px; padding: 2.5rem; transition: transform 0.2s; }
     .program-card:hover { transform: translateY(-4px); }
     .program-green { background: var(--green); }
@@ -406,12 +422,17 @@
       .approach-result { flex-direction: column; text-align: center; gap: 1.25rem; }
       .approach-result .btn-primary { width: 100%; }
 
-      /* HOW */
-      .how-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      /* BOOKING */
+      .booking-steps { grid-template-columns: 1fr; }
 
-      /* PROGRAMS */
+      /* INTENSITIES */
       .programs-grid { grid-template-columns: 1fr; }
-      .how-programs { margin-top: 2.5rem; padding-top: 2.5rem; }
+
+      /* CAROUSEL */
+      .carousel-card { flex: 0 0 82vw; }
+      .carousel-all-link { display: none; }
+      .trust-divider { display: none; }
+      .trust-item { padding: 0.3rem 0.75rem; font-size: 0.75rem; }
 
       /* PRICING */
       .pricing-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
@@ -511,107 +532,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how" id="how">
-  <div class="how-inner">
-    <div>
-      <span class="section-tag">So funktioniert es</span>
-      <h2 class="section-h2">In 3 Schritten zur Therapie</h2>
-      <p class="section-p">Kein Login, kein Papierkram — nur ein klarer, sicherer Weg zu professioneller Unterstützung.</p>
-      <div class="how-steps">
-        <div class="how-step">
-          <div class="how-step-circle">1</div>
-          <div>
-            <div class="how-step-title">📋 Eignung prüfen</div>
-            <div class="how-step-desc">Beantworte unseren medizinischen Fragebogen in ca. 5 Minuten — anonym und GDPR-konform, ohne Login.</div>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-circle">2</div>
-          <div>
-            <div class="how-step-title">💳 Paket wählen & bezahlen</div>
-            <div class="how-step-desc">Wähle dein Therapiepaket und bezahle sicher über Stripe — zu transparenten Festpreisen ohne versteckte Kosten.</div>
-          </div>
-        </div>
-        <div class="how-step">
-          <div class="how-step-circle">3</div>
-          <div>
-            <div class="how-step-title">📅 Termin buchen</div>
-            <div class="how-step-desc">Nach der Zahlung buchst du deinen Ersttermin direkt im Kalender — digital oder vor Ort in Berlin.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="how-right">
-      <div>
-        <h3>Warum Nubo Therapy?</h3>
-        <p class="how-right-p">Wir verbinden die Zuverlässigkeit einer klassischen Privatpraxis mit dem reibungslosen Erlebnis moderner Technologie. Kein Wartezimmer, kein Papierkram — nur echte Therapie.</p>
-        <div class="how-checklist">
-          <div class="how-check-item">
-            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-            <span><strong>DSGVO Art. 9</strong> — Höchster Datenschutz für sensible Gesundheitsdaten</span>
-          </div>
-          <div class="how-check-item">
-            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-            <span><strong>Ärztlich geleitet</strong> — Jede Therapie unter medizinischer Supervision</span>
-          </div>
-          <div class="how-check-item">
-            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-            <span><strong>Lizenzierte Therapeuten</strong> — Ausschließlich staatlich anerkannte Fachkräfte</span>
-          </div>
-          <div class="how-check-item">
-            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-            <span><strong>Soforttermin</strong> — Erstgespräch oft noch innerhalb von 48 Stunden</span>
-          </div>
-          <div class="how-check-item">
-            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-            <span><strong>Transparente Preise</strong> — Festpreise via Stripe, keine versteckten Kosten</span>
-          </div>
-          <div class="how-check-item">
-            <span class="how-check-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
-            <span><strong>Made in Berlin</strong> — Digital & vor Ort, nach deutschem Qualitätsstandard</span>
-          </div>
-        </div>
-      </div>
-      <button class="btn-primary" style="width:100%;justify-content:center;" onclick="openModal()">Jetzt Eignung prüfen →</button>
-    </div>
-  </div>
-
-  <div class="how-programs" id="programs">
-    <div class="how-programs-header">
-      <span class="section-tag">Unsere Programme</span>
-      <h3>Wähle deine Intensität</h3>
-      <p>Beide Programme basieren auf unserem Blended-Care-Konzept mit 30-Min-Gesprächen und geführter Selbstarbeit.</p>
-    </div>
-    <div class="programs-grid">
-      <div class="program-card program-green">
-        <div class="program-badge">Mehr Begleitung</div>
-        <h3>Intensive Care</h3>
-        <p>Häufigere 30-Min-Gespräche, intensive digitale Begleitung und direkter Zugang zum medizinischen Team. Für akute Phasen oder hohen Unterstützungsbedarf.</p>
-        <ul class="program-features">
-          <li>Wöchentliche 30-Min-Videogespräche</li>
-          <li>Geführte digitale Selbstarbeit</li>
-          <li>Ärztliche Supervision</li>
-          <li>Persönlicher Krisenplan</li>
-        </ul>
-        <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
-      </div>
-      <div class="program-card program-sand">
-        <div class="program-badge">Mehr Flexibilität</div>
-        <h3>Blended Care</h3>
-        <p>Weniger, dafür gezielte 30-Min-Gespräche kombiniert mit strukturierter Eigenarbeit. Ideal für volle Terminkalender — du bestimmst das Tempo.</p>
-        <ul class="program-features">
-          <li>Flexible 30-Min-Videogespräche</li>
-          <li>Digitale Module & Workbooks</li>
-          <li>Therapeuten-Feedback auf Selbstarbeit</li>
-          <li>Community-Zugang</li>
-        </ul>
-        <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- APPROACH -->
 <section id="approach">
   <span class="section-tag">Unser Ansatz</span>
@@ -644,6 +564,133 @@
       <p style="font-size:1rem;font-weight:500;color:var(--dark);line-height:1.6;">Eine Therapie, die nicht einfach nur Zeit absitzt, sondern dich aktiv einbindet — und spürbar schneller voranbringt.</p>
     </div>
     <button class="btn-primary" style="flex-shrink:0;white-space:nowrap;" onclick="openModal()">Jetzt starten →</button>
+  </div>
+</section>
+
+<!-- INTENSITIES -->
+<section id="intensities" style="background:var(--sand);">
+  <span class="section-tag">Begleitintensität</span>
+  <h2 class="section-h2">Wie viel Begleitung brauchst du?</h2>
+  <p class="section-p">Basierend auf dem Ansatz oben bieten wir zwei Intensitätsstufen an — du wählst, was zu deinem Alltag passt. Beides baut auf 30-Min-Gesprächen und geführter Selbstarbeit auf.</p>
+  <div class="programs-grid">
+    <div class="program-card program-green">
+      <div class="program-badge">Mehr Begleitung</div>
+      <h3>Intensive Care</h3>
+      <p>Häufigere 30-Min-Gespräche, intensive digitale Begleitung und direkter Zugang zum medizinischen Team. Für akute Phasen oder hohen Unterstützungsbedarf.</p>
+      <ul class="program-features">
+        <li>Wöchentliche 30-Min-Videogespräche</li>
+        <li>Geführte digitale Selbstarbeit</li>
+        <li>Ärztliche Supervision</li>
+        <li>Persönlicher Krisenplan</li>
+      </ul>
+      <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
+    </div>
+    <div class="program-card program-sand">
+      <div class="program-badge">Mehr Flexibilität</div>
+      <h3>Blended Care</h3>
+      <p>Weniger, dafür gezielte 30-Min-Gespräche kombiniert mit strukturierter Eigenarbeit. Ideal für volle Terminkalender — du bestimmst das Tempo.</p>
+      <ul class="program-features">
+        <li>Flexible 30-Min-Videogespräche</li>
+        <li>Digitale Module & Workbooks</li>
+        <li>Therapeuten-Feedback auf Selbstarbeit</li>
+        <li>Community-Zugang</li>
+      </ul>
+      <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS CAROUSEL -->
+<section id="programs">
+  <div class="carousel-header">
+    <div>
+      <span class="section-tag">Unsere Programme</span>
+      <h2 class="section-h2">Wähle dein Thema</h2>
+      <p class="section-p" style="margin-top:0.5rem;">Alle Programme sind in <strong>beiden Intensitäten buchbar</strong> — du wählst das Thema, das dich beschäftigt, und entscheidest danach, wie viel Begleitung du brauchst.</p>
+    </div>
+    <a href="desktop-produkte.html" class="carousel-all-link">Alle Programme ansehen →</a>
+  </div>
+  <div class="carousel-outer">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-card">
+        <div class="carousel-icon">🤱</div>
+        <span class="carousel-tag">Spezialthema</span>
+        <h3>Unerfüllter Kinderwunsch</h3>
+        <p>Begleitung durch Behandlung, Fehlgeburt und die Frage: Weitermachen oder loslassen? Für alle Phasen des Weges.</p>
+        <a href="desktop-produkte.html" class="carousel-link">Mehr erfahren →</a>
+      </div>
+      <div class="carousel-card">
+        <div class="carousel-icon">💼</div>
+        <span class="carousel-tag">Spezialthema</span>
+        <h3>Angst vor Arbeitsplatzverlust</h3>
+        <p>Angst verstehen, regulieren und wieder handlungsfähig werden — egal ob Unsicherheit oder bereits von Kündigung betroffen.</p>
+        <a href="desktop-produkte.html" class="carousel-link">Mehr erfahren →</a>
+      </div>
+      <div class="carousel-card carousel-card-coming">
+        <div class="carousel-icon">🔥</div>
+        <span class="carousel-tag">Demnächst</span>
+        <h3>Burnout & Erschöpfung</h3>
+        <p>Neues Programm in Entwicklung. Trag dich in die Warteliste ein und werde als Erstes informiert.</p>
+        <a href="#contact" class="carousel-link">Warteliste →</a>
+      </div>
+      <div class="carousel-card carousel-card-coming">
+        <div class="carousel-icon">🕊️</div>
+        <span class="carousel-tag">Demnächst</span>
+        <h3>Trauer & Verlust</h3>
+        <p>Neues Programm in Entwicklung. Trag dich in die Warteliste ein und werde als Erstes informiert.</p>
+        <a href="#contact" class="carousel-link">Warteliste →</a>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-controls">
+    <button class="carousel-btn" onclick="scrollCarousel(-1)" aria-label="Zurück">←</button>
+    <div class="carousel-dots" id="carouselDots">
+      <div class="carousel-dot active"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+      <div class="carousel-dot"></div>
+    </div>
+    <button class="carousel-btn" onclick="scrollCarousel(1)" aria-label="Weiter">→</button>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item"><span class="trust-check">✓</span><span><strong>DSGVO Art. 9</strong> · Höchster Datenschutz</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span class="trust-check">✓</span><span><strong>Ärztlich geleitet</strong> · Medizinische Supervision</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span class="trust-check">✓</span><span><strong>Soforttermin</strong> · Oft in 48 Stunden</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span class="trust-check">✓</span><span><strong>Lizenzierte Therapeuten</strong> · Staatlich anerkannt</span></div>
+  <div class="trust-divider"></div>
+  <div class="trust-item"><span class="trust-check">✓</span><span><strong>Made in Berlin</strong> · Transparente Preise</span></div>
+</div>
+
+<!-- HOW / BUCHUNG -->
+<section class="how" id="how">
+  <span class="section-tag">So buchst du</span>
+  <h2 class="section-h2">In 3 Schritten zur Therapie</h2>
+  <p class="section-p">Kein Login, kein Papierkram — nur ein klarer, sicherer Weg zu professioneller Unterstützung.</p>
+  <div class="booking-steps">
+    <div class="booking-step">
+      <div class="booking-step-num">1</div>
+      <h3>📋 Eignung prüfen</h3>
+      <p>Beantworte unseren medizinischen Fragebogen in ca. 5 Minuten — anonym und GDPR-konform, ohne Login.</p>
+    </div>
+    <div class="booking-step">
+      <div class="booking-step-num">2</div>
+      <h3>💳 Paket wählen & bezahlen</h3>
+      <p>Wähle dein Therapiepaket und bezahle sicher über Stripe — zu transparenten Festpreisen ohne versteckte Kosten.</p>
+    </div>
+    <div class="booking-step">
+      <div class="booking-step-num">3</div>
+      <h3>📅 Termin buchen</h3>
+      <p>Nach der Zahlung buchst du deinen Ersttermin direkt im Kalender — digital oder vor Ort in Berlin.</p>
+    </div>
+  </div>
+  <div style="margin-top:3rem;text-align:center;">
+    <button class="btn-primary" onclick="openModal()">Jetzt Eignung prüfen →</button>
   </div>
 </section>
 
@@ -932,6 +979,28 @@
 <script>
   function openModal() { document.getElementById('modal').classList.add('open'); }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+  function scrollCarousel(dir) {
+    const track = document.getElementById('carouselTrack');
+    const card = track.querySelector('.carousel-card');
+    const gap = 24;
+    track.scrollBy({ left: dir * (card.offsetWidth + gap), behavior: 'smooth' });
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('carouselTrack');
+    if (!track) return;
+    track.addEventListener('scroll', function() {
+      const card = track.querySelector('.carousel-card');
+      const idx = Math.round(track.scrollLeft / (card.offsetWidth + 24));
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+    });
+    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+      dot.addEventListener('click', function() {
+        const card = track.querySelector('.carousel-card');
+        track.scrollTo({ left: i * (card.offsetWidth + 24), behavior: 'smooth' });
+      });
+    });
+  });
 
   function toggleNav() {
     const nav = document.getElementById('navLinks');

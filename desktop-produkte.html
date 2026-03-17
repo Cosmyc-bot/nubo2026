@@ -223,22 +223,104 @@
     .modal-tally code { font-size: 0.78rem; color: var(--green); background: rgba(61,107,85,0.1); padding: 0.4rem 0.85rem; border-radius: 8px; display: inline-block; font-family: monospace; }
     .modal-gdpr { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
     .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 36px; height: 36px; background: var(--sand); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+
+    /* ── NAV HAMBURGER ── */
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 101; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 768px) {
+      /* NAV */
+      .nav-links {
+        display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+        flex-direction: column; align-items: flex-start;
+        background: rgba(250,247,244,0.98); backdrop-filter: blur(16px);
+        padding: 1.5rem 5vw 2rem; gap: 1.25rem;
+        border-bottom: 1px solid rgba(160,140,120,0.15);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1rem; color: var(--dark); }
+      .nav-links .nav-cta-mobile {
+        background: var(--green); color: #fff; padding: 0.75rem 1.5rem;
+        border-radius: 100px; font-size: 0.9rem; font-weight: 500; border: none;
+        cursor: pointer; font-family: 'DM Sans', sans-serif; width: 100%; text-align: center;
+      }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* SECTIONS */
+      section { padding: 4rem 5vw; }
+
+      /* HERO */
+      .hero { padding-top: calc(var(--nav-h) + 3rem); padding-bottom: 3rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .prog-tabs-wrap { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .prog-tabs { flex-direction: column; width: 100%; border-radius: 16px; }
+      .prog-tab { width: 100%; text-align: left; border-radius: 12px; padding: 0.9rem 1.25rem; font-size: 0.85rem; }
+
+      /* PROG OVERVIEW */
+      .prog-overview-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* PROG INCLUDED */
+      .prog-included-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .included-grid { grid-template-columns: 1fr; }
+
+      /* METHODEN */
+      .methoden-grid { grid-template-columns: 1fr; }
+
+      /* PRICING */
+      .pricing-top { flex-direction: column; align-items: flex-start; }
+      .pricing-selectors { align-items: flex-start; width: 100%; }
+      .selector-row { flex-wrap: wrap; gap: 0.75rem; width: 100%; }
+      .prog-selector, .methode-toggle { flex-wrap: wrap; }
+      .prog-sel-btn, .methode-btn { font-size: 0.8rem; }
+      .pricing-grid { grid-template-columns: 1fr; }
+
+      /* PROCESS */
+      .process-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* CTA */
+      .cta-btns { flex-direction: column; align-items: stretch; }
+      .btn-white, .btn-ghost { width: 100%; justify-content: center; text-align: center; }
+
+      /* FOOTER */
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+
+      /* MODAL */
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal { border-radius: 28px 28px 0 0; max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.75rem; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
 <!-- ── NAV ── -->
 <nav>
-  <a class="nav-logo" href="desktop.html">nubo<div class="nav-logo-dot"></div></a>
-  <div class="nav-links">
-    <a href="desktop.html">Start</a>
-    <a href="desktop.html#approach">Unser Ansatz</a>
-    <a href="desktop-produkte.html" class="active">Programme</a>
-    <a href="desktop.html#about">Über uns</a>
-    <a href="desktop.html#faq">FAQ</a>
-    <a href="desktop.html#contact">Kontakt</a>
+  <a class="nav-logo" href="index.html">nubo<div class="nav-logo-dot"></div></a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Start</a>
+    <a href="index.html#approach">Unser Ansatz</a>
+    <a href="produkte.html" class="active">Programme</a>
+    <a href="index.html#about">Über uns</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#contact">Kontakt</a>
+    <button class="nav-cta-mobile" onclick="openModal();closeNav()">Eignung prüfen →</button>
   </div>
   <button class="nav-cta" onclick="openModal()">Eignung prüfen →</button>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ── HERO ── -->
@@ -746,7 +828,7 @@
     <p>Beantworte den anonymen Pre-Check und finde heraus, welches Programm und welche Methode zu dir passen — kostenlos, in ca. 5 Minuten, ohne Login.</p>
     <div class="cta-btns">
       <button class="btn-white" onclick="openModal()">Eignung prüfen — kostenlos →</button>
-      <a class="btn-ghost" href="desktop.html">← Zurück zur Startseite</a>
+      <a class="btn-ghost" href="index.html">← Zurück zur Startseite</a>
     </div>
   </div>
 </section>
@@ -844,6 +926,18 @@
 
   function openModal() { document.getElementById('modal').classList.add('open'); }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+  function toggleNav() {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', closeNav));
 </script>
 </body>
 </html>

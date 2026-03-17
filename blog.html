@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Nubo Therapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #3D6B55;
+      --green-dark: #2d5040;
+      --green-light: #7A9E87;
+      --green-pale: #C4D4C9;
+      --sand: #E8DDD0;
+      --sand-dark: #D9CCBC;
+      --cream: #FAF7F4;
+      --brown: #B08B6E;
+      --dark: #2A2825;
+      --muted: #6B6560;
+      --nav-h: 80px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h); background: rgba(250,247,244,0.95);
+      backdrop-filter: blur(16px); border-bottom: 1px solid rgba(160,140,120,0.12);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green); display: flex; align-items: center; gap: 5px; text-decoration: none; }
+    .nav-logo-dot { width: 8px; height: 8px; background: var(--green-light); border-radius: 50%; margin-bottom: 3px; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 400; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); font-weight: 500; }
+    .nav-cta {
+      background: var(--green); color: #fff; padding: 0.65rem 1.5rem;
+      border-radius: 100px; font-size: 0.88rem; font-weight: 500;
+      border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s; white-space: nowrap; text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--green-dark); }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── BLOG HEADER ── */
+    .blog-header {
+      padding-top: var(--nav-h);
+      background: linear-gradient(120deg, var(--cream) 55%, #dce8e1 100%);
+      padding-bottom: 4rem;
+      padding-left: 5vw; padding-right: 5vw;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .blog-header::after {
+      content: ''; position: absolute; top: 30%; right: -5%;
+      width: 360px; height: 360px; border-radius: 50%;
+      border: 1.5px solid rgba(61,107,85,0.1);
+      pointer-events: none;
+    }
+    .blog-header-inner { max-width: 640px; margin: 0 auto; padding-top: 4rem; }
+    .blog-header-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--green-pale); color: var(--green);
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .blog-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.15; color: var(--dark); margin-bottom: 1rem; font-weight: 600;
+    }
+    .blog-header h1 em { font-style: italic; color: var(--green); }
+    .blog-header p { font-size: 1rem; line-height: 1.8; color: var(--muted); font-weight: 300; }
+
+    /* ── BLOG GRID ── */
+    .blog-section { padding: 5rem 5vw; }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(160,140,120,0.12);
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(61,107,85,0.1); }
+    .blog-card-img {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      flex-shrink: 0;
+    }
+    .blog-card-img.green { background: linear-gradient(135deg, #2d5040, #4e8068); }
+    .blog-card-img.sand  { background: linear-gradient(135deg, var(--sand), var(--sand-dark)); }
+    .blog-card-img.pale  { background: linear-gradient(135deg, var(--green-pale), #a8c5b2); }
+    .blog-card-body { padding: 1.75rem; display: flex; flex-direction: column; flex: 1; }
+    .blog-card-cat {
+      display: inline-block; font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--green);
+      background: var(--green-pale); padding: 0.25rem 0.75rem;
+      border-radius: 100px; margin-bottom: 0.85rem;
+    }
+    .blog-card h2 {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      line-height: 1.35; color: var(--dark); margin-bottom: 0.75rem; font-weight: 600;
+    }
+    .blog-card p { font-size: 0.85rem; line-height: 1.75; color: var(--muted); font-weight: 300; flex: 1; }
+    .blog-card-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.5rem; padding-top: 1rem;
+      border-top: 1px solid rgba(160,140,120,0.12);
+      font-size: 0.75rem; color: var(--muted);
+    }
+    .blog-card-meta a {
+      text-decoration: none; color: var(--green); font-weight: 500;
+      font-size: 0.82rem; transition: color 0.2s;
+    }
+    .blog-card-meta a:hover { color: var(--green-dark); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 4rem 5vw 2.5rem; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.75rem; }
+    .footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.75; font-weight: 300; max-width: 260px; }
+    .footer-col h4 { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li { font-size: 0.83rem; color: rgba(255,255,255,0.4); cursor: pointer; transition: color 0.2s; }
+    .footer-col ul li:hover { color: rgba(255,255,255,0.75); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.75rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom-left { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .footer-gdpr { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; flex-direction: column; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--cream); padding: 1.5rem 5vw 2rem; border-bottom: 1px solid rgba(160,140,120,0.15); gap: 1.25rem; z-index: 99; }
+      .nav-links.open { display: flex; }
+      .nav-hamburger { display: flex; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 540px) {
+      .blog-header h1 { font-size: 2rem; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">nubo<div class="nav-logo-dot"></div></a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Start</a>
+    <a href="index.html#approach">Unser Ansatz</a>
+    <a href="desktop-produkte.html">Programme</a>
+    <a href="index.html#about">Über uns</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="index.html#contact">Kontakt</a>
+  </div>
+  <a class="nav-cta" href="index.html#home">Eignung prüfen →</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HEADER -->
+<div class="blog-header">
+  <div class="blog-header-inner">
+    <div class="blog-header-tag">Wissen & Hintergrund</div>
+    <h1>Der nubo<br><em>Therapie-Blog</em></h1>
+    <p>Fundierte Texte über psychische Gesundheit, moderne Therapieformen und den Weg zur Behandlung — verständlich erklärt.</p>
+  </div>
+</div>
+
+<!-- BLOG POSTS -->
+<section class="blog-section">
+  <div class="blog-grid">
+
+    <article class="blog-card">
+      <div class="blog-card-img green">🧠</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Grundlagen</span>
+        <h2>Was ist Hybridtherapie — und warum funktioniert sie?</h2>
+        <p>Die Kombination aus Präsenzsitzungen und digitalen Tools ist kein Kompromiss, sondern oft wirksamer als klassische Therapie allein. Wir erklären warum.</p>
+        <div class="blog-card-meta">
+          <span>17. März 2026 · 6 Min.</span>
+          <a href="blog/was-ist-hybridtherapie.html">Weiterlesen →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img sand">🌿</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Angst & Stress</span>
+        <h2>Angststörungen erkennen: Diese Zeichen solltest du ernst nehmen</h2>
+        <p>Zwischen normalem Alltagsstress und einer behandlungsbedürftigen Angststörung liegen oft nur wenige Symptome. Hier sind die wichtigsten Warnsignale.</p>
+        <div class="blog-card-meta">
+          <span>10. März 2026 · 8 Min.</span>
+          <a href="blog/angststoerungen-erkennen.html">Weiterlesen →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img pale">💬</div>
+      <div class="blog-card-body">
+        <span class="blog-card-cat">Erste Schritte</span>
+        <h2>Das erste Therapiegespräch: Was dich erwartet und wie du dich vorbereitest</h2>
+        <p>Viele Menschen zögern, weil sie nicht wissen, was im Erstgespräch passiert. Wir nehmen dir die Unsicherheit und erklären den Ablauf Schritt für Schritt.</p>
+        <div class="blog-card-meta">
+          <span>3. März 2026 · 5 Min.</span>
+          <a href="blog/erstes-therapiegespraech.html">Weiterlesen →</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">nubo</div>
+      <div class="footer-tagline">Hybride Privatpraxis für Psychotherapie. Medizinisch geleitet. Modern erlebt.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Programme</h4>
+      <ul>
+        <li>Intensive Care</li>
+        <li>Blended Care</li>
+        <li>Pre-Check</li>
+        <li>Preisübersicht</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Unternehmen</h4>
+      <ul>
+        <li>Über uns</li>
+        <li>Team</li>
+        <li>Karriere</li>
+        <li>Presse</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Rechtliches</h4>
+      <ul>
+        <li>Impressum</li>
+        <li>Datenschutz</li>
+        <li>AGB</li>
+        <li>Cookies</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">© 2026 Nubo Therapy GmbH · Berlin</div>
+    <div class="footer-gdpr">🔒 DSGVO Art. 9</div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('#navLinks a').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  }));
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow = window.scrollY > 20
+      ? '0 2px 20px rgba(42,40,37,0.08)' : 'none';
+  });
+</script>
+</body>
+</html>

@@ -71,7 +71,10 @@
     .hero-right {
       position: relative; z-index: 1;
       align-self: center; display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(145deg, #2d5040 0%, #3D6B55 55%, #4e8068 100%);
+      background: linear-gradient(145deg, rgba(45,80,64,0.82) 0%, rgba(61,107,85,0.45) 70%, rgba(78,128,104,0.15) 100%);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 50%;
       aspect-ratio: 1;
       width: min(100%, 480px);
@@ -128,17 +131,17 @@
     .hero-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 1rem; }
     .hero-steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem; }
     .hero-step { display: flex; align-items: center; gap: 0.85rem; }
-    .hero-step-num { width: 28px; height: 28px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: #fff; flex-shrink: 0; }
+    .hero-step-num { width: 28px; height: 28px; background: rgba(255,255,255,0.22); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: #fff; flex-shrink: 0; }
     .hero-step-text { font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 300; }
     .hero-card-pill {
-      background: rgba(255,255,255,0.1); border-radius: 14px; padding: 1rem 1.25rem;
+      background: rgba(255,255,255,0.18); border-radius: 14px; padding: 1rem 1.25rem;
       display: flex; align-items: center; gap: 1rem;
     }
-    .hero-card-pill-icon { width: 42px; height: 42px; background: rgba(255,255,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .hero-card-pill-icon { width: 42px; height: 42px; background: rgba(255,255,255,0.22); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
     .hero-card-pill-text { font-size: 0.85rem; font-weight: 500; color: #fff; }
     .hero-card-pill-sub { font-size: 0.75rem; color: rgba(255,255,255,0.6); font-weight: 300; }
     .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
-    .hero-stat { background: rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem; text-align: center; }
+    .hero-stat { background: rgba(255,255,255,0.16); border-radius: 14px; padding: 1rem; text-align: center; }
     .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; font-weight: 600; }
     .hero-stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); font-weight: 300; margin-top: 2px; }
 

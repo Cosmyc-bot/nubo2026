@@ -170,6 +170,10 @@
     .how-check-icon svg { width: 11px; height: 11px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ── PROGRAMS ── */
+    .how-programs { margin-top: 4rem; padding-top: 3.5rem; border-top: 1px solid rgba(160,140,120,0.18); }
+    .how-programs-header { text-align: center; margin-bottom: 2.5rem; }
+    .how-programs-header h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .how-programs-header p { font-size: 0.88rem; color: var(--muted); font-weight: 300; }
     .programs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
     .program-card { border-radius: 24px; padding: 2.5rem; transition: transform 0.2s; }
     .program-card:hover { transform: translateY(-4px); }
@@ -407,6 +411,7 @@
 
       /* PROGRAMS */
       .programs-grid { grid-template-columns: 1fr; }
+      .how-programs { margin-top: 2.5rem; padding-top: 2.5rem; }
 
       /* PRICING */
       .pricing-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
@@ -571,6 +576,40 @@
       <button class="btn-primary" style="width:100%;justify-content:center;" onclick="openModal()">Jetzt Eignung prüfen →</button>
     </div>
   </div>
+
+  <div class="how-programs" id="programs">
+    <div class="how-programs-header">
+      <span class="section-tag">Unsere Programme</span>
+      <h3>Wähle deine Intensität</h3>
+      <p>Beide Programme basieren auf unserem Blended-Care-Konzept mit 30-Min-Gesprächen und geführter Selbstarbeit.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card program-green">
+        <div class="program-badge">Mehr Begleitung</div>
+        <h3>Intensive Care</h3>
+        <p>Häufigere 30-Min-Gespräche, intensive digitale Begleitung und direkter Zugang zum medizinischen Team. Für akute Phasen oder hohen Unterstützungsbedarf.</p>
+        <ul class="program-features">
+          <li>Wöchentliche 30-Min-Videogespräche</li>
+          <li>Geführte digitale Selbstarbeit</li>
+          <li>Ärztliche Supervision</li>
+          <li>Persönlicher Krisenplan</li>
+        </ul>
+        <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
+      </div>
+      <div class="program-card program-sand">
+        <div class="program-badge">Mehr Flexibilität</div>
+        <h3>Blended Care</h3>
+        <p>Weniger, dafür gezielte 30-Min-Gespräche kombiniert mit strukturierter Eigenarbeit. Ideal für volle Terminkalender — du bestimmst das Tempo.</p>
+        <ul class="program-features">
+          <li>Flexible 30-Min-Videogespräche</li>
+          <li>Digitale Module & Workbooks</li>
+          <li>Therapeuten-Feedback auf Selbstarbeit</li>
+          <li>Community-Zugang</li>
+        </ul>
+        <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- APPROACH -->
@@ -605,39 +644,6 @@
       <p style="font-size:1rem;font-weight:500;color:var(--dark);line-height:1.6;">Eine Therapie, die nicht einfach nur Zeit absitzt, sondern dich aktiv einbindet — und spürbar schneller voranbringt.</p>
     </div>
     <button class="btn-primary" style="flex-shrink:0;white-space:nowrap;" onclick="openModal()">Jetzt starten →</button>
-  </div>
-</section>
-
-<!-- PROGRAMS -->
-<section id="programs" style="background:var(--sand);">
-  <span class="section-tag">Unsere Programme</span>
-  <h2 class="section-h2">Wähle deine Intensität</h2>
-  <p class="section-p">Beide Programme basieren auf unserem Blended-Care-Konzept mit 30-Min-Gesprächen und geführter Selbstarbeit.</p>
-  <div class="programs-grid">
-    <div class="program-card program-green">
-      <div class="program-badge">Mehr Begleitung</div>
-      <h3>Intensive Care</h3>
-      <p>Häufigere 30-Min-Gespräche, intensive digitale Begleitung und direkter Zugang zum medizinischen Team. Für akute Phasen oder hohen Unterstützungsbedarf.</p>
-      <ul class="program-features">
-        <li>Wöchentliche 30-Min-Videogespräche</li>
-        <li>Geführte digitale Selbstarbeit</li>
-        <li>Ärztliche Supervision</li>
-        <li>Persönlicher Krisenplan</li>
-      </ul>
-      <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
-    </div>
-    <div class="program-card program-sand">
-      <div class="program-badge">Mehr Flexibilität</div>
-      <h3>Blended Care</h3>
-      <p>Weniger, dafür gezielte 30-Min-Gespräche kombiniert mit strukturierter Eigenarbeit. Ideal für volle Terminkalender — du bestimmst das Tempo.</p>
-      <ul class="program-features">
-        <li>Flexible 30-Min-Videogespräche</li>
-        <li>Digitale Module & Workbooks</li>
-        <li>Therapeuten-Feedback auf Selbstarbeit</li>
-        <li>Community-Zugang</li>
-      </ul>
-      <button class="program-btn" onclick="openModal()">Jetzt Eignung prüfen →</button>
-    </div>
   </div>
 </section>
 

@@ -177,11 +177,10 @@
     .pricing-tabs { display: flex; gap: 0.5rem; background: var(--cream); border-radius: 100px; padding: 5px; }
     .pricing-tab { padding: 0.55rem 1.25rem; border-radius: 100px; border: none; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; cursor: pointer; background: transparent; color: var(--muted); transition: all 0.2s; }
     .pricing-tab.active { background: var(--green); color: #fff; font-weight: 500; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: end; }
     .price-card { background: var(--cream); border: 1px solid rgba(160,140,120,0.2); border-radius: 20px; padding: 2rem; position: relative; display: none; transition: transform 0.2s; }
     .price-card:hover { transform: translateY(-3px); }
-    .price-card.visible { display: flex; flex-direction: column; }
-    .price-card .price-btn { margin-top: auto; }
+    .price-card.visible { display: block; }
     .price-card.featured { background: var(--green); border-color: var(--green); }
     .price-popular { position: absolute; top: -12px; left: 1.5rem; background: var(--brown); color: #fff; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.85rem; border-radius: 100px; }
     .price-tier { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; }

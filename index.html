@@ -32,7 +32,7 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5vw;
     }
-    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green); display: flex; align-items: center; gap: 5px; text-decoration: none; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--green); display: flex; align-items: center; gap: 10px; text-decoration: none; font-style: italic; letter-spacing: -0.3px; }
     .nav-logo-dot { width: 8px; height: 8px; background: var(--green-light); border-radius: 50%; margin-bottom: 3px; }
     .nav-links { display: flex; align-items: center; gap: 2.5rem; }
     .nav-links a { text-decoration: none; font-size: 0.88rem; font-weight: 400; color: var(--muted); transition: color 0.2s; }
@@ -317,7 +317,7 @@
     /* ── FOOTER ── */
     footer { background: var(--dark); padding: 4rem 5vw 2.5rem; }
     .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: 0.75rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 10px; font-style: italic; letter-spacing: -0.3px; }
     .footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.75; font-weight: 300; max-width: 260px; }
     .footer-col h4 { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1rem; }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
@@ -478,7 +478,7 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="index.html">nubo<div class="nav-logo-dot"></div></a>
+  <a class="nav-logo" href="index.html"><svg class="nav-logo-mark" width="30" height="30" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="28" cy="28" r="24" stroke="var(--green)" stroke-width="2.8"/><path d="M 11 31 L 45 31" stroke="var(--green)" stroke-width="1.4" stroke-linecap="round" opacity="0.2"/><path d="M 13 31 A 15 15 0 0 1 43 31" stroke="var(--brown)" stroke-width="2.8" stroke-linecap="round"/></svg><span>nubo</span></a>
   <div class="nav-links" id="navLinks">
     <a href="index.html" class="active">Start</a>
     <a href="#approach">Unser Ansatz</a>
@@ -996,7 +996,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo">nubo</div>
+      <div class="footer-logo"><svg width="28" height="28" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="28" cy="28" r="24" stroke="rgba(255,255,255,0.75)" stroke-width="2.8"/><path d="M 11 31 L 45 31" stroke="rgba(255,255,255,0.75)" stroke-width="1.4" stroke-linecap="round" opacity="0.2"/><path d="M 13 31 A 15 15 0 0 1 43 31" stroke="#C49640" stroke-width="2.8" stroke-linecap="round"/></svg><span>nubo</span></div>
       <div class="footer-tagline">Hybride Privatpraxis für Psychotherapie. Medizinisch geleitet. Modern erlebt.</div>
     </div>
     <div class="footer-col">

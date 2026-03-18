@@ -451,6 +451,11 @@
       .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .form-row { grid-template-columns: 1fr; }
 
+      /* WHY NUBO */
+      #why-nubo { padding: 4rem 5vw; }
+      #why-nubo > div:last-child > div { grid-template-columns: 1fr; gap: 1.5rem; }
+      #why-nubo > div:last-child > div button { width: 100%; }
+
       /* FOOTER */
       .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
@@ -568,6 +573,74 @@
   </div>
 </section>
 
+<!-- WARUM NUBO -->
+<section id="why-nubo" style="background:var(--dark);padding:5rem 5vw;">
+  <div style="text-align:center;max-width:700px;margin:0 auto 4rem;">
+    <span class="section-tag" style="color:var(--green-pale);background:rgba(122,158,135,0.15);">Der Vergleich</span>
+    <h2 class="section-h2" style="color:#fff;margin-top:0.75rem;">Kein Arbeitgeber als Gatekeeper.<br><em style="color:var(--green-pale);font-style:italic;">Keine Diagnose. Keine Warteliste.</em></h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,0.5);line-height:1.8;font-weight:300;margin-top:1rem;">Es gibt viele Wege zu psychologischer Unterstützung — aber die meisten haben einen Haken.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;max-width:1100px;margin:0 auto 3rem;">
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;">
+      <div style="font-size:1.75rem;margin-bottom:1rem;">📱</div>
+      <div style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.5rem;">App-Therapie</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:0.75rem;">HelloBetter & Co.</h3>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Kein Live-Kontakt — rein asynchron</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Diagnose & Arztbesuch nötig (DiGA)</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Starre 90-Tage-Programme, kein Themenfokus</li>
+      </ul>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;">
+      <div style="font-size:1.75rem;margin-bottom:1rem;">🏥</div>
+      <div style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.5rem;">Kassentherapie</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:0.75rem;">GKV-Psychotherapie</h3>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Ø 142 Tage Wartezeit auf einen Platz</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Starres 50-Min-Modell, kein digitales Begleitprogramm</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Kein Themen-Fokus, kein flexibles Format</li>
+      </ul>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;">
+      <div style="font-size:1.75rem;margin-bottom:1rem;">🏢</div>
+      <div style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.5rem;">Arbeitgeber-EAP</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:0.75rem;">nilo & Vergleichbare</h3>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Nur wenn dein Arbeitgeber zahlt — kein Direktzugang</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Preis und Verfügbarkeit abhängig vom Unternehmen</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Keine spezialisierten Themen-Programme</li>
+      </ul>
+    </div>
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:2rem;">
+      <div style="font-size:1.75rem;margin-bottom:1rem;">💸</div>
+      <div style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.5rem;">Privatpraxis</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;margin-bottom:0.75rem;">Klassische Therapie</h3>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>€100–150 pro Sitzung, intransparente Kosten</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Keine digitale Begleitung zwischen den Terminen</li>
+        <li style="display:flex;gap:0.6rem;align-items:flex-start;font-size:0.83rem;color:rgba(255,255,255,0.45);font-weight:300;"><span style="color:#e57373;margin-top:2px;flex-shrink:0;">✕</span>Kein strukturiertes Programm mit klarem Ende</li>
+      </ul>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="background:var(--green);border-radius:24px;padding:2.5rem 3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
+      <div>
+        <div style="font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-pale);margin-bottom:0.75rem;">Nubo — der andere Weg</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:1.25rem;line-height:1.3;">Live. Spezialisiert. Direkt buchbar.<br><em style="font-style:italic;color:var(--green-pale);">Zu einem transparenten Festpreis.</em></h3>
+        <div style="display:flex;flex-wrap:wrap;gap:0.6rem;">
+          <span style="background:rgba(255,255,255,0.15);color:#fff;font-size:0.78rem;padding:0.35rem 0.9rem;border-radius:100px;font-weight:500;">✓ Ersttermin oft in 48h</span>
+          <span style="background:rgba(255,255,255,0.15);color:#fff;font-size:0.78rem;padding:0.35rem 0.9rem;border-radius:100px;font-weight:500;">✓ Kein Arzt nötig</span>
+          <span style="background:rgba(255,255,255,0.15);color:#fff;font-size:0.78rem;padding:0.35rem 0.9rem;border-radius:100px;font-weight:500;">✓ Themen-spezialisiert</span>
+          <span style="background:rgba(255,255,255,0.15);color:#fff;font-size:0.78rem;padding:0.35rem 0.9rem;border-radius:100px;font-weight:500;">✓ Live + digital kombiniert</span>
+          <span style="background:rgba(255,255,255,0.15);color:#fff;font-size:0.78rem;padding:0.35rem 0.9rem;border-radius:100px;font-weight:500;">✓ Festpreis ab €249</span>
+          <span style="background:rgba(255,255,255,0.15);color:#fff;font-size:0.78rem;padding:0.35rem 0.9rem;border-radius:100px;font-weight:500;">✓ Direkt buchbar — für jeden</span>
+        </div>
+      </div>
+      <button class="btn-primary" style="background:#fff;color:var(--green);white-space:nowrap;flex-shrink:0;" onclick="openModal()">Jetzt starten →</button>
+    </div>
+  </div>
+</section>
+
 <!-- INTENSITIES -->
 <section id="intensities" style="background:var(--sand);">
   <span class="section-tag">Begleitintensität</span>
@@ -627,12 +700,12 @@
         <p>Angst verstehen, regulieren und wieder handlungsfähig werden — egal ob Unsicherheit oder bereits von Kündigung betroffen.</p>
         <a href="desktop-produkte.html" class="carousel-link">Mehr erfahren →</a>
       </div>
-      <div class="carousel-card carousel-card-coming">
+      <div class="carousel-card">
         <div class="carousel-icon">🔥</div>
-        <span class="carousel-tag">Demnächst</span>
+        <span class="carousel-tag">Spezialthema</span>
         <h3>Burnout & Erschöpfung</h3>
-        <p>Neues Programm in Entwicklung. Trag dich in die Warteliste ein und werde als Erstes informiert.</p>
-        <a href="#contact" class="carousel-link">Warteliste →</a>
+        <p>Von der Stabilisierung über die Ursachenanalyse bis zur nachhaltigen Reintegration — mit einem Therapeuten, der sich wirklich Zeit nimmt.</p>
+        <a href="desktop-produkte.html" class="carousel-link">Mehr erfahren →</a>
       </div>
       <div class="carousel-card carousel-card-coming">
         <div class="carousel-icon">🕊️</div>

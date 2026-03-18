@@ -9,15 +9,15 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --green: #3D6B55;
-      --green-dark: #2d5040;
-      --green-light: #7A9E87;
-      --green-pale: #C4D4C9;
-      --sand: #E8DDD0;
-      --cream: #FAF7F4;
-      --brown: #B08B6E;
-      --dark: #2A2825;
-      --muted: #6B6560;
+      --green: #2D5A8A;
+      --green-dark: #1E3A5F;
+      --green-light: #6A9FBF;
+      --green-pale: #C5DCF0;
+      --sand: #E8E6F2;
+      --cream: #F8F5F1;
+      --brown: #C49640;
+      --dark: #1A1E2C;
+      --muted: #5A6275;
       --nav-h: 80px;
     }
     html { scroll-behavior: smooth; }
@@ -96,7 +96,7 @@
     /* ── METHODEN SECTION ── */
     .methoden { background: var(--dark); }
     .methoden-header { text-align: center; margin-bottom: 4rem; }
-    .methoden-header .section-tag { justify-content: center; display: flex; color: rgba(122,158,135,0.8); }
+    .methoden-header .section-tag { justify-content: center; display: flex; color: rgba(106,159,191,0.8); }
     .methoden-header .section-h2 { color: #fff; }
     .methoden-header .section-p { color: rgba(255,255,255,0.5); margin: 0 auto; text-align: center; }
     .methoden-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -105,7 +105,7 @@
     .methode-blended { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
     .methode-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; display: block; }
     .methode-intensiv .methode-tag { color: rgba(255,255,255,0.6); }
-    .methode-blended .methode-tag { color: rgba(122,158,135,0.8); }
+    .methode-blended .methode-tag { color: rgba(106,159,191,0.8); }
     .methode-card h3 { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #fff; margin-bottom: 0.75rem; }
     .methode-card p { font-size: 0.92rem; line-height: 1.8; font-weight: 300; margin-bottom: 1.75rem; }
     .methode-intensiv p { color: rgba(255,255,255,0.7); }
@@ -116,7 +116,7 @@
     .methode-blended .methode-features li { color: rgba(255,255,255,0.6); }
     .methode-check { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; }
     .methode-intensiv .methode-check { background: rgba(255,255,255,0.2); color: #fff; }
-    .methode-blended .methode-check { background: rgba(122,158,135,0.3); color: var(--green-pale); }
+    .methode-blended .methode-check { background: rgba(106,159,191,0.3); color: var(--green-pale); }
     .methode-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.08); border-radius: 100px; padding: 0.5rem 1rem; font-size: 0.78rem; font-weight: 500; color: rgba(255,255,255,0.5); }
     .methode-intensiv .methode-pill { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
 
@@ -208,10 +208,10 @@
     .footer-col ul li:hover { color: rgba(255,255,255,0.7); }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 1.75rem; display: flex; justify-content: space-between; align-items: center; }
     .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.28); }
-    .footer-gdpr { display: inline-flex; align-items: center; gap: 6px; background: rgba(122,158,135,0.12); color: var(--green-pale); padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.72rem; }
+    .footer-gdpr { display: inline-flex; align-items: center; gap: 6px; background: rgba(106,159,191,0.12); color: var(--green-pale); padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.72rem; }
 
     /* ── MODAL ── */
-    .modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(42,40,37,0.65); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 2rem; }
+    .modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(26,30,44,0.65); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; padding: 2rem; }
     .modal-overlay.open { display: flex; }
     .modal { background: var(--cream); border-radius: 28px; padding: 2.5rem; width: 100%; max-width: 520px; animation: fadeUp 0.3s ease; position: relative; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -220,7 +220,7 @@
     .modal p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; font-weight: 300; margin-bottom: 1.5rem; }
     .modal-tally { background: var(--sand); border-radius: 16px; padding: 2.5rem; text-align: center; border: 2px dashed rgba(160,140,120,0.3); margin-bottom: 1.25rem; }
     .modal-tally p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.6rem; }
-    .modal-tally code { font-size: 0.78rem; color: var(--green); background: rgba(61,107,85,0.1); padding: 0.4rem 0.85rem; border-radius: 8px; display: inline-block; font-family: monospace; }
+    .modal-tally code { font-size: 0.78rem; color: var(--green); background: rgba(45,90,138,0.1); padding: 0.4rem 0.85rem; border-radius: 8px; display: inline-block; font-family: monospace; }
     .modal-gdpr { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
     .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 36px; height: 36px; background: var(--sand); border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
 
@@ -334,6 +334,7 @@
       <div class="prog-tabs">
         <button class="prog-tab active" onclick="switchProg('kinderwunsch', this)">🤍 Unerfüllter Kinderwunsch</button>
         <button class="prog-tab" onclick="switchProg('arbeit', this)">💼 Angst vor Arbeitsplatzverlust</button>
+        <button class="prog-tab" onclick="switchProg('burnout', this)">🔥 Burnout & Erschöpfung</button>
       </div>
     </div>
   </div>
@@ -477,6 +478,73 @@
 
 </div><!-- /arbeit -->
 
+<!-- ── BURNOUT & ERSCHÖPFUNG ── -->
+<div class="prog-section" id="prog-burnout">
+
+  <section class="prog-overview">
+    <div class="prog-overview-inner">
+      <div>
+        <div class="prog-icon">🔥</div>
+        <span class="section-tag">Programm · Burnout & Erschöpfung</span>
+        <h2 class="section-h2">Wenn Erschöpfung zur Grenze wird</h2>
+        <p>Burnout ist mehr als Müdigkeit — es ist ein Zeichen, dass etwas fundamental nicht stimmt. Die innere Leere, das Gefühl nichts mehr zu geben zu haben, der Körper, der streikt: Diese Signale verdienen echte Aufmerksamkeit, keine schnellen Tipps.</p>
+        <p>Unser Programm begleitet dich durch alle Phasen: von der ersten Stabilisierung über das Verstehen deiner Erschöpfungsmuster bis hin zur nachhaltigen Reintegration in Beruf und Leben — mit einem Therapeuten, der sich Zeit nimmt.</p>
+      </div>
+      <div class="prog-whom">
+        <div class="whom-card">
+          <div class="whom-emoji">😮‍💨</div>
+          <div>
+            <div class="whom-title">Du kannst nicht mehr abschalten — und weißt nicht warum</div>
+            <div class="whom-desc">Schlafprobleme, emotionale Leere, körperliche Symptome verstehen und gezielt ansprechen</div>
+          </div>
+        </div>
+        <div class="whom-card">
+          <div class="whom-emoji">⚠️</div>
+          <div>
+            <div class="whom-title">Du spürst die ersten Warnsignale einer Überlastung</div>
+            <div class="whom-desc">Frühzeitig gegensteuern, bevor es zur vollständigen Erschöpfung kommt</div>
+          </div>
+        </div>
+        <div class="whom-card">
+          <div class="whom-emoji">🏥</div>
+          <div>
+            <div class="whom-title">Du warst oder bist wegen Burnout krankgeschrieben</div>
+            <div class="whom-desc">Stabilisierung, Verarbeitung und schrittweise Reintegration professionell begleiten</div>
+          </div>
+        </div>
+        <div class="whom-card">
+          <div class="whom-emoji">🔋</div>
+          <div>
+            <div class="whom-title">Du willst langfristig resilient sein — nicht nur funktionieren</div>
+            <div class="whom-desc">Energiemanagement und Grenzsetzung als dauerhafte Lebenskompetenzen entwickeln</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="prog-included">
+    <div class="prog-included-inner">
+      <div>
+        <span class="section-tag">Im Programm enthalten</span>
+        <h2 class="section-h2">Was du bekommst</h2>
+        <p class="section-p">Spezialisierte Inhalte für Burnout und chronischen Stress — evidenzbasiert, auf deine Situation abgestimmt, unabhängig von der gewählten Methode.</p>
+      </div>
+      <div class="included-grid">
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">Spezialist:in für Burnout & Arbeitsbelastung</div><div class="incl-badge">Kern</div></div>
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">Burnout-Diagnostik (ICD-11, MBI)</div><div class="incl-badge">Medizin</div></div>
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">Energiemanagement & Grenzsetzung (KVT)</div></div>
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">Schlaf- & Erholungsoptimierung</div></div>
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">Reintegrations-Begleitung</div><div class="incl-badge">Pro</div></div>
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">Körper-Stressmuster & Somatic Work</div><div class="incl-badge">Pro</div></div>
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">Kognitive Entlastungstechniken & Grübelstopp</div></div>
+        <div class="incl-item"><div class="incl-dot"></div><div class="incl-text">DSGVO-konforme Dokumentation</div></div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /burnout -->
+
 <!-- ══════════════════════════════════════ -->
 <!-- METHODEN SECTION (immer sichtbar)      -->
 <!-- ══════════════════════════════════════ -->
@@ -532,6 +600,7 @@
         <div class="prog-selector">
           <button class="prog-sel-btn active" onclick="switchPricing('kw', this)">🤍 Kinderwunsch</button>
           <button class="prog-sel-btn" onclick="switchPricing('ap', this)">💼 Arbeitsplatzverlust</button>
+          <button class="prog-sel-btn" onclick="switchPricing('bo', this)">🔥 Burnout</button>
         </div>
       </div>
       <div class="selector-row">
@@ -757,6 +826,113 @@
       </div>
     </div>
 
+
+    <!-- Burnout Intensiv -->
+    <div class="price-set" id="set-bo-intensiv">
+      <div class="price-card">
+        <div class="price-methode-badge badge-intensiv">🌿 Intensive Care</div>
+        <div class="price-tier">Stabilisierung</div>
+        <div class="price-amount">€ 349</div>
+        <div class="price-period">/ 4 Wochen · 4 Sitzungen</div>
+        <p class="price-desc">Sofortige Krisenintervention: Die Erschöpfung stoppen, den Körper beruhigen, erste Strategien zur Energieregulation entwickeln.</p>
+        <ul class="price-features">
+          <li>4 × Videogespräch (30 Min.)</li>
+          <li>Burnout-Diagnostik</li>
+          <li>Energie-Workbooks</li>
+          <li>E-Mail Support</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt buchen →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-methode-badge badge-intensiv">🌿 Intensive Care</div>
+        <div class="price-tier">Erholung</div>
+        <div class="price-amount">€ 649</div>
+        <div class="price-period">/ 8 Wochen · 8 Sitzungen</div>
+        <p class="price-desc">8 Wochen intensive Begleitung — von der Stabilisierung über Ursachenanalyse bis zu nachhaltigen Veränderungen in Arbeit und Alltag.</p>
+        <ul class="price-features">
+          <li>8 × Videogespräch (30 Min.)</li>
+          <li>Burnout-Diagnostik & -Plan</li>
+          <li>Energiemanagement-Workbooks</li>
+          <li>Schlafoptimierungs-Modul</li>
+          <li>Krisenplan & Notfallkontakt</li>
+          <li>Ärztliche Supervision</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt buchen →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+      <div class="price-card">
+        <div class="price-methode-badge badge-intensiv">🌿 Intensive Care</div>
+        <div class="price-tier">Transformation</div>
+        <div class="price-amount">€ 1.090</div>
+        <div class="price-period">/ 16 Wochen · 12 Sitzungen</div>
+        <p class="price-desc">Tiefgreifende Veränderung: Von der Krise über die Ursachen bis zur vollständigen Reintegration und dauerhaft gesunden Arbeitsweise.</p>
+        <ul class="price-features">
+          <li>12 × Videogespräch (30 Min.)</li>
+          <li>Vollst. Burnout-Programm</li>
+          <li>Reintegrations-Begleitung</li>
+          <li>Somatic Work Module</li>
+          <li>Direkter Arzt-Kontakt</li>
+          <li>Abschlussbericht & Nachsorge</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt buchen →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+    </div>
+
+    <!-- Burnout Blended -->
+    <div class="price-set" id="set-bo-blended">
+      <div class="price-card">
+        <div class="price-methode-badge badge-blended">⚡ Blended Care</div>
+        <div class="price-tier">Essential</div>
+        <div class="price-amount">€ 249</div>
+        <div class="price-period">/ 4 Wochen · 2 Sitzungen</div>
+        <p class="price-desc">Flexibler Einstieg: 2 Impulsgespräche plus sofortiger Zugang zu den Burnout-Modulen — in deinem Tempo, wann es dir passt.</p>
+        <ul class="price-features">
+          <li>2 × Videogespräch (30 Min.)</li>
+          <li>Burnout-Module (async)</li>
+          <li>Therapeuten-Feedback</li>
+          <li>Energie-Workbooks</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt buchen →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-methode-badge badge-blended">⚡ Blended Care</div>
+        <div class="price-tier">Balance</div>
+        <div class="price-amount">€ 449</div>
+        <div class="price-period">/ 8 Wochen · 4 Sitzungen</div>
+        <p class="price-desc">4 Gespräche plus vollständige digitale Burnout-Module — ideal für alle, die Unterstützung brauchen, aber Struktur selbst bestimmen möchten.</p>
+        <ul class="price-features">
+          <li>4 × Videogespräch (30 Min.)</li>
+          <li>Vollständige Module</li>
+          <li>Schlaf- & Erholungsmodul</li>
+          <li>Therapeuten-Feedback</li>
+          <li>Wöchentl. Check-in</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt buchen →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+      <div class="price-card">
+        <div class="price-methode-badge badge-blended">⚡ Blended Care</div>
+        <div class="price-tier">Pro</div>
+        <div class="price-amount">€ 749</div>
+        <div class="price-period">/ 12 Wochen · 6 Sitzungen</div>
+        <p class="price-desc">12 Wochen Premium-Begleitung mit Reintegrationsmodul, Somatic Work und einem persönlichen Abschlussbericht.</p>
+        <ul class="price-features">
+          <li>6 × Videogespräch (30 Min.)</li>
+          <li>Premium-Module</li>
+          <li>Reintegrations-Modul</li>
+          <li>Therapeuten-Feedback</li>
+          <li>Abschluss-Bericht</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt buchen →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+    </div>
+
   </div><!-- /pricing-grid -->
 </section>
 
@@ -771,7 +947,7 @@
           <div class="step-circle">1</div>
           <div>
             <div class="step-title">Programm & Methode wählen</div>
-            <div class="step-desc">Entscheide dich für dein Thema (Kinderwunsch oder Arbeitsplatzverlust) und dein bevorzugtes Format (Intensiv oder Blended).</div>
+            <div class="step-desc">Entscheide dich für dein Thema (Kinderwunsch, Arbeitsplatzverlust oder Burnout) und dein bevorzugtes Format (Intensiv oder Blended).</div>
           </div>
         </div>
         <div class="process-step">
@@ -845,6 +1021,7 @@
       <ul>
         <li>Unerfüllter Kinderwunsch</li>
         <li>Angst vor Arbeitsplatzverlust</li>
+        <li>Burnout & Erschöpfung</li>
         <li>Pre-Check</li>
         <li>Preisübersicht</li>
       </ul>

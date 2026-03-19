@@ -1,4 +1,4 @@
-name: Deploy to Netlify
+name: Deploy to IONOS via FTP
 
 on:
   push:
@@ -11,10 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
+      - name: Deploy via FTP to IONOS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          args: deploy --dir=. --prod
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**

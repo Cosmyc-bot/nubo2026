@@ -135,11 +135,12 @@
     .methode-btn { padding: 0.5rem 1.25rem; border-radius: 100px; border: none; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; cursor: pointer; background: transparent; color: var(--muted); transition: all 0.2s; }
     .methode-btn.active { background: var(--green); color: #fff; font-weight: 500; }
     /* Pricing grid */
-    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 860px; }
     .price-set { display: none; }
     .price-set.visible { display: contents; }
-    .price-card { background: var(--cream); border: 1px solid rgba(160,140,120,0.2); border-radius: 24px; padding: 2.25rem; position: relative; transition: transform 0.2s; }
+    .price-card { background: var(--cream); border: 1px solid rgba(160,140,120,0.2); border-radius: 24px; padding: 2.25rem; position: relative; transition: transform 0.2s; display: flex; flex-direction: column; }
     .price-card:hover { transform: translateY(-4px); }
+    .price-card .price-cta { margin-top: auto; }
     .price-card.featured { background: var(--green); border-color: var(--green); }
     .price-popular { position: absolute; top: -12px; left: 1.5rem; background: var(--brown); color: #fff; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.85rem; border-radius: 100px; }
     .price-tier { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; }
@@ -162,12 +163,7 @@
     .price-card.featured .price-cta:hover { background: rgba(255,255,255,0.25); }
     .price-note { font-size: 0.72rem; color: var(--muted); text-align: center; }
     .price-card.featured .price-note { color: rgba(255,255,255,0.4); }
-    /* Methode badge on card */
-    .price-methode-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.2rem 0.65rem; border-radius: 100px; margin-bottom: 1.25rem; }
-    .badge-intensiv { background: var(--green-pale); color: var(--green); }
-    .badge-blended { background: var(--sand); color: var(--muted); }
-    .price-card.featured .badge-intensiv { background: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
-    .price-card.featured .badge-blended { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
+    .price-save { display: inline-block; background: rgba(196,150,64,0.15); color: var(--brown); font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 100px; margin-left: 0.5rem; }
 
     /* ── PROCESS ── */
     .process { }
@@ -279,7 +275,7 @@
       .selector-row { flex-wrap: wrap; gap: 0.75rem; width: 100%; }
       .prog-selector, .methode-toggle { flex-wrap: wrap; }
       .prog-sel-btn, .methode-btn { font-size: 0.8rem; }
-      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
 
       /* PROCESS */
       .process-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -556,30 +552,30 @@
   </div>
   <div class="methoden-grid">
     <div class="methode-card methode-intensiv">
-      <span class="methode-tag">Methode 01</span>
-      <h3>Intensive Care</h3>
-      <p>Häufigere, fokussierte 30-Min-Videogespräche mit ärztlicher Supervision und direktem Zugang zum medizinischen Team. Für Menschen, die intensive persönliche Begleitung bevorzugen oder sich in einer akuten Phase befinden.</p>
+      <span class="methode-tag">Essential</span>
+      <h3>Chat + Kurze Sessions</h3>
+      <p>Der Fokus liegt auf deiner eigenen Arbeit. Du bearbeitest strukturierte CBT-Module in deinem Tempo — deine Therapeutin begleitet dich per Chat und in kurzen, fokussierten 30-Min-Sessions alle zwei Wochen.</p>
       <ul class="methode-features">
-        <li><span class="methode-check">✓</span>Wöchentliche 30-Min-Videogespräche</li>
-        <li><span class="methode-check">✓</span>Ärztliche Supervision aller Sitzungen</li>
-        <li><span class="methode-check">✓</span>Krisenplan & Notfallkontakt</li>
-        <li><span class="methode-check">✓</span>Persönlicher Therapieplan</li>
-        <li><span class="methode-check">✓</span>Geführte Selbstarbeit zwischen den Terminen</li>
+        <li><span class="methode-check">✓</span>2 × 30-Min-Video-Session / Monat</li>
+        <li><span class="methode-check">✓</span>Chat Mo–Fr (Antwort binnen 24h)</li>
+        <li><span class="methode-check">✓</span>CBT-Module & Workbooks (selbstgesteuert)</li>
+        <li><span class="methode-check">✓</span>Therapeuten-Feedback auf deine Einträge</li>
+        <li><span class="methode-check">✓</span>Monatlich kündbar</li>
       </ul>
-      <div class="methode-pill">Ideal bei akuter Belastung oder hohem Begleitungsbedarf</div>
+      <div class="methode-pill">Ab € 199 / Monat</div>
     </div>
     <div class="methode-card methode-blended">
-      <span class="methode-tag">Methode 02</span>
-      <h3>Blended Care</h3>
-      <p>Gezielte 30-Min-Impulsgespräche kombiniert mit strukturierten digitalen Modulen und Therapeuten-Feedback. Du bestimmst das Tempo — wir geben den Rahmen. Ideal für volle Kalender und Eigenverantwortung.</p>
+      <span class="methode-tag">Plus — Empfohlen</span>
+      <h3>Intensiver Chat + mehr Sessions</h3>
+      <p>Mehr Kontakt, schnellere Antworten, mehr Sessions pro Monat. Für alle, die intensive tägliche Begleitung brauchen und trotzdem eigenverantwortlich mit den CBT-Modulen arbeiten wollen.</p>
       <ul class="methode-features">
-        <li><span class="methode-check">✓</span>Flexible 30-Min-Gespräche nach eigenem Rhythmus</li>
-        <li><span class="methode-check">✓</span>Digitale Therapie-Module (asynchron)</li>
-        <li><span class="methode-check">✓</span>Therapeuten-Feedback auf deine Module</li>
-        <li><span class="methode-check">✓</span>Community-Zugang (geschützt)</li>
-        <li><span class="methode-check">✓</span>Wöchentl. schriftlicher Check-in</li>
+        <li><span class="methode-check">✓</span>4 × 30-Min-Video-Session / Monat</li>
+        <li><span class="methode-check">✓</span>Täglicher Chat Mo–Fr (binnen 4h)</li>
+        <li><span class="methode-check">✓</span>Alle CBT-Module + Workbooks</li>
+        <li><span class="methode-check">✓</span>Wöchentl. Check-in durch Therapeutin</li>
+        <li><span class="methode-check">✓</span>Krisenplan & Notfallkontakt</li>
       </ul>
-      <div class="methode-pill">Ideal bei vollem Kalender oder präventiver Arbeit</div>
+      <div class="methode-pill">Ab € 269 / Monat</div>
     </div>
   </div>
 </section>
@@ -591,8 +587,8 @@
   <div class="pricing-top">
     <div>
       <span class="section-tag">Preise & Pakete</span>
-      <h2 class="section-h2">Programm & Methode kombinieren</h2>
-      <p class="section-p">Wähle dein Programm und deine bevorzugte Methode — die Pakete passen sich an.</p>
+      <h2 class="section-h2">Chat-first. 30-Min-Sessions.</h2>
+      <p class="section-p">Du machst die eigentliche Arbeit — deine Therapeutin begleitet dich per Chat und in kurzen, fokussierten Sessions.</p>
     </div>
     <div class="pricing-selectors">
       <div class="selector-row">
@@ -604,10 +600,10 @@
         </div>
       </div>
       <div class="selector-row">
-        <span class="selector-label">Methode</span>
+        <span class="selector-label">Laufzeit</span>
         <div class="methode-toggle">
-          <button class="methode-btn active" onclick="switchMethode('intensiv', this)">🌿 Intensive Care</button>
-          <button class="methode-btn" onclick="switchMethode('blended', this)">⚡ Blended Care</button>
+          <button class="methode-btn active" onclick="switchMethode('monthly', this)">Monatlich</button>
+          <button class="methode-btn" onclick="switchMethode('quarterly', this)">3 Monate −10%</button>
         </div>
       </div>
     </div>
@@ -615,8 +611,218 @@
 
   <div class="pricing-grid">
 
-    <!-- Kinderwunsch Intensiv -->
-    <div class="price-set visible" id="set-kw-intensiv">
+    <!-- ── KINDERWUNSCH MONATLICH ── -->
+    <div class="price-set visible" id="set-kw-monthly">
+      <div class="price-card">
+        <div class="price-tier">Essential</div>
+        <div class="price-amount">€ 199</div>
+        <div class="price-period">/ Monat · monatlich kündbar</div>
+        <p class="price-desc">Chat + 2 kurze Video-Sessions pro Monat. Der Fokus liegt auf deiner eigenen Arbeit mit den spezialisierten Kinderwunsch-Modulen — die Therapeutin begleitet und gibt Feedback.</p>
+        <ul class="price-features">
+          <li>2 × 30-Min Video-Session / Monat</li>
+          <li>Chat Mo–Fr (Antwort binnen 24h)</li>
+          <li>Kinderwunsch CBT-Module & Workbooks</li>
+          <li>Therapeuten-Feedback auf deine Einträge</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-tier">Plus</div>
+        <div class="price-amount">€ 269</div>
+        <div class="price-period">/ Monat · monatlich kündbar</div>
+        <p class="price-desc">Mehr Kontakt, schnellere Antworten, mehr Sessions. Täglicher Chat und 4 Sessions pro Monat — intensive Begleitung bei gleichzeitiger Eigenarbeit.</p>
+        <ul class="price-features">
+          <li>4 × 30-Min Video-Session / Monat</li>
+          <li>Täglicher Chat Mo–Fr (binnen 4h)</li>
+          <li>Alle Kinderwunsch-Module + Workbooks</li>
+          <li>Wöchentl. Check-in durch Therapeutin</li>
+          <li>Krisenplan & Notfallkontakt</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+    </div>
+
+    <!-- ── KINDERWUNSCH 3 MONATE ── -->
+    <div class="price-set" id="set-kw-quarterly">
+      <div class="price-card">
+        <div class="price-tier">Essential · 3 Monate</div>
+        <div class="price-amount">€ 539</div>
+        <div class="price-period">/ 3 Monate · einmalig <span class="price-save">Spare €58</span></div>
+        <p class="price-desc">6 Video-Sessions über 3 Monate plus tägliche Chat-Begleitung. Strukturiertes 12-Wochen-Programm zum Paketpreis.</p>
+        <ul class="price-features">
+          <li>6 × 30-Min Video-Session</li>
+          <li>Chat Mo–Fr (Antwort binnen 24h)</li>
+          <li>Kinderwunsch CBT-Module & Workbooks</li>
+          <li>Therapeuten-Feedback auf deine Einträge</li>
+          <li>Abschlussgespräch</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Spare €58 gegenüber dem Monatsabo</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-tier">Plus · 3 Monate</div>
+        <div class="price-amount">€ 729</div>
+        <div class="price-period">/ 3 Monate · einmalig <span class="price-save" style="background:rgba(255,255,255,0.15);color:#fff">Spare €78</span></div>
+        <p class="price-desc">12 Wochen intensivste Begleitung: 12 Sessions, täglicher Chat, alle Module. Das vollständige nubo-Programm für echten, nachhaltigen Fortschritt.</p>
+        <ul class="price-features">
+          <li>12 × 30-Min Video-Session</li>
+          <li>Täglicher Chat Mo–Fr (binnen 4h)</li>
+          <li>Alle Kinderwunsch-Module + Workbooks</li>
+          <li>Wöchentl. Check-in durch Therapeutin</li>
+          <li>Krisenplan & Notfallkontakt</li>
+          <li>Abschlussbericht</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Spare €78 gegenüber dem Monatsabo</p>
+      </div>
+    </div>
+
+    <!-- ── ARBEITSPLATZVERLUST MONATLICH ── -->
+    <div class="price-set" id="set-ap-monthly">
+      <div class="price-card">
+        <div class="price-tier">Essential</div>
+        <div class="price-amount">€ 199</div>
+        <div class="price-period">/ Monat · monatlich kündbar</div>
+        <p class="price-desc">Chat + 2 kurze Video-Sessions pro Monat. Arbeite in deinem Tempo mit den Angst- und Resilienz-Modulen — deine Therapeutin gibt Feedback und bleibt in Kontakt.</p>
+        <ul class="price-features">
+          <li>2 × 30-Min Video-Session / Monat</li>
+          <li>Chat Mo–Fr (Antwort binnen 24h)</li>
+          <li>Angst- & Resilienz-Module (KVT)</li>
+          <li>Therapeuten-Feedback auf deine Einträge</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-tier">Plus</div>
+        <div class="price-amount">€ 269</div>
+        <div class="price-period">/ Monat · monatlich kündbar</div>
+        <p class="price-desc">Täglicher Chat, schnelle Antworten, 4 Sessions pro Monat. Intensivere Begleitung, während du eigenverantwortlich arbeitest und Resilienz aufbaust.</p>
+        <ul class="price-features">
+          <li>4 × 30-Min Video-Session / Monat</li>
+          <li>Täglicher Chat Mo–Fr (binnen 4h)</li>
+          <li>Alle Resilienz-Module + Workbooks</li>
+          <li>Wöchentl. Check-in durch Therapeutin</li>
+          <li>Krisenplan & Notfallkontakt</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+    </div>
+
+    <!-- ── ARBEITSPLATZVERLUST 3 MONATE ── -->
+    <div class="price-set" id="set-ap-quarterly">
+      <div class="price-card">
+        <div class="price-tier">Essential · 3 Monate</div>
+        <div class="price-amount">€ 539</div>
+        <div class="price-period">/ 3 Monate · einmalig <span class="price-save">Spare €58</span></div>
+        <p class="price-desc">6 Sessions über 3 Monate plus Chat-Begleitung. Strukturiertes 12-Wochen-KVT-Programm für mehr Resilienz und Handlungsfähigkeit.</p>
+        <ul class="price-features">
+          <li>6 × 30-Min Video-Session</li>
+          <li>Chat Mo–Fr (Antwort binnen 24h)</li>
+          <li>Angst- & Resilienz-Module (KVT)</li>
+          <li>Therapeuten-Feedback auf deine Einträge</li>
+          <li>Abschlussgespräch</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Spare €58 gegenüber dem Monatsabo</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-tier">Plus · 3 Monate</div>
+        <div class="price-amount">€ 729</div>
+        <div class="price-period">/ 3 Monate · einmalig <span class="price-save" style="background:rgba(255,255,255,0.15);color:#fff">Spare €78</span></div>
+        <p class="price-desc">12 Wochen intensive Begleitung: 12 Sessions, täglicher Chat, alle Module inklusive Berufsorientierung. Von der Krise zur dauerhaften Resilienz.</p>
+        <ul class="price-features">
+          <li>12 × 30-Min Video-Session</li>
+          <li>Täglicher Chat Mo–Fr (binnen 4h)</li>
+          <li>Alle Module + Berufsorientierungs-Workbook</li>
+          <li>Wöchentl. Check-in durch Therapeutin</li>
+          <li>Krisenplan & Notfallkontakt</li>
+          <li>Abschlussbericht</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Spare €78 gegenüber dem Monatsabo</p>
+      </div>
+    </div>
+
+    <!-- ── BURNOUT MONATLICH ── -->
+    <div class="price-set" id="set-bo-monthly">
+      <div class="price-card">
+        <div class="price-tier">Essential</div>
+        <div class="price-amount">€ 199</div>
+        <div class="price-period">/ Monat · monatlich kündbar</div>
+        <p class="price-desc">Chat + 2 kurze Video-Sessions pro Monat. Du arbeitest in deinem Tempo mit den Burnout- und Energiemanagement-Modulen — die Therapeutin gibt Feedback und bleibt erreichbar.</p>
+        <ul class="price-features">
+          <li>2 × 30-Min Video-Session / Monat</li>
+          <li>Chat Mo–Fr (Antwort binnen 24h)</li>
+          <li>Burnout-Module & Energie-Workbooks</li>
+          <li>Therapeuten-Feedback auf deine Einträge</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-tier">Plus</div>
+        <div class="price-amount">€ 269</div>
+        <div class="price-period">/ Monat · monatlich kündbar</div>
+        <p class="price-desc">Täglicher Chat, 4 Sessions, alle Module. Für alle, die intensive Begleitung brauchen — gerade in der Stabilisierungsphase nach einem Burnout.</p>
+        <ul class="price-features">
+          <li>4 × 30-Min Video-Session / Monat</li>
+          <li>Täglicher Chat Mo–Fr (binnen 4h)</li>
+          <li>Alle Burnout-Module + Workbooks</li>
+          <li>Wöchentl. Check-in durch Therapeutin</li>
+          <li>Krisenplan & Notfallkontakt</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Eignung zuerst prüfen — kostenlos & anonym</p>
+      </div>
+    </div>
+
+    <!-- ── BURNOUT 3 MONATE ── -->
+    <div class="price-set" id="set-bo-quarterly">
+      <div class="price-card">
+        <div class="price-tier">Essential · 3 Monate</div>
+        <div class="price-amount">€ 539</div>
+        <div class="price-period">/ 3 Monate · einmalig <span class="price-save">Spare €58</span></div>
+        <p class="price-desc">6 Sessions und Chat-Begleitung über 3 Monate. Strukturiertes 12-Wochen-Programm für Stabilisierung, Ursachenarbeit und nachhaltigen Energieaufbau.</p>
+        <ul class="price-features">
+          <li>6 × 30-Min Video-Session</li>
+          <li>Chat Mo–Fr (Antwort binnen 24h)</li>
+          <li>Burnout-Module & Energie-Workbooks</li>
+          <li>Therapeuten-Feedback auf deine Einträge</li>
+          <li>Abschlussgespräch</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Spare €58 gegenüber dem Monatsabo</p>
+      </div>
+      <div class="price-card featured">
+        <div class="price-popular">Empfohlen</div>
+        <div class="price-tier">Plus · 3 Monate</div>
+        <div class="price-amount">€ 729</div>
+        <div class="price-period">/ 3 Monate · einmalig <span class="price-save" style="background:rgba(255,255,255,0.15);color:#fff">Spare €78</span></div>
+        <p class="price-desc">12 Wochen vollständige Burnout-Begleitung: von der Krise über die Ursachen bis zur Reintegration. Täglicher Chat, 12 Sessions, Abschlussbericht.</p>
+        <ul class="price-features">
+          <li>12 × 30-Min Video-Session</li>
+          <li>Täglicher Chat Mo–Fr (binnen 4h)</li>
+          <li>Alle Burnout-Module + Reintegrationsmodul</li>
+          <li>Wöchentl. Check-in durch Therapeutin</li>
+          <li>Krisenplan & Notfallkontakt</li>
+          <li>Abschlussbericht & Nachsorge</li>
+        </ul>
+        <button class="price-cta" onclick="openModal()">Jetzt starten →</button>
+        <p class="price-note">Spare €78 gegenüber dem Monatsabo</p>
+      </div>
+    </div>
+
+    <!-- ── ALT (versteckt, kein JS referenziert) ── -->
+    <div class="price-set" id="set-kw-intensiv">
       <div class="price-card">
         <div class="price-methode-badge badge-intensiv">🌿 Intensive Care</div>
         <div class="price-tier">Begleitung</div>
@@ -1078,7 +1284,7 @@
 
   // Pricing state
   let currentProg = 'kw';
-  let currentMethode = 'intensiv';
+  let currentMethode = 'monthly';
 
   function updatePricing() {
     document.querySelectorAll('.price-set').forEach(s => s.classList.remove('visible'));

@@ -23,5 +23,5 @@ jobs:
             mirror -R --delete \
               --exclude-glob .git \
               --exclude-glob .github \
-              ./ /;
+              ./ /therapy;
           "

@@ -12,17 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
       - name: Deploy via SFTP to IONOS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          protocol: sftp
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 22
-          local-dir: ./
-          server-dir: /
-          exclude: |
-            **/.git*
-            **/.git*/**
-            .github/**
+        run: |
+          lftp -c "
+            set sftp:auto-confirm yes;
+            open sftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }};
+            mirror -R --delete \
+              --exclude-glob .git \
+              --exclude-glob .github \
+              ./ /;
+          "

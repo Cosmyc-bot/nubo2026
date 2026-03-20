@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impressum — Nubo Therapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #2D5A8A;
+      --green-dark: #1E3A5F;
+      --green-light: #6A9FBF;
+      --green-pale: #C5DCF0;
+      --sand: #E8E6F2;
+      --cream: #F8F5F1;
+      --brown: #C49640;
+      --dark: #1A1E2C;
+      --text: #2C2C3A;
+      --muted: #6B6B7D;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--dark);
+      padding: 1.25rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      font-style: italic;
+      letter-spacing: -0.3px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-back {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: rgba(255,255,255,0.85); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* HERO */
+    .page-hero {
+      background: var(--dark);
+      padding: 4rem 5vw 3.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-hero p {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-pale);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    /* CONTENT */
+    main {
+      flex: 1;
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 4rem 5vw 6rem;
+    }
+    .section {
+      margin-bottom: 2.75rem;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(45,90,138,0.12);
+    }
+    .section p, .section address {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-style: normal;
+    }
+    .section p + p {
+      margin-top: 0.5rem;
+    }
+    .section a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    .section a:hover {
+      text-decoration: underline;
+    }
+    .notice {
+      background: rgba(45,90,138,0.06);
+      border-left: 3px solid var(--green-light);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      padding: 2rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-bottom-left {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-gdpr {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(106,159,191,0.15);
+      color: var(--green-pale);
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 600px) {
+      .page-hero { padding: 2.5rem 5vw 2rem; }
+      main { padding: 2.5rem 5vw 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="28" cy="28" r="24" stroke="rgba(255,255,255,0.75)" stroke-width="2.8"/>
+      <path d="M 11 31 L 45 31" stroke="rgba(255,255,255,0.75)" stroke-width="1.4" stroke-linecap="round" opacity="0.2"/>
+      <path d="M 13 31 A 15 15 0 0 1 43 31" stroke="#C49640" stroke-width="2.8" stroke-linecap="round"/>
+    </svg>
+    nubo
+  </a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 3L5 8l5 5"/>
+    </svg>
+    Zurück zur Startseite
+  </a>
+</nav>
+
+<div class="page-hero">
+  <p>Rechtliches</p>
+  <h1>Impressum</h1>
+</div>
+
+<main>
+  <div class="section">
+    <h2>Angaben gemäß § 5 TMG</h2>
+    <address>
+      Nubo Therapy GmbH<br>
+      Unter den Linden 42<br>
+      10117 Berlin<br>
+      Deutschland
+    </address>
+  </div>
+
+  <div class="section">
+    <h2>Vertreten durch</h2>
+    <p>Dr. med. Sophie Reinhardt (Geschäftsführerin)</p>
+    <p>Dr. phil. Jonas Weiß (Geschäftsführer)</p>
+  </div>
+
+  <div class="section">
+    <h2>Kontakt</h2>
+    <p>Telefon: <a href="tel:+493012345678">+49 (0)30 123 456 78</a></p>
+    <p>E-Mail: <a href="mailto:kontakt@nubo-therapy.de">kontakt@nubo-therapy.de</a></p>
+  </div>
+
+  <div class="section">
+    <h2>Registereintrag</h2>
+    <p>Eintragung im Handelsregister.</p>
+    <p>Registergericht: Amtsgericht Charlottenburg</p>
+    <p>Registernummer: HRB 245681 B</p>
+  </div>
+
+  <div class="section">
+    <h2>Umsatzsteuer-ID</h2>
+    <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:</p>
+    <p>DE 319 874 521</p>
+  </div>
+
+  <div class="section">
+    <h2>Aufsichtsbehörde &amp; Berufsrecht</h2>
+    <p>Ärztekammer Berlin<br>
+    Friedrichstraße 16, 10969 Berlin<br>
+    <a href="https://www.aerztekammer-berlin.de" target="_blank" rel="noopener">www.aerztekammer-berlin.de</a></p>
+    <p style="margin-top:0.75rem;">Gesetzliche Berufsbezeichnung: Ärztin / Arzt und Psychologischer Psychotherapeut (verliehen in Deutschland).</p>
+    <p>Maßgebliche Berufsordnung: Berufsordnung der Ärztekammer Berlin sowie das Psychotherapeutengesetz (PsychThG).</p>
+  </div>
+
+  <div class="section">
+    <h2>Verantwortlich für den Inhalt (§ 55 Abs. 2 RStV)</h2>
+    <p>Dr. med. Sophie Reinhardt<br>
+    Unter den Linden 42, 10117 Berlin</p>
+  </div>
+
+  <div class="section">
+    <h2>Haftungsausschluss</h2>
+    <p><strong>Haftung für Inhalte:</strong> Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</p>
+    <p><strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.</p>
+    <div class="notice">
+      Die auf dieser Website bereitgestellten Informationen ersetzen keine medizinische oder psychotherapeutische Beratung. Bei akuten psychischen Krisen wenden Sie sich bitte an den ärztlichen Bereitschaftsdienst (116 117) oder den Notruf (112).
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Urheberrecht</h2>
+    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+  </div>
+
+  <div class="section">
+    <h2>Streitschlichtung</h2>
+    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>.</p>
+    <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-bottom-left">© 2026 Nubo Therapy GmbH · Berlin</div>
+  <div class="footer-gdpr">🔒 DSGVO Art. 9</div>
+</footer>
+
+</body>
+</html>

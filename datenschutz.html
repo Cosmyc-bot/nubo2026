@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung — Nubo Therapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --green: #2D5A8A;
+      --green-dark: #1E3A5F;
+      --green-light: #6A9FBF;
+      --green-pale: #C5DCF0;
+      --sand: #E8E6F2;
+      --cream: #F8F5F1;
+      --brown: #C49640;
+      --dark: #1A1E2C;
+      --text: #2C2C3A;
+      --muted: #6B6B7D;
+    }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--dark);
+      padding: 1.25rem 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      font-style: italic;
+      letter-spacing: -0.3px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-back {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: rgba(255,255,255,0.85); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* HERO */
+    .page-hero {
+      background: var(--dark);
+      padding: 4rem 5vw 3.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-hero p {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-pale);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    /* CONTENT */
+    main {
+      flex: 1;
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 4rem 5vw 6rem;
+    }
+    .section {
+      margin-bottom: 2.75rem;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(45,90,138,0.12);
+    }
+    .section p, .section address {
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-style: normal;
+    }
+    .section p + p {
+      margin-top: 0.5rem;
+    }
+    .section a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    .section a:hover {
+      text-decoration: underline;
+    }
+    .notice {
+      background: rgba(45,90,138,0.06);
+      border-left: 3px solid var(--green-light);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      font-size: 0.85rem;
+      line-height: 1.75;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+    ul.list {
+      margin-top: 0.5rem;
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    ul.list li {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      padding: 2rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-bottom-left {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-gdpr {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(106,159,191,0.15);
+      color: var(--green-pale);
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 600px) {
+      .page-hero { padding: 2.5rem 5vw 2rem; }
+      main { padding: 2.5rem 5vw 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="28" cy="28" r="24" stroke="rgba(255,255,255,0.75)" stroke-width="2.8"/>
+      <path d="M 11 31 L 45 31" stroke="rgba(255,255,255,0.75)" stroke-width="1.4" stroke-linecap="round" opacity="0.2"/>
+      <path d="M 13 31 A 15 15 0 0 1 43 31" stroke="#C49640" stroke-width="2.8" stroke-linecap="round"/>
+    </svg>
+    nubo
+  </a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 3L5 8l5 5"/>
+    </svg>
+    Zurück zur Startseite
+  </a>
+</nav>
+
+<div class="page-hero">
+  <p>Rechtliches</p>
+  <h1>Datenschutzerklärung</h1>
+</div>
+
+<main>
+  <div class="section">
+    <h2>1. Verantwortlicher</h2>
+    <address>
+      Nubo Therapy GmbH<br>
+      Unter den Linden 42<br>
+      10117 Berlin<br>
+      Deutschland
+    </address>
+    <p style="margin-top:0.75rem;">E-Mail: <a href="mailto:datenschutz@nubo-therapy.de">datenschutz@nubo-therapy.de</a><br>
+    Telefon: <a href="tel:+493012345678">+49 (0)30 123 456 78</a></p>
+  </div>
+
+  <div class="section">
+    <h2>2. Datenschutzbeauftragter</h2>
+    <p>Unser betrieblicher Datenschutzbeauftragter ist erreichbar unter:</p>
+    <p>Dr. iur. Markus Frey<br>
+    <a href="mailto:dsb@nubo-therapy.de">dsb@nubo-therapy.de</a></p>
+  </div>
+
+  <div class="section">
+    <h2>3. Erhobene Daten &amp; Zwecke</h2>
+    <p>Wir verarbeiten personenbezogene Daten nur, soweit dies gesetzlich erlaubt oder Sie eingewilligt haben. Im Einzelnen erheben wir:</p>
+    <ul class="list">
+      <li><strong>Kontaktdaten</strong> (Name, E-Mail, Telefon) — zur Terminvereinbarung und Kommunikation (Art. 6 Abs. 1 lit. b DSGVO)</li>
+      <li><strong>Gesundheitsdaten</strong> (Symptome, Diagnosen, Therapieverläufe) — zur Erbringung psychotherapeutischer Leistungen (Art. 9 Abs. 2 lit. h DSGVO i. V. m. § 22 BDSG)</li>
+      <li><strong>Nutzungsdaten</strong> (IP-Adresse, Browser, Seitenaufrufe) — zur technischen Bereitstellung der Website (Art. 6 Abs. 1 lit. f DSGVO)</li>
+      <li><strong>Zahlungsdaten</strong> (Rechnungsadresse, Zahlungsreferenz) — zur Abrechnung (Art. 6 Abs. 1 lit. b DSGVO)</li>
+    </ul>
+    <div class="notice">
+      Gesundheitsdaten sind besonders schutzwürdig (Art. 9 DSGVO). Wir verarbeiten sie ausschließlich zum Zweck der Behandlung und geben sie nur mit Ihrer ausdrücklichen Einwilligung oder aufgrund gesetzlicher Verpflichtung weiter.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>4. Speicherdauer</h2>
+    <p>Personenbezogene Daten werden gelöscht, sobald der Zweck der Verarbeitung entfällt und keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Therapeutische Dokumentation wird gemäß § 10 MBO-Ä mindestens 10 Jahre aufbewahrt. Buchhaltungsrelevante Daten unterliegen einer 10-jährigen Aufbewahrungspflicht nach § 147 AO.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Weitergabe an Dritte</h2>
+    <p>Wir geben Ihre Daten nicht an Dritte weiter, außer:</p>
+    <ul class="list">
+      <li>an Auftragsverarbeiter (z. B. Cloud-Hosting, Videokonferenzdienst), mit denen ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO besteht</li>
+      <li>soweit wir gesetzlich dazu verpflichtet sind (z. B. gegenüber Behörden)</li>
+      <li>mit Ihrer ausdrücklichen Einwilligung (z. B. Überweisung an Facharzt)</li>
+    </ul>
+    <p>Eine Übermittlung in Drittländer außerhalb der EU/des EWR erfolgt nur auf Basis geeigneter Garantien (z. B. EU-Standardvertragsklauseln).</p>
+  </div>
+
+  <div class="section">
+    <h2>6. Telemedizin &amp; Videobehandlung</h2>
+    <p>Für Videositzungen nutzen wir ausschließlich DSGVO-konforme, Ende-zu-Ende-verschlüsselte Plattformen mit Serverstandort in der EU. Sitzungen werden grundsätzlich nicht aufgezeichnet. Metadaten (Verbindungszeit, Dauer) werden für Abrechnungszwecke protokolliert und nach 6 Monaten gelöscht.</p>
+  </div>
+
+  <div class="section">
+    <h2>7. Cookies &amp; Tracking</h2>
+    <p>Unsere Website verwendet ausschließlich technisch notwendige Cookies, die für den Betrieb der Seite erforderlich sind. Wir setzen keine Tracking- oder Werbe-Cookies ein und verwenden kein Google Analytics oder vergleichbare Dienste.</p>
+    <p>Sie können Cookies in Ihrem Browser jederzeit deaktivieren. Dies kann die Funktionalität der Website einschränken.</p>
+  </div>
+
+  <div class="section">
+    <h2>8. Ihre Rechte</h2>
+    <p>Sie haben gegenüber uns folgende Rechte hinsichtlich Ihrer personenbezogenen Daten:</p>
+    <ul class="list">
+      <li><strong>Auskunft</strong> (Art. 15 DSGVO) — Sie können jederzeit Auskunft über die von uns gespeicherten Daten verlangen.</li>
+      <li><strong>Berichtigung</strong> (Art. 16 DSGVO) — Sie können die Korrektur unrichtiger Daten verlangen.</li>
+      <li><strong>Löschung</strong> (Art. 17 DSGVO) — Sie können die Löschung Ihrer Daten verlangen, sofern keine Aufbewahrungspflichten entgegenstehen.</li>
+      <li><strong>Einschränkung</strong> (Art. 18 DSGVO) — Sie können die Einschränkung der Verarbeitung verlangen.</li>
+      <li><strong>Datenübertragbarkeit</strong> (Art. 20 DSGVO) — Sie können Ihre Daten in einem gängigen Format erhalten.</li>
+      <li><strong>Widerspruch</strong> (Art. 21 DSGVO) — Sie können der Verarbeitung auf Basis berechtigter Interessen widersprechen.</li>
+      <li><strong>Widerruf</strong> — Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen.</li>
+    </ul>
+    <p style="margin-top:0.75rem;">Zur Ausübung Ihrer Rechte wenden Sie sich an: <a href="mailto:datenschutz@nubo-therapy.de">datenschutz@nubo-therapy.de</a></p>
+  </div>
+
+  <div class="section">
+    <h2>9. Beschwerderecht</h2>
+    <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Die zuständige Behörde für Berlin ist:</p>
+    <p>Berliner Beauftragte für Datenschutz und Informationsfreiheit<br>
+    Friedrichstr. 219, 10969 Berlin<br>
+    <a href="https://www.datenschutz-berlin.de" target="_blank" rel="noopener">www.datenschutz-berlin.de</a></p>
+  </div>
+
+  <div class="section">
+    <h2>10. Datensicherheit</h2>
+    <p>Wir setzen technische und organisatorische Maßnahmen ein, um Ihre Daten gegen Verlust, Manipulation und unberechtigten Zugriff zu schützen. Unsere Website wird ausschließlich über HTTPS übertragen. Therapeutische Daten werden verschlüsselt gespeichert und nur für berechtigte Mitarbeitende zugänglich gemacht.</p>
+  </div>
+
+  <div class="section">
+    <h2>11. Aktualität dieser Erklärung</h2>
+    <p>Diese Datenschutzerklärung ist aktuell gültig und datiert vom März 2026. Durch die Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann eine Anpassung dieser Erklärung notwendig werden. Die jeweils aktuelle Version finden Sie stets auf dieser Seite.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-bottom-left">© 2026 Nubo Therapy GmbH · Berlin</div>
+  <div class="footer-gdpr">🔒 DSGVO Art. 9</div>
+</footer>
+
+</body>
+</html>
